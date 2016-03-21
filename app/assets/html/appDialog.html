@@ -1,0 +1,15 @@
+<div class="tanchu-content">
+    <div class="tanchu-top">
+        <div class="tanchu-title">下载应用</div>
+        <div class="tanchu-btn"><a ng-click='closeThisDialog()'><i class="iconfont">&#xe604;</i></a></div>
+    </div>
+    <div class="tanchu-main">
+        <ul class="tanchu-link">
+            <li><img ng-src="{{ngDialogData.appData.icon | resource}}" err-src="/img/default_app.png"></li>
+            <li><h1 ng-bind="::ngDialogData.appData.name | limitTo:10"></h1></li>
+            <li ng-bind="::ngDialogData.appData.size | mb"></li>
+        </ul>
+        <div class="content-user-btn"><a style="padding-top: 0;padding-bottom: 0"
+                                         ng-click="appDownload(ngDialogData.appData)">下载</a></div>
+    </div>
+</div>

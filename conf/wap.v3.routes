@@ -1,0 +1,21 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET         /             controllers.Default.redirect(to="/devices/detail.html")
+
+GET         /*file        controllers.Assets.at(path="/public", file)
+
+
+
+#GET         /v3   controllers.Application.index(path)
+
+
+#POST        /v3/*path     controllers.Application.index(path)
+
+
+
+#GET           /v3/*path                   controllers.Application.service(path)
+#POST          /v3/*path                   controllers.Application.service(path)
+#POST          /wp-admin/*path             controllers.Application.services(path)
+#DELETE        /v3/*path                   controllers.Application.service(path)

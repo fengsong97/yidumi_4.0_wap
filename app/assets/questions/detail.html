@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html ng-app="questions">
+<head>
+    <base href="/">
+    <title > 一度蜜技能分享</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+
+    <link rel="stylesheet" href="../css/yidu.css">
+    <link rel="stylesheet" href="../css/_clientBanner.less">
+
+
+    <link rel="stylesheet" href="../iconfont/iconfont.css">
+    <link rel="stylesheet" href="../css/ngDialog.css">
+    <link rel="stylesheet" href="../css/ngDialog-theme-default.css">
+    <link rel="stylesheet" href="../css/ngDialog-theme-plain.css">
+    <link rel="stylesheet" href="../css/accordion.css">
+
+    <link href='/questions/carousel/angular-carousel.css' rel='stylesheet' type='text/css'>
+    <link href='/questions/carousel/demo.css' rel='stylesheet' type='text/css'>
+
+
+
+
+</head>
+<body ng-controller="questions.DetailCtrl" >
+
+<div style="background-color: #fefdff; position: fixed;width:100%;height:500%;z-index: 699;max-width: 600px;" ng-hide="item.title" >
+    <img src="/img/loadingStanding.gif" style="display: block;margin: auto;
+position: absolute;
+top: 200px;
+left: 0;
+/*bottom: 0;*/
+right: 0;" width="100px" >
+</div>
+
+<div ng-show="rootShow.num==1">
+
+    <!--<div ui-view></div>-->
+
+    <div ng-class="{'content-header content-header-translate':scrollUpOrDown ,'content-header ':!scrollUpOrDown}" ng-if="$env.inClient">
+        <div class="content-back" ng-click="toBack()"><a ><i class="iconfont">&#xe601;</i></a></div>
+
+        <div class="content-header-txt"><span ng-click="toTop(0)">轻触回顶部</span></div>
+    </div>
+
+    <div class="content-cover"><img ng-src="{{(__.content.header.img )| resource}}"></div>
+    <div class="content-top">
+        <h1 ng-bind="item.title"></h1>
+
+        <p ng-bind="item.user.nickName +'&nbsp 提问于&nbsp &nbsp'+(item.createdOn |shijian)"></p>
+        <ul>
+            <li>回答<span ng-bind="item.answers.count||0"></span></li>
+            <li>同问<span ng-bind="item.anrs.count||0"></span></li>
+            <li>收藏<span ng-bind="item.collections.count||0"></span></li>
+            <li>分享<span ng-bind="item.shares.count||0"></span></li>
+        </ul>
+    </div>
+    <section  ng-repeat="section in __.content.sections" style="word-break: break-all;" ng-show="$first?true:item.accordionOpen">
+
+        <p><img ng-src="{{section.img | resource}}" ng-if="section.img" style="width: 100%;"></p>
+        <!--<video ng-if="section.video"  controls style="width: 100%;" poster="../img/default_movie.jpg">-->
+            <!--<source ng-repeat="source in section.video.sources" ng-src="{{source.src | resource}}" ng-attr-type="{{source.type}}"/>-->
+        <!--</video>-->
+        <div class="embed" ng-if="section.embed" bind-html-unsafe="section.embed"></div>
+        <div class="forBottom" style="padding: 0.5em 0.9em;line-height: 170%;" ng-bind-html="::section.p" ng-if="section.p">
+        </div>
+    </section>
+    <div class="open" ng-show="__.content.sections.length>1">
+        <a ng-click="item.accordionOpen=true"><i class="iconfont">&#xe63e;</i>展开</a>
+        <a ng-show="item.accordionOpen" ng-click="item.accordionOpen=false" ><i class="iconfont">
+            &#xe63f;</i>收起</a>
+    </div>
+
+    <div  class="content-title"><span >回答 {{item.answers.count}}</span>
+
+        <div ng-show="item.answers.count<1">
+            <p style="font-size: 0.6em;">亲，暂时还无人回答~</p>
+        </div>
+    </div>
+    <div  ng-class="$first?'answer-list-a':'answer-list-b'" ng-repeat="one in answersList.data" ng-click="question_carousel(one._id.$oid)">
+        <section >
+            <img ng-src="{{one.user.avatar|resource}}" err-src="../img/default_avatar.png">
+
+            <h1 ng-bind="one.user.nickName.length>8?(one.user.nickName|limitTo:8)+'...':one.user.nickName"></h1>
+
+            <p><span ng-bind="one.needAnswer.content.sections.length ||0"></span>步解决</p>
+        </section>
+        <div ng-bind="one.web.content.sections | findPFilter :17 "></div>
+        <ul ng-click="showNum(one.attitudes.users)">
+            <li ng-repeat="one2 in one.attitudes.avatars | limitTo : 6">
+                <img ng-src="{{one2.avatar|resource}}" err-src="../img/default_avatar.png">
+            </li>
+            <li >{{one.attitudes.avatars.length>6?"等":""}}<span ng-bind="one.attitudes.avatars.length||0"></span>人觉得很<span>赞</span>
+            </li>
+        </ul>
+    </div>
+
+    <div  class="content-user-btn" ng-if="answersList.data.length<item.answers.count">
+        <a type="button" ng-click="answersList.showMoreAnswers()"> <span >加载更多</span> </a>
+
+    </div>
+    <div class="content-title" ng-if="showApps.length>0||__.smartDevices.length>0"><span>应用&产品</span>
+    </div>
+
+    <article class="content-link" ng-if="showApps.length>0||__.smartDevices.length>0">
+        <div class="content-app" ng-repeat="app in showApps">
+            <a ng-click="openYingYong(app)">
+                <img ng-src="{{app.icon | resource}}" err-src="../img/default_app.png">
+
+                <h1 ng-bind="::app.name | stringFilter:5"></h1>
+
+                <p>大小:<span ng-bind="::app.size | mb"></span></p>
+            </a>
+        </div>
+
+
+        <div class="content-app" ng-repeat="device in __.smartDevices">
+            <a ng-click="openKuPin(device)">
+                <img ng-src="{{device.icon | resource}}" err-src="../img/default_device.png">
+
+                <h1 ng-bind="::device.name | stringFilter:5"></h1>
+
+                <p ng-bind="::device.sales.price | currency"></p>
+            </a>
+        </div>
+
+        <div class="clear"></div>
+    </article>
+
+    <div class="end" ></div>
+
+    <footer ng-class="{'footerTranslateHide':scrollUpOrDown }">
+        <ul class="footer-left">
+            <li ng-if="!$env.readOnlyInHere"><a ng-click="toAnswer()">我有技能,可以解决</a></li>
+            <li ng-style="commonAskStyle()"><a ng-click="commonAsk()">同问</a></li>
+        </ul>
+        <ul class="footer-right">
+            <!--<li ><a ng-click="collecteAticle()"><i class="iconfont" ng-style="color:#0099E5">&#xe61e;</i></a></li>-->
+            <li><a ng-click="collecteAticle()"><i class="iconfont" ng-style="collectionStyle()">&#xe61e;</i></a></li>
+            <li ng-if="$env.inClient"><a ng-click="openShare(item.title)"><i class="iconfont">&#xe61c;</i></a></li>
+        </ul>
+    </footer>
+</div>
+<!--
+2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+-->
+<div ng-show="rootShow.num==2" ng-controller="questions.DetailCtrl2" >
+
+    <header class="answer-header" style="background-color: #0099e5" >
+        <ul class="hearder-left">
+            <li ng-show="!showList"><a ng-click="goback()"><i class="iconfont">&#xe628;</i></a></li>
+        </ul>
+        <h1 ng-show="!showList" >{{carouselIndex+1}}/{{all_slides.length}}</h1>
+
+        <h1 ng-show="showList">列表</h1>
+        <ul class="hearder-right">
+            <li><a ng-click="showList=!showList"><i class="iconfont">&#xe60f;</i></a></li>
+        </ul>
+    </header>
+
+    <div class="answer-content" style="text-align: center;" ng-style="($env.inClient&&$env.isAndroid)?{'bottom':'3.5em'}:{}">
+        <section class="answer-step-list" ng-repeat="slide in all_slides" ng-show="showList" ng-click="goto($index)">
+            <h1 ng-bind="($index+1)<10?('0'+($index+1)):($index+1)"> </h1>
+            <article style="height: 50%;margin-bottom: 10px;" ng-bind-html="::slide.p " ng-if="slide.p"></article>
+            <p ng-if="slide.img"><img ng-src="{{slide.img| resource}}" ></p>
+
+            <article ng-show="$last" style="height: 40%;margin-bottom: 10px;" ng-bind="item.user.nickName"></article>
+            <p ng-show="$last"><img
+                    ng-src="{{item.user.avatar | resource}}" err-src="/img/default_avatar.png"></p>
+        </section>
+
+        <ul ng-if="!showList" rn-carousel rn-carousel-index="carouselIndex" rn-carousel-deep-watch rn-carousel-buffered>
+            <li ng-repeat="slide in all_slides ">
+                <div class="answer-step" ng-hide="$last" ng-init="(slide.p==undefined||slide.p=='')?(showWord=false):(showWord=true)">
+                    <div ng-if="slide.img!==''&&slide.img!==undefined" >
+
+
+                        <div  class="answer-img-txt" style="overflow:overlay;top: 60%;bottom: 2.5em;position: fixed;"  ng-show="showWord">
+
+                            <table  style="height:100%;width:100%;position: relative; top: -1.8em;" >
+                                　　<tr>
+                                　　<td style="vertical-align:middle;" >
+                                <p ng-bind-html="::slide.p" style="text-align: left;    margin: 0 0.5em;"></p>
+                            </td>
+                                　　</tr>
+                                　　</table>
+                        </div>
+                        <div   class="answer-img" >
+                            <img ng-src="{{slide.img| resource}}" ng-click="showWord=!showWord" >
+                        </div>
+
+                    </div>
+                    <table ng-if="slide.img==''||slide.img==undefined" style="height:100%;width:100%;position: relative;top: -1.8em;">
+                        　　<tr>
+                        　　<td style="vertical-align:middle;" >
+                        <p ng-bind-html="::slide.p" style="text-align: left;    margin: 0 0.5em;"></p>
+                    </td>
+                        　　</tr>
+                        　　</table>
+                    <!--<p style="width:100%;-->
+                    <!--height:100%;-->
+                    <!--vertical-align:middle;"  >-->
+
+                    <!--</div>-->
+
+
+                </div>
+
+                <div class="answer-step" ng-show="$last">
+                    <div class="content-title"><span>点赞&吐槽</span></div>
+
+                    <section class="content-vote" ng-if="item.attitudes.items.length">
+                        <article ng-repeat="att in item.attitudes.items | orderBy: '-weight'"
+                                 ng-style="attTyle($index,item.attitudes.items.length)">
+                            <!--<div><p style="height:59px"></p></div>-->
+                            <div><p ng-style="attitudesBarStyle(att)"></p></div>
+                            <ul>
+                                <a ng-click="attitude(att,item.id)" ng-style="attitudesColorStyle(att)">
+                                    <li><h1 ng-bind="att.users.count > 999 ? '999+' : att.users.count"></h1></li>
+                                    <li ng-bind="::att.name"></li>
+                                </a>
+                            </ul>
+                        </article>
+                    </section>
+                    <div class="content-title"><span>技能达人</span></div>
+
+                    <ul class="content-user">
+                        <li><img ng-src="{{item.user.avatar | resource}}"err-src="/img/default_avatar.png"
+                                 ng-click="toUserHome()"></li>
+                        <li ng-bind="item.user.nickName"></li>
+                    </ul>
+                    <div class="content-user-btn">
+                        <a ng-click="subscribeAuthor()"><span ng-bind="item.user.hasSub==true?'取消关注':'关注TA'"></span>(<span
+                                ng-bind="item.user.fans.count||0"></span>)</a>
+                        <a ng-click="toComment()"  ng-bind="'点评数量('+(item.comments.count||0)+')'"></a>
+                        <a ng-if="!$env.readOnlyInHere" ng-click="$env.call('toQuestion')">向TA提问</a>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+
+
+        <div rn-carousel-indicators ng-if="all_slides.length > 1" slides="all_slides" rn-carousel-index="carouselIndex"
+             ng-show="!showList" style="position: fixed;bottom: 4em;right: 0;left: 0;"></div>
+
+
+    </div>
+
+    <div class="answer-bg"><img src="/img/answer_bg.jpg"></div>
+    <!--<div class="answer-bg"><img ng-src="{{item.coverfigure | resource}}"></div>-->
+    <!--底部占位-->
+    <div class="end" style="position: fixed;bottom:0em"></div>
+
+    <footer>
+        <ul class="footer-left">
+            <li ng-if="!$env.readOnlyInHere"><a ng-click="toAnswer()">我有技能,可以解决+{{carouselIndex}}</a></li>
+            <li><a ng-click="toComment()">点评</a></li>
+        </ul>
+        <ul class="footer-right">
+            <li><a ng-click="collecteAticle()"><i class="iconfont" ng-style="collectionStyle()">&#xe61e;</i></a></li>
+            <!--<li><a ng-click="openShare()"><i class="iconfont">&#xe61c;</i></a></li>-->
+        </ul>
+    </footer>
+</div>
+<div ng-show="rootShow.num==3" ng-controller="questions.DetailCtrl3">
+    <!--标题-->
+    <header>
+        <ul class="hearder-left">
+            <li><a ng-click="goback()"><i class="iconfont">&#xe628;</i></a></li>
+        </ul>
+        <h1>回答点评</h1>
+    </header>
+
+    <div class="topic">
+        <div ng-show="!commentfs.length">
+            亲，暂时还无人评论，您来说几句吧~
+        </div>
+        <section ng-repeat="one in commentfs ">
+            <article>
+                <img ng-src="{{one.user.avatar | resource}}" err-src="/img/default_avatar.png">
+                <ul>
+                    <li><h1 ng-bind="one.content.user"></h1></li>
+                    <li ng-bind="one.createdOn"></li>
+                </ul>
+                <p><a ng-click="attitudeToZan(one);"><i class="iconfont">&#xe62c;</i>{{one.attitudes.count.like || 0}}</a>
+                </p>
+            </article>
+            <ng-include src="'recursion'" ng-if="one.quote.length>0" ng-init="talksOnOneComment2=one.quote"></ng-include>
+            <div ng-click="showCommentDialog(one)" ng-bind="one.content.p"></div>
+        </section>
+        <div class="content-user-btn" ng-if="commentfs.length&&commentfs.showMore ||!commentfs.length">
+            <a type="button" ng-if="commentfs.length&&commentfs.showMore"> <span ng-click="showMoreComment()"> 加载更多</span>
+            </a>
+            <a type="button" ng-if="!commentfs.length" ng-click="showCommentDialog()"> <span>我要评论</span> </a>
+
+        </div>
+    </div>
+
+    <div class="end"></div>
+
+    <footer>
+        <div class="topic-footer"><i class="iconfont">&#xe611;</i>
+            <input type="button" value="点评几句" ng-click="showCommentDialog()" style="background-color:white">
+        </div>
+    </footer>
+
+</div>
+</body>
+<script type="text/javascript" src="../js/lib/angular/angular.min.js"></script>
+<script type="text/javascript" src="../js/lib/ngDialog.min.js"></script>
+<script type="text/javascript" src="../js/lib/angular-sanitize/angular-sanitize.min.js"></script>
+<script type="text/javascript" src="../js/angular-locale_zh-cn.js"></script>
+
+<script src="/js/angular-touch.min.js"></script>
+<script src="/js/angular-carousel.min.js"></script>
+
+<script type="text/javascript" src="../js/SysConfig.js"></script>
+<script type="text/javascript" src="../js/env.js"></script>
+<script type="text/javascript" src="../js/apps.js"></script>
+<script type="text/javascript" src="../js/yiServer.js"></script>
+
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery.qrcode.min.js"></script>
+
+<script type="text/javascript" src="../questions/detail.js"></script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?c8beddd552fa1406344022f03f7224e4";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script id="recursion" type="text/ng-template">
+    <div ng-repeat="one2 in talksOnOneComment2" class="topic-floor" ng-style="louStyle(one2)">
+        <div ng-if="one2.child[0]" ng-init="talksOnOneComment2=one2.child" ng-include="'recursion'"></div>
+        <h1>{{one2.orderId}}楼 {{one2.user}} {{one2.createdOn}} </h1>
+
+        <p ng-click="showCommentDialog(one)" ng-bind="one2.p"></p>
+    </div>
+</script>
+
+
+
+
+<script type="text/javascript" src="../js/notie.js"></script>
+</html>
