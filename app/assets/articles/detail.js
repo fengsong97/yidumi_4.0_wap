@@ -14,9 +14,12 @@ angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootSc
 
     $window.onscroll =YiServer.scrollUpOrDown;
     $scope.toTop =YiServer.toTop;
-    $scope.scrollToComment= function () {
-      $scope.toTop(document.getElementById("commentScroll").offsetTop)
-      $rootScope.scrollUpOrDown=true
+    $scope.scrollTo= function (id) {
+      if(document.getElementById(id)){
+        $scope.toTop(document.getElementById(id).offsetTop)
+        $rootScope.scrollUpOrDown=true
+      }
+
     }
     $scope.compareTime = CompareTime;
     $scope.$env = $env;
@@ -159,7 +162,7 @@ angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootSc
 
 
 //关注作者
-    $scope.subscribeAuthor = function () {
+    $scope.subscribeAuthor_question = function () {
       if ($rootScope.isVisitor == true && $env.inClient !== true) {
         $rootScope.login();
         return;

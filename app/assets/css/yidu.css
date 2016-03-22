@@ -1141,7 +1141,7 @@ nav ul li a:hover {
 }
 
 .content-top {
-    padding-top: 0.5em;
+    padding-top: 2.6em;
     padding-right: 0.9em;
     padding-left: 0.9em;
 }
@@ -1460,150 +1460,6 @@ nav ul li a:hover {
     padding-right: 0.3em;
 }
 
-.answer-list {
-    border-top: 1px solid #e5e5e5;
-    /*border-bottom-width: 1px;*/
-    /*border-bottom-style: solid;*/
-    /*border-bottom-color: #e5e5e5;*/
-    font-size: 1em;
-    margin-right: 0.9em;
-    margin-left: 0.9em;
-    position: relative;
-    /*padding-left: 4.5em;*/
-    margin-bottom: 0.2em;
-    border: solid 1px 0px #E5E5E5;
-}
-
-.answer-score, .answer-score-a {
-    width: 3.5em;
-    position: absolute;
-    left: 0em;
-    top: 0em;
-    font-size: 1em;
-    text-align: center;
-    color: #FFF;
-    line-height: 100%;
-    -moz-border-radius: 0.5em;
-    -webkit-border-radius: 0.5em;
-    border-radius: 0.5em;
-}
-
-.answer-score {
-    background-color: #999;
-}
-
-.answer-score-a {
-    background-color: #0099e5;
-}
-
-.answer-score i, .answer-score-a i {
-    text-align: center;
-    display: block;
-    font-size: 1.5em;
-    background-color: #FFF;
-    height: 1.8em;
-    width: 2.32em;
-    padding-top: 0.6em;
-    margin-bottom: 0.3em;
-    -moz-border-radius: 0.3em 0.3em 0em 0em;
-    -webkit-border-radius: 0.3em 0.3em 0em 0em;
-    border-radius: 0.3em 0.3em 0em 0em;
-}
-
-.answer-score i {
-    color: #999;
-    border: 1px solid #e5e5e5;
-}
-
-.answer-score-a i {
-    color: #0099e5;
-    border: 1px solid #b3e6ff;
-}
-
-.answer-score p, .answer-score-a p {
-    display: block;
-    height: 1.5em;
-}
-
-.answer-score p i, .answer-score-a p i {
-    display: inline-block;
-    font-size: 0.5em;
-    line-height: 100%;
-    height: 0.5em;
-    width: 1.5em;
-    color: rgba(255, 255, 255, 0.9);
-    border: 0px none #999;
-    margin: 0px;
-    padding: 0px;
-}
-
-.answer-score p i {
-    background-color: #999;
-}
-
-.answer-score-a p i {
-    background-color: #0099e5;
-}
-
-.answer-list section {
-    padding-left: 3.1em;
-    position: relative;
-    height: 3.3em;
-    padding-top: 0.7em;
-}
-
-.answer-list section img {
-    height: 2.5em;
-    width: 2.5em;
-    position: absolute;
-    left: 0em;
-    top: 0.2em;
-    -moz-border-radius: 2em;
-    -webkit-border-radius: 2em;
-    border-radius: 2em;
-}
-
-.answer-list section h1 {
-    font-size: 0.9em;
-    font-weight: normal;
-}
-
-.answer-list section p {
-    position: absolute;
-    top: 0.8em;
-    right: 0em;
-    font-size: 0.8em;
-}
-
-.answer-list section p span {
-    font-size: 1.5em;
-    color: #0099e5;
-}
-
-.answer-list ul {
-    text-align: right;
-    padding-top: 1em;
-    padding-bottom: 1.2em;
-    font-size: 0.8em;
-    line-height: normal;
-}
-
-.answer-list ul li {
-    display: inline-block;
-    vertical-align: text-top;
-}
-
-.answer-list ul li img {
-    height: 1.2em;
-    width: 1.2em;
-    -moz-border-radius: 2em;
-    -webkit-border-radius: 2em;
-    border-radius: 2em;
-}
-
-.answer-list ul li span {
-    color: #0099e5;
-}
 
 /* 评论 */
 .topic {
@@ -1924,35 +1780,35 @@ footer {
 /*/!*color: #0099e5;*!/*/
 /*}*/
 
-.footer-center {
-    margin: auto;
-}
+/*.footer-center {*/
+    /*margin: auto;*/
+/*}*/
 
-.footer-center ul {
-}
+/*.footer-center ul {*/
+/*}*/
 
-.footer-center ul li {
-    font-size: 0.6em;
-    display: inline-block;
-}
+/*.footer-center ul li {*/
+    /*font-size: 0.6em;*/
+    /*display: inline-block;*/
+/*}*/
 
-.footer-center ul li a {
-    display: block;
-    width: 8em;
-    padding-top: 0.5em;
-}
+/*.footer-center ul li a {*/
+    /*display: block;*/
+    /*width: 8em;*/
+    /*padding-top: 0.5em;*/
+/*}*/
 
-.footer-center ul li a i {
-    display: block;
-    width: 100%;
-    font-size: 2em;
-    line-height: 130%;
-    color: #666;
-}
+/*.footer-center ul li a i {*/
+    /*display: block;*/
+    /*width: 100%;*/
+    /*font-size: 2em;*/
+    /*line-height: 130%;*/
+    /*color: #666;*/
+/*}*/
 
-.footer-center ul li a:hover i {
-    color: #0099e5;
-}
+/*.footer-center ul li a:hover i {*/
+    /*color: #0099e5;*/
+/*}*/
 
 /* 发文 */
 .write-footer {
@@ -2820,125 +2676,3 @@ footer {
     padding-left: 0.3em;
 }
 
-.answer-list-a {
-    font-size: 1em;
-    /*margin-right: 0.2em;*/
-    /*margin-left: 0.2em;*/
-    position: relative;
-    /*margin-bottom: 0.2em;*/
-    padding: 0.9em;
-    background-color: #f2fbff;
-    border: 1px solid #b2e5ff;
-}
-.answer-list-a section {
-    padding-left: 3.1em;
-    position: relative;
-    height: 3.3em;
-    padding-top: 0.7em;
-}
-.answer-list-a section img {
-    height: 2.5em;
-    width: 2.5em;
-    position: absolute;
-    left: 0em;
-    top: 0em;
-    -moz-border-radius: 2em;
-    -webkit-border-radius: 2em;
-    border-radius: 2em;
-}
-.answer-list-a section h1 {
-    font-size: 1em;
-    font-weight: normal;
-}
-.answer-list-a section p {
-    position: absolute;
-    top: 0.8em;
-    right: 0em;
-    font-size: 0.8em;
-}
-.answer-list-a section p span {
-    font-size: 1.5em;
-    color: #0099e5;
-}
-.answer-list-a ul {
-    text-align:right;
-    padding-top: 1em;
-    font-size: 0.8em;
-    line-height: normal;
-}
-.answer-list-a ul li {
-    display: inline-block;
-    vertical-align: text-top;
-}
-.answer-list-a ul li img {
-    height: 1.2em;
-    width: 1.2em;
-    -moz-border-radius: 2em;
-    -webkit-border-radius: 2em;
-    border-radius: 2em;
-}
-.answer-list-a ul li span {
-    color: #0099e5;
-}
-
-
-.answer-list-b {
-    font-size: 1em;
-    /*margin-right: 0.2em;*/
-    /*margin-left: 0.2em;*/
-    position: relative;
-    /*margin-bottom: 0.2em;*/
-    padding: 0.9em;
-    /*background-color: #f2fbff;*/
-    border-bottom: 1px solid #E5E5E5
-}
-.answer-list-b section {
-    padding-left: 3.1em;
-    position: relative;
-    height: 3.3em;
-    padding-top: 0.7em;
-}
-.answer-list-b section img {
-    height: 2.5em;
-    width: 2.5em;
-    position: absolute;
-    left: 0em;
-    top: 0em;
-    -moz-border-radius: 2em;
-    -webkit-border-radius: 2em;
-    border-radius: 2em;
-}
-.answer-list-b section h1 {
-    font-size: 1em;
-    font-weight: normal;
-}
-.answer-list-b section p {
-    position: absolute;
-    top: 0.8em;
-    right: 0em;
-    font-size: 0.8em;
-}
-.answer-list-b section p span {
-    font-size: 1.5em;
-    color: #0099e5;
-}
-.answer-list-b ul {
-    text-align:right;
-    padding-top: 1em;
-    font-size: 0.8em;
-    line-height: normal;
-}
-.answer-list-b ul li {
-    display: inline-block;
-    vertical-align: text-top;
-}
-.answer-list-b ul li img {
-    height: 1.2em;
-    width: 1.2em;
-    -moz-border-radius: 2em;
-    -webkit-border-radius: 2em;
-    border-radius: 2em;
-}
-.answer-list-b ul li span {
-    color: #0099e5;
-}

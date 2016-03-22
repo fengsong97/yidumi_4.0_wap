@@ -5,13 +5,14 @@
     <base href="/">
     <title ng-bind="::item.title"></title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-    <!--<link rel="stylesheet" href="/css/yidu.css">-->
+    <link rel="stylesheet" href="/css/yidu.css">
+    <link rel="stylesheet" href="/css/yidu_add_160322.css">
 
 
-    <!--<link rel="stylesheet" href="/iconfont/iconfont.css">-->
-    <!--<link rel="stylesheet" href="/css/ngDialog.css">-->
-    <!--<link rel="stylesheet" href="/css/ngDialog-theme-default.css">-->
-    <!--<link rel="stylesheet" href="/css/ngDialog-theme-plain.css">-->
+    <link rel="stylesheet" href="/iconfont/iconfont.css">
+    <link rel="stylesheet" href="/css/ngDialog.css">
+    <link rel="stylesheet" href="/css/ngDialog-theme-default.css">
+    <link rel="stylesheet" href="/css/ngDialog-theme-plain.css">
 
     <!--<script type="text/javascript" src="/js/lib/angular/angular.min.js"></script>-->
     <!--<script type="text/javascript" src="/js/lib/ngDialog.min.js"></script>-->
@@ -46,12 +47,6 @@
         right: 0;
         " width="100px">
     </div>
-    <!--margin: auto;-->
-    <!--position: absolute;-->
-    <!--top: 0;-->
-    <!--left: 0;-->
-    <!--bottom: 0;-->
-    <!--right: 0;-->
 
     <div  ng-if="$env.inClient"  ng-class="{'content-header content-header-translate':scrollUpOrDown ,'content-header ':!scrollUpOrDown}">
         <div class="content-back"  ng-click="toBack()"><a > <i class="iconfont">&#xe601;</i> </a></div>
@@ -61,21 +56,32 @@
         <div class="content-header-txt"><span ng-click="toTop(0)">轻触回顶部</span></div>
     </div>
 
-    <div class="content-cover"><img ng-src="{{(__.content.header.img || item.coverfigure )| resource}}"></div>
-    <!--<div class="content-cover"><img lazy-src="{{img}}" animate-visible="true" animate-speed="2s" alt="" ng-src="{{(__.content.header.img || item.coverfigure )| resource}}"></div>-->
-    <div class="content-top" >
-        <h1 ng-bind="::item.title" style="padding-top: 0.1em;" ></h1>
+    <!--<div class="content-cover"><img ng-src="{{(__.content.header.img || item.coverfigure )| resource}}"></div>-->
 
-        <p>
-            <i class="iconfont">&#xe609;</i><span ng-bind="item.attitudes.score||0"></span>
-            <i class="iconfont">&#xe608;</i><span ng-bind="item.pv||0"></span>
-            <i class="iconfont">&#xe61e;</i><span ng-bind="item.collections.count||0"></span>
-            <i class="iconfont">&#xe61c;</i><span ng-bind="item.shares.count||0"></span>
-            <i class="iconfont">&#xe602;</i><span ng-bind="item.comments.count||0"></span>
-        </p>
-        <div class="content-abstract" ng-bind="::__.content.header.p" ng-if="__.content.header.p"></div>
-
+    <div class="news-title">
+        <h1 ng-bind="::item.title"></h1>
+        <ul class="news-author">
+            <li><img ng-src="{{item.user.avatar | resource}}" err-src="/img/default_avatar.png" ng-click="toUserHome()"></li>
+            <li ng-bind="::item.user.nickName"></li>
+            <li class="author-interact"><a  ng-click="subscribeAuthor()" ng-bind="item.user.hasSub==true?'取消关注':'关注TA'"></a><a ng-if="!$env.readOnlyInHere" ng-click="$env.call('toQuestion')">向TA提问</a></li>
+        </ul>
     </div>
+
+
+    <!--<div class="content-top" >-->
+        <!--<h1 ng-bind="::item.title" style="padding-top: 0.1em;" ></h1>-->
+
+        <!--&lt;!&ndash;<p>&ndash;&gt;-->
+            <!--&lt;!&ndash;<i class="iconfont">&#xe609;</i><span ng-bind="item.attitudes.score||0"></span>&ndash;&gt;-->
+            <!--&lt;!&ndash;<i class="iconfont">&#xe608;</i><span ng-bind="item.pv||0"></span>&ndash;&gt;-->
+            <!--&lt;!&ndash;<i class="iconfont">&#xe61e;</i><span ng-bind="item.collections.count||0"></span>&ndash;&gt;-->
+            <!--&lt;!&ndash;<i class="iconfont">&#xe61c;</i><span ng-bind="item.shares.count||0"></span>&ndash;&gt;-->
+            <!--&lt;!&ndash;<i class="iconfont">&#xe602;</i><span ng-bind="item.comments.count||0"></span>&ndash;&gt;-->
+        <!--&lt;!&ndash;</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="content-abstract" ng-bind="::__.content.header.p" ng-if="__.content.header.p"></div>&ndash;&gt;-->
+
+    <!--</div>-->
+
     <section  ng-repeat="section in __.content.sections" style="word-break: break-all;">
 
         <p><img ng-src="{{section.img | resource}}" ng-if="section.img" style="width: 100%;"></p>
@@ -88,8 +94,10 @@
 
         </div>
     </section>
-    <div class="content-title" ng-if="showApps.length>0||__.smartDevices.length>0"><span>应用&产品</span>
-    </div>
+    <div class="ash-bg"></div>
+    <div class="content-title" ng-if="showApps.length>0||__.smartDevices.length>0" id="appOrSmart">App&产品：</div>
+    <!--<div class="content-title" ng-if="showApps.length>0||__.smartDevices.length>0"><span>应用&产品</span>-->
+    <!--</div>-->
 
     <article class="content-link" ng-if="showApps.length>0||__.smartDevices.length>0">
         <div class="content-app" ng-repeat="app in showApps">
@@ -114,18 +122,20 @@
 
         <div class="clear"></div>
     </article>
+    <div class="ash-bg" ng-if="showApps.length>0||__.smartDevices.length>0"></div>
+    <!--<div class="content-title"><span >作者</span></div>-->
+    <!--<ul class="content-user">-->
+        <!--<li><img ng-src="{{item.user.avatar | resource}}" err-src="/img/default_avatar.png" ng-click="toUserHome()"></li>-->
+        <!--<li ng-bind="::item.user.nickName"></li>-->
+    <!--</ul>-->
+    <!--<div class="content-user-btn">-->
+        <!--<a ng-click="subscribeAuthor()"><span ng-bind="item.user.hasSub==true?'取消关注':'关注TA'"></span>(<span-->
+            <!--ng-bind="item.user.fans.count||0"></span>)</a>-->
+            <!--<a ng-if="!$env.readOnlyInHere" ng-click="$env.call('toQuestion')" >向TA提问</a>-->
+    <!--</div>-->
 
-    <div class="content-title"><span >作者</span></div>
-    <ul class="content-user">
-        <li><img ng-src="{{item.user.avatar | resource}}" err-src="/img/default_avatar.png" ng-click="toUserHome()"></li>
-        <li ng-bind="::item.user.nickName"></li>
-    </ul>
-    <div class="content-user-btn">
-        <a ng-click="subscribeAuthor()"><span ng-bind="item.user.hasSub==true?'取消关注':'关注TA'"></span>(<span
-            ng-bind="item.user.fans.count||0"></span>)</a>
-            <a ng-if="!$env.readOnlyInHere" ng-click="$env.call('toQuestion')" >向TA提问</a></div>
-
-            <div class="content-title" ng-if="item.attitudes.items.length"><span   >文章印象</span></div>
+            <!--<div class="content-title" ng-if="item.attitudes.items.length"><span   >文章印象</span></div>-->
+            <div class="content-title" ng-if="item.attitudes.items.length">印象：</div>
             <section class="content-vote" ng-if="item.attitudes.items.length">
                 <article ng-repeat="att in item.attitudes.items | orderBy: '-weight'">
                     <div><p ng-style="attitudesBarStyle(att)"></p></div>
@@ -138,9 +148,9 @@
                 </article>
 
             </section>
-
-            <div class="content-title"><span id="commentScroll">评论</span></div>
-
+    <div class="ash-bg"></div>
+            <div class="content-title" id="commentScroll">点评：</div>
+             <div class="topic-add"><P><i class="iconfont">&#xe61a;</i></P><input type="text" value="点评几句" readonly ng-click="showCommentDialog()"></div>
             <div class="topic">
                 <div ng-if="!commentfs.length" style="margin-bottom: 1em; font-size: 10px">
                     亲，暂时还无人评论，您来说几句吧~
@@ -162,33 +172,38 @@
                 <div class="content-user-btn" ng-if="commentfs.length&&commentfs.showMore ||!commentfs.length">
                     <a type="button" ng-if="commentfs.length&&commentfs.showMore"> <span ng-click="showMoreComment()"> 加载更多</span>
                     </a>
-                    <a type="button" ng-if="!commentfs.length" ng-click="showCommentDialog()"> <span>我要评论</span> </a>
+                    <!--<a type="button" ng-if="!commentfs.length" ng-click="showCommentDialog()"> <span>我要评论</span> </a>-->
                 </div>
 
             </div>
+    <div class="ash-bg"></div>
             <div class="end"   ></div>
             <footer   ng-class="{'footerTranslateHide':scrollUpOrDown }" >
-                <!--<div class="end" ></div>-->
-                <!--<footer >-->
-                <div class="footer-topic" >
-                    <i class="iconfont">&#xe611;</i>
-                    <!--<input id="commentInput" type="button" value="说点儿什么" style="background: white;    outline: medium;" ng-click="showCommentDialog()">-->
-                    <input id="commentInput" type="button" value="说点儿什么" style="background: white;" ng-click="showCommentDialog()">
-                </div>
-                <ul class="footer-right">
-                    <!--<li><a ><i class="iconfont" >&#xe641;</i></a></li>-->
-                    <!--<li ><a ng-href="#commentHome" style="hover{color:red}">-->
-                    <li >
-                        <a ng-click="scrollToComment()" >
-                         <div style="position: absolute; background-color: white;  top: 1.8em; left: 1.5em;     line-height: 70%;">
-                             <p style="color:#009CE8;    font-size: 15px;" ng-bind="item.comments.count<10?('0'+item.comments.count):(item.comments.count>99?('99+'):(item.comments.count))"></p>
-                         </diV>
-                         <i class="iconfont" >&#xe602;</i>
-                     </a>
-                 </li>
-                 <li><a ng-click="collecteAticle()"><i class="iconfont" ng-style="collectionStyle()">&#xe61e;</i></a></li>
-                 <li ng-if="$env.inClient"><a ng-click="openShare(item.title)"><i class="iconfont">&#xe61c; </i></a></li>
-             </ul>
+
+                <ul class="footer-center">
+                    <li><a  ng-click="collecteAticle()"><i class="iconfont" ng-style="collectionStyle()">&#xe61e;</i></a></li>
+                    <li ><p ng-bind="item.comments.count<10?('0'+item.comments.count):(item.comments.count>99?('99+'):(item.comments.count))"></p><a  ng-click="scrollTo('commentScroll')"><i class="iconfont">&#xe602;</i></a></li>
+                    <li ng-if="__.smartDevices.length>0"><a ng-click="scrollTo('appOrSmart')"><i class="iconfont">&#xe61d;</i></a></li>
+                    <li ng-if="showApps.length>0"><a ng-click="scrollTo('appOrSmart')"><i class="iconfont">&#xe64b;</i></a></li>
+                    <li><a ng-if="$env.inClient" ng-click="openShare(item.title)"><i class="iconfont">&#xe61c; </i></a></li>
+                </ul>
+
+                <!--<div class="footer-topic" >-->
+                    <!--<i class="iconfont">&#xe611;</i>-->
+                    <!--<input id="commentInput" type="button" value="说点儿什么" style="background: white;" ng-click="showCommentDialog()">-->
+                <!--</div>-->
+                <!--<ul class="footer-right">-->
+                    <!--<li >-->
+                        <!--<a ng-click="scrollToComment()" >-->
+                         <!--<div style="position: absolute; background-color: white;  top: 1.8em; left: 1.5em;     line-height: 70%;">-->
+                             <!--<p style="color:#009CE8;    font-size: 15px;" ng-bind="item.comments.count<10?('0'+item.comments.count):(item.comments.count>99?('99+'):(item.comments.count))"></p>-->
+                         <!--</diV>-->
+                         <!--<i class="iconfont" >&#xe602;</i>-->
+                     <!--</a>-->
+                 <!--</li>-->
+                 <!--<li><a ng-click="collecteAticle()"><i class="iconfont" ng-style="collectionStyle()">&#xe61e;</i></a></li>-->
+                 <!--<li ng-if="$env.inClient"><a ng-click="openShare(item.title)"><i class="iconfont">&#xe61c; </i></a></li>-->
+             <!--</ul>-->
 
          </footer>
 
@@ -203,13 +218,7 @@
         </div>
     </script>
     <!-- -->
-    <link rel="stylesheet" href="/css/yidu.css">
 
-
-    <link rel="stylesheet" href="/iconfont/iconfont.css">
-    <link rel="stylesheet" href="/css/ngDialog.css">
-    <link rel="stylesheet" href="/css/ngDialog-theme-default.css">
-    <link rel="stylesheet" href="/css/ngDialog-theme-plain.css">
 
     <script type="text/javascript" src="/js/lib/angular/angular.min.js"></script>
 

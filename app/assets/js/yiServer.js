@@ -187,7 +187,7 @@ angular.module('YiModule').service('YiServer', ['$http', '$window', '$q', '$root
         //document.body.scrollTop=num;
         currentPosition=window.scrollY;
         function runToTop(){
-            console.log(currentPosition)
+            //console.log(currentPosition)
             //currentPosition=document.documentElement.scrollTop || document.body.scrollTop;
             if(currentPosition>num&&(currentPosition-num>30)){
                 currentPosition=currentPosition-30;

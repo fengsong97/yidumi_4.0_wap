@@ -3,6 +3,7 @@ input[type=range] {
 }
 
 ul[rn-carousel] {
+
     overflow: hidden;
     padding: 0;
     white-space: nowrap;
@@ -12,6 +13,9 @@ ul[rn-carousel] {
     perspective: 1000px;
     -ms-touch-action: pan-y;
     touch-action: pan-y;
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
 }
 
 ul[rn-carousel] > li {

@@ -1,11 +1,11 @@
-[0m[[0minfo[0m] [0mUpdating {file:/E:/yidumi4/wap/project/}wap-build...[0m
-[0m[[0mdebug[0m] [0m:: resolving dependencies :: default#wap-build;0.1-SNAPSHOT[0m
+[0m[[0minfo[0m] [0mUpdating {file:/E:/yidu_git/yidumi_4.0_wap/project/}yidumi_4-0_wap-build...[0m
+[0m[[0mdebug[0m] [0m:: resolving dependencies :: default#yidumi_4-0_wap-build;0.1-SNAPSHOT[0m
 [0m[[0mdebug[0m] [0m	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool][0m
 [0m[[0mdebug[0m] [0m	validate = true[0m
 [0m[[0mdebug[0m] [0m	refresh = false[0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'compile'[0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.play#sbt-plugin;2.3.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.play#sbt-plugin;2.3.6 [compile->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving com.typesafe.play#sbt-plugin;2.3.6 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.typesafe.play#sbt-plugin;2.3.6 {compile=[default(compile)]}[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.typesafe.play#sbt-plugin;2.3.6[0m
@@ -2805,7 +2805,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe#webdriver_2.10;1.0.0 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe.sbt#sbt-web;1.0.0 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe.sbt#sbt-web;1.0.2 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-less;1.0.4 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-less;1.0.4 [compile->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving com.typesafe.sbt#sbt-less;1.0.4 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.typesafe.sbt#sbt-less;1.0.4 {compile=[default(compile)]}[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.typesafe.sbt#sbt-less;1.0.4[0m
@@ -2845,7 +2845,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#mkdirp;0.3.5 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#mkdirp;0.3.5 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->com.typesafe.sbt#sbt-js-engine;1.0.1 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-uglify;1.0.3 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-uglify;1.0.3 [compile->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving com.typesafe.sbt#sbt-uglify;1.0.3 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.typesafe.sbt#sbt-uglify;1.0.3 {compile=[default(compile)]}[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.typesafe.sbt#sbt-uglify;1.0.3[0m
@@ -2894,9 +2894,9 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->com.typesafe.sbt#sbt-js-engine;1.0.1 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'runtime'[0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [runtime][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.play#sbt-plugin;2.3.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.play#sbt-plugin;2.3.6 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.play#sbt-plugin;2.3.6->com.typesafe.play#build-link;2.3.6 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.play#sbt-plugin;2.3.6->com.typesafe.play#build-link;2.3.6 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.play#sbt-plugin;2.3.6->com.typesafe.play#build-link;2.3.6 [compile->compile][0m
@@ -5054,7 +5054,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe#webdriver_2.10;1.0.0 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe.sbt#sbt-web;1.0.0 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe.sbt#sbt-web;1.0.2 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-less;1.0.4 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-less;1.0.4 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#less-node;1.7.5 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#less-node;1.7.5 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#less-node;1.7.5 [compile->compile][0m
@@ -5072,7 +5072,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#mkdirp;0.3.5 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#mkdirp;0.3.5 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->com.typesafe.sbt#sbt-js-engine;1.0.1 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-uglify;1.0.3 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-uglify;1.0.3 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->compile][0m
@@ -5095,10 +5095,10 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->com.typesafe.sbt#sbt-js-engine;1.0.1 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'test'[0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [test][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [runtime][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.play#sbt-plugin;2.3.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [test][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.play#sbt-plugin;2.3.6 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.play#sbt-plugin;2.3.6->com.typesafe.play#build-link;2.3.6 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.play#sbt-plugin;2.3.6->com.typesafe.play#build-link;2.3.6 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.play#sbt-plugin;2.3.6->com.typesafe.play#build-link;2.3.6 [compile->compile][0m
@@ -7256,7 +7256,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe#webdriver_2.10;1.0.0 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe.sbt#sbt-web;1.0.0 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe.sbt#sbt-web;1.0.2 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-less;1.0.4 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-less;1.0.4 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#less-node;1.7.5 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#less-node;1.7.5 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#less-node;1.7.5 [compile->compile][0m
@@ -7274,7 +7274,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#mkdirp;0.3.5 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#mkdirp;0.3.5 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->com.typesafe.sbt#sbt-js-engine;1.0.1 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-uglify;1.0.3 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-uglify;1.0.3 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->compile][0m
@@ -7297,12 +7297,12 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->com.typesafe.sbt#sbt-js-engine;1.0.1 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'provided'[0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [provided][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->runtime][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->master][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-sbt#sbt;0.13.6 [provided->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [provided][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-sbt#sbt;0.13.6 [provided->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving org.scala-sbt#sbt;0.13.6 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-sbt#sbt;0.13.6 {provided=[default(compile)]}[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-sbt#sbt;0.13.6[0m
@@ -7814,11 +7814,11 @@
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.9.3 {provided=[default(compile)]} => dependency: org.scala-lang#scala-compiler;2.10.4 {provided=[default(compile)]}[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.9.3 {compile=[default(compile)]} => dependency: org.scala-lang#scala-library;2.10.4 {compile=[default(compile)]}[0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'optional'[0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [optional][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [optional][0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'compile-internal'[0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [compile-internal][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.play#sbt-plugin;2.3.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [compile-internal][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.play#sbt-plugin;2.3.6 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.play#sbt-plugin;2.3.6->com.typesafe.play#build-link;2.3.6 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.play#sbt-plugin;2.3.6->com.typesafe.play#build-link;2.3.6 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.play#sbt-plugin;2.3.6->com.typesafe.play#build-link;2.3.6 [compile->compile][0m
@@ -9976,7 +9976,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe#webdriver_2.10;1.0.0 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe.sbt#sbt-web;1.0.0 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe.sbt#sbt-web;1.0.2 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-less;1.0.4 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-less;1.0.4 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#less-node;1.7.5 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#less-node;1.7.5 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#less-node;1.7.5 [compile->compile][0m
@@ -9994,7 +9994,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#mkdirp;0.3.5 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#mkdirp;0.3.5 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->com.typesafe.sbt#sbt-js-engine;1.0.1 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-uglify;1.0.3 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-uglify;1.0.3 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->compile][0m
@@ -10016,13 +10016,13 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies org.webjars#uglifyjs;2.4.13->org.webjars#source-map;0.1.31-2 [runtime->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->com.typesafe.sbt#sbt-js-engine;1.0.1 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [optional][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [provided][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->runtime][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->master][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-sbt#sbt;0.13.6 [provided->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [optional][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [provided][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-sbt#sbt;0.13.6 [provided->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scala-sbt#sbt;0.13.6->org.scala-lang#scala-library;2.10.4 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scala-sbt#sbt;0.13.6->org.scala-lang#scala-library;2.10.4 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scala-sbt#sbt;0.13.6->org.scala-lang#scala-library;2.10.4 [compile->compile][0m
@@ -10686,10 +10686,10 @@
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.9.3 {provided=[default(compile)]} => dependency: org.scala-lang#scala-compiler;2.10.4 {provided=[default(compile)]}[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.9.3 {compile=[default(compile)]} => dependency: org.scala-lang#scala-library;2.10.4 {compile=[default(compile)]}[0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'runtime-internal'[0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [runtime-internal][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [runtime][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.play#sbt-plugin;2.3.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [runtime-internal][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.play#sbt-plugin;2.3.6 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.play#sbt-plugin;2.3.6->com.typesafe.play#build-link;2.3.6 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.play#sbt-plugin;2.3.6->com.typesafe.play#build-link;2.3.6 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.play#sbt-plugin;2.3.6->com.typesafe.play#build-link;2.3.6 [compile->compile][0m
@@ -12847,7 +12847,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe#webdriver_2.10;1.0.0 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe.sbt#sbt-web;1.0.0 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe.sbt#sbt-web;1.0.2 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-less;1.0.4 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-less;1.0.4 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#less-node;1.7.5 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#less-node;1.7.5 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#less-node;1.7.5 [compile->compile][0m
@@ -12865,7 +12865,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#mkdirp;0.3.5 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#mkdirp;0.3.5 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->com.typesafe.sbt#sbt-js-engine;1.0.1 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-uglify;1.0.3 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-uglify;1.0.3 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->compile][0m
@@ -12887,13 +12887,13 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies org.webjars#uglifyjs;2.4.13->org.webjars#source-map;0.1.31-2 [runtime->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->com.typesafe.sbt#sbt-js-engine;1.0.1 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [optional][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [optional][0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'test-internal'[0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [test-internal][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [test][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [runtime][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.play#sbt-plugin;2.3.6 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [test-internal][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [test][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.play#sbt-plugin;2.3.6 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.play#sbt-plugin;2.3.6->com.typesafe.play#build-link;2.3.6 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.play#sbt-plugin;2.3.6->com.typesafe.play#build-link;2.3.6 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.play#sbt-plugin;2.3.6->com.typesafe.play#build-link;2.3.6 [compile->compile][0m
@@ -15051,7 +15051,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe#webdriver_2.10;1.0.0 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe.sbt#sbt-web;1.0.0 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-webdriver;1.0.0->com.typesafe.sbt#sbt-web;1.0.2 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-less;1.0.4 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-less;1.0.4 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#less-node;1.7.5 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#less-node;1.7.5 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#less-node;1.7.5 [compile->compile][0m
@@ -15069,7 +15069,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#mkdirp;0.3.5 [compile->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->org.webjars#mkdirp;0.3.5 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-less;1.0.4->com.typesafe.sbt#sbt-js-engine;1.0.1 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-uglify;1.0.3 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->com.typesafe.sbt#sbt-uglify;1.0.3 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->compile][0m
@@ -15091,13 +15091,13 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies org.webjars#uglifyjs;2.4.13->org.webjars#source-map;0.1.31-2 [runtime->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->org.webjars#uglifyjs;2.4.13 [compile->master][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies com.typesafe.sbt#sbt-uglify;1.0.3->com.typesafe.sbt#sbt-js-engine;1.0.1 [compile->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [optional][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [provided][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->default(compile)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->runtime][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->master][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-sbt#sbt;0.13.6 [provided->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [optional][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [provided][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [provided->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-sbt#sbt;0.13.6 [provided->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scala-sbt#sbt;0.13.6->org.scala-lang#scala-library;2.10.4 [compile->default(compile)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scala-sbt#sbt;0.13.6->org.scala-lang#scala-library;2.10.4 [compile->runtime][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scala-sbt#sbt;0.13.6->org.scala-lang#scala-library;2.10.4 [compile->compile][0m
@@ -15433,18 +15433,18 @@
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-compiler;2.9.3 {provided=[default(compile)]} => dependency: org.scala-lang#scala-compiler;2.10.4 {provided=[default(compile)]}[0m
 [0m[[0mdebug[0m] [0mdependency descriptor has been mediated: dependency: org.scala-lang#scala-library;2.9.3 {compile=[default(compile)]} => dependency: org.scala-lang#scala-library;2.10.4 {compile=[default(compile)]}[0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'plugin'[0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [plugin][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [plugin][0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'sources'[0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [sources][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [sources][0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'docs'[0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [docs][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [docs][0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'pom'[0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [pom][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [pom][0m
 [0m[[0mdebug[0m] [0mresolving dependencies for configuration 'scala-tool'[0m
-[0m[[0mdebug[0m] [0m== resolving dependencies for default#wap-build;0.1-SNAPSHOT [scala-tool][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->default][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->runtime][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for default#yidumi_4-0_wap-build;0.1-SNAPSHOT [scala-tool][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->default][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.4->org.scala-lang#scala-library;2.10.4 [compile->master(*)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.4->org.scala-lang#scala-library;2.10.4 [compile->compile(*)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.4->org.scala-lang#scala-library;2.10.4 [compile->default][0m
@@ -15462,8 +15462,8 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.4->org.scala-lang#scala-reflect;2.10.4 [runtime->compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.4->org.scala-lang#scala-library;2.10.4 [runtime->runtime(*)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.4->org.scala-lang#scala-library;2.10.4 [runtime->compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->master][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->optional(default)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-compiler;2.10.4 [scala-tool->optional(default)][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.4->org.scala-lang#jline;2.10.4 [optional->master(*)][0m
 [0m[[0minfo[0m] [0mResolving org.scala-lang#jline;2.10.4 ...[0m
 [0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#jline;2.10.4 {optional=[compile(*), master(*)]}[0m
@@ -15476,11 +15476,11 @@
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.fusesource.jansi#jansi;1.4[0m
 [0m[[0mdebug[0m] [0m	found org.fusesource.jansi#jansi;1.4 in sbt-chain[0m
 [0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#jline;2.10.4->org.fusesource.jansi#jansi;1.4 [compile->compile(*)][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->default][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->runtime][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->compile][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->master][0m
-[0m[[0mdebug[0m] [0m== resolving dependencies default#wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->optional(default)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->default][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies default#yidumi_4-0_wap-build;0.1-SNAPSHOT->org.scala-lang#scala-library;2.10.4 [scala-tool->optional(default)][0m
 [0m[[0mdebug[0m] [0mall callers are evicted for org.specs2#specs2_2.10;1.12.3: evicting too[0m
 [0m[[0mdebug[0m] [0mall callers are evicted for org.specs2#specs2_2.10;1.12.3: evicting too[0m
 [0m[[0mdebug[0m] [0mall callers are evicted for org.specs2#specs2-scalaz-core_2.10.0-RC3;6.0.1: evicting too[0m
@@ -15694,19 +15694,19 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.ow2.asm#asm-util;4.1!asm-util.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#jline;2.10.4!jline.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 4991ms :: artifacts dl 155ms[0m
-[0m[[0mdebug[0m] [0m	report for default#wap-build;0.1-SNAPSHOT compile produced in E:\yidumi4\wap\project\target\resolution-cache\reports\default-wap-build-compile.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#wap-build;0.1-SNAPSHOT runtime produced in E:\yidumi4\wap\project\target\resolution-cache\reports\default-wap-build-runtime.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#wap-build;0.1-SNAPSHOT test produced in E:\yidumi4\wap\project\target\resolution-cache\reports\default-wap-build-test.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#wap-build;0.1-SNAPSHOT provided produced in E:\yidumi4\wap\project\target\resolution-cache\reports\default-wap-build-provided.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#wap-build;0.1-SNAPSHOT optional produced in E:\yidumi4\wap\project\target\resolution-cache\reports\default-wap-build-optional.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#wap-build;0.1-SNAPSHOT compile-internal produced in E:\yidumi4\wap\project\target\resolution-cache\reports\default-wap-build-compile-internal.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#wap-build;0.1-SNAPSHOT runtime-internal produced in E:\yidumi4\wap\project\target\resolution-cache\reports\default-wap-build-runtime-internal.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#wap-build;0.1-SNAPSHOT test-internal produced in E:\yidumi4\wap\project\target\resolution-cache\reports\default-wap-build-test-internal.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#wap-build;0.1-SNAPSHOT plugin produced in E:\yidumi4\wap\project\target\resolution-cache\reports\default-wap-build-plugin.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#wap-build;0.1-SNAPSHOT sources produced in E:\yidumi4\wap\project\target\resolution-cache\reports\default-wap-build-sources.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#wap-build;0.1-SNAPSHOT docs produced in E:\yidumi4\wap\project\target\resolution-cache\reports\default-wap-build-docs.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#wap-build;0.1-SNAPSHOT pom produced in E:\yidumi4\wap\project\target\resolution-cache\reports\default-wap-build-pom.xml[0m
-[0m[[0mdebug[0m] [0m	report for default#wap-build;0.1-SNAPSHOT scala-tool produced in E:\yidumi4\wap\project\target\resolution-cache\reports\default-wap-build-scala-tool.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (4991ms resolve - 155ms download)[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 3989ms :: artifacts dl 93ms[0m
+[0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT compile produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-compile.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT runtime produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-runtime.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT test produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-test.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT provided produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-provided.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT optional produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-optional.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT compile-internal produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-compile-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT runtime-internal produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-runtime-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT test-internal produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-test-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT plugin produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-plugin.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT sources produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-sources.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT docs produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-docs.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT pom produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-pom.xml[0m
+[0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT scala-tool produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-scala-tool.xml[0m
+[0m[[0mdebug[0m] [0m	resolve done (3989ms resolve - 93ms download)[0m
 [0m[[0minfo[0m] [0mDone updating.[0m
