@@ -237,6 +237,16 @@ angular.module('YiModule').service('YiServer', ['$http', '$window', '$q', '$root
             })
         return deferred.promise;
     }
+
+    this.answerZanOrCai=function (answerId,type) {
+        var deferred = $q.defer();
+        // /v4/answers/:answerId/viewpoint?view=yes 点击赞(view=yes)，踩(view=no)协议
+        $http.get($rootScope.param.base + '/v4/answers/' + answerId + '/viewpoint?view='+type+'&_client=' + $rootScope.clientType + '&_cver=28828&_token=' + $rootScope.param._token)
+            .success(function (data) {
+                deferred.resolve(data);
+            });
+        return deferred.promise;
+    }
     //是否包含这个Userid
     this.isInclude = function (userIds, userId) {
         var abc = false;

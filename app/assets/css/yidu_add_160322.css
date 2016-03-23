@@ -1,7 +1,8 @@
 .news-title {
     font-size: 1em;
     padding: 0.9em;
-    padding-top: 2em;
+    padding-bottom: 0em;
+    /*padding-top: 2em;*/
 }
 .news-title h1 {
     font-size: 1.2em;
@@ -11,6 +12,7 @@
 .news-author {
     padding-top: 0.5em;
     line-height: 2em;
+    height: 3em;
 }
 .news-author li {
     display: inline-block;
@@ -195,4 +197,69 @@
 }
 .content-user-btn{
     padding:0 0 1em  0
+}
+
+.answer-step {
+    background-color: rgba(255, 255, 255, 0.9);
+    top: 0px;
+    bottom: 0px;
+    height: 95%;
+    /* width: 100%; */
+    overflow: auto;
+    position: relative;
+    line-height: 170%;
+    /* border-left: 1px solid #E5E5E5; */
+    margin: 5px;
+    /* border-right: 1px solid #0099e5; */
+}
+
+.answer-step-list h1 {
+    background-color: #B3E6FF;
+    }
+
+    
+.answer-content .content-title {
+    text-align: center;
+}
+.answer-content .content-title span {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #e5e5e5;
+    padding-bottom: 0.3em;
+    margin-right: 1em;
+}
+.answer-good {
+    text-align: center;
+    padding-top: 1em;
+}
+.answer-good li {
+    display: inline-block;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+}
+.answer-good li p {
+    font-size: 1.2em;
+    color: #0099e5;
+    padding-bottom: 0.2em;
+}
+
+.answer-good li div {
+    text-align: center;
+    display: block;
+    border: 1px solid #b2e5ff;
+    height: 3.5em;
+    width: 3.5em;
+    -moz-border-radius: 1.3em;
+    -webkit-border-radius: 1.3em;
+    border-radius: 1.3em;
+}
+.answer-good li div a {
+    display: block;
+    height: 3.4em;
+    width: 3.4em;
+}
+.answer-good li div i {
+    font-size: 1.7em;
+    color: #0099e5;
+    line-height: 2.2em;
 }

@@ -691,7 +691,7 @@ header h1 {
 
 .hearder-left a:hover i, .hearder-right a:hover i {
     color: #FFFFFF;
-    background-color: #00aaff;
+    /*background-color: #00aaff;*/
 }
 
 .hearder-left li span, .hearder-right li span {

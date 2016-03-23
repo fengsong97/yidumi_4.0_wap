@@ -338,6 +338,9 @@ $scope.goback= function (goNum) {
     $rootScope.rootShow.num=goNum;
 };
 
+
+
+
         $rootScope.getArticleDetail2 = function () {
             $scope.carouselIndex=0;
             $scope.all_slides = []
@@ -369,7 +372,19 @@ $scope.goback= function (goNum) {
 
             })
         }
+$scope.zanOrCai=function (answer,type) {
+            if(!answer.viewpoint.canExpress){
 
+                $env.call('toToastCallBack', {"toast": "您已操作"});
+                return;
+            }
+        answer.viewpoint.canExpress=!answer.viewpoint.canExpress;
+        answer.viewpoint.isSupport[type]=answer.viewpoint.isSupport[type]+1;
+ 
+        YiServer.answerZanOrCai(answer.id,type).then(function (data) {
+            
+        })
+}
         //关注作者
         $scope.subscribeAuthor = function () {
             if ($rootScope.isVisitor == true && $env.inClient !== true) {
@@ -425,6 +440,8 @@ $scope.goback= function (goNum) {
             }
 
         }
+
+        
 //点态度的方法
         $scope.attitude = function (att, articleId) {
             if ($rootScope.isVisitor == true && $env.inClient !== true) {
