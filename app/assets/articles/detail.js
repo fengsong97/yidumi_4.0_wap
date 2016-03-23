@@ -162,7 +162,7 @@ angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootSc
 
 
 //关注作者
-    $scope.subscribeAuthor_question = function () {
+    $scope.subscribeAuthor = function () {
       if ($rootScope.isVisitor == true && $env.inClient !== true) {
         $rootScope.login();
         return;
