@@ -141,7 +141,7 @@ angular.module('questions').controller('questions.DetailCtrl', ['$scope', '$root
                 })
             }
         };
-
+        //是否收藏过这个提问
         $scope.collectionStyle_question = function () {
             if ($scope.item == undefined) {
                 $scope.item = {
@@ -153,7 +153,19 @@ angular.module('questions').controller('questions.DetailCtrl', ['$scope', '$root
             }
 
         }
-//同问
+        //是否赞过或者踩过，颜色变成蓝色
+        $scope.zanOrCaiedStyle = function () {
+            if ($scope.item == undefined) {
+                $scope.item = {
+                    isCollected: false
+                }
+            }
+            if ($scope.item.isCollected) {
+                return {'color': '#0099E5'}
+            }
+
+        }
+        //同问
         $scope.commonAsk = function () {
             if ($rootScope.isVisitor == true && $env.inClient !== true) {
                 $rootScope.login();
@@ -168,6 +180,7 @@ angular.module('questions').controller('questions.DetailCtrl', ['$scope', '$root
                     $scope.item.isCommonAsked = true;
                 })
         };
+        //是否同问过 样式变蓝
         $scope.commonAskStyle = function () {
             if ($scope.item == undefined) {
                 $scope.item = {
@@ -207,7 +220,7 @@ angular.module('questions').controller('questions.DetailCtrl', ['$scope', '$root
 
         $timeout(initStyle, 100);
 
-//应用Dialog
+        //应用Dialog
         $scope.openYingYong= function (data) {
             YiServer.appDownloadDialog(data)
         }
@@ -251,7 +264,7 @@ angular.module('questions').controller('questions.DetailCtrl', ['$scope', '$root
                 dialog.close();
             }, 1500);
         };
-
+        //回到列表跳望详情的方法      
         $scope.question_carousel = function (id) {
             if ($rootScope.isVisitor == true && $env.inClient !== true) {
                 $rootScope.login();
@@ -273,6 +286,7 @@ angular.module('questions').controller('questions.DetailCtrl', ['$scope', '$root
                 $env.call('toBackCallback');
             }
         }
+        //去回答的方法
         $scope.toAnswer= function () {
             if ($rootScope.isVisitor == true && $env.inClient !== true) {
                 $rootScope.login();
@@ -340,7 +354,7 @@ $scope.goback= function (goNum) {
 
 
 
-
+//获得回答详情的方法
         $rootScope.getArticleDetail2 = function () {
             $scope.carouselIndex=0;
             $scope.all_slides = []
@@ -372,6 +386,7 @@ $scope.goback= function (goNum) {
 
             })
         }
+        //点赞和猜的方法,参数是 回答详情，和yes / no
 $scope.zanOrCai=function (answer,type) {
             if(!answer.viewpoint.canExpress){
 
@@ -379,7 +394,7 @@ $scope.zanOrCai=function (answer,type) {
                 return;
             }
         answer.viewpoint.canExpress=!answer.viewpoint.canExpress;
-        answer.viewpoint.isSupport[type]=answer.viewpoint.isSupport[type]+1;
+        answer.viewpoint.isSupport[type]++;
  
         YiServer.answerZanOrCai(answer.id,type).then(function (data) {
             
@@ -409,7 +424,7 @@ $scope.zanOrCai=function (answer,type) {
             }
         };
 
-        //收藏这篇文章
+        //收藏这篇回答
         $scope.collecteAticle = function () {
             if ($rootScope.isVisitor == true && $env.inClient !== true) {
                 $rootScope.login();
@@ -484,11 +499,11 @@ $scope.zanOrCai=function (answer,type) {
         }
 
 
-        $scope.toUserHome = function () {
+        $scope.toUserHome = function (userId) {
             if($env.readOnlyInHere){
                 return
             }
-            $env.call('toUserHome', {"id": $scope.item_answer.user.id})
+            $env.call('toUserHome', {"id": userId})
         }
         //监听态度
         $scope.$watch(function () {

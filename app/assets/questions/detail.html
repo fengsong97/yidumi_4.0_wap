@@ -39,7 +39,7 @@ right: 0;" width="100px">
             <h1 ng-bind="::item.title"></h1>
             <div>
             <ul class="news-author">
-                <li><img ng-src="{{item.user.avatar | resource}}" err-src="/img/default_avatar.png"></li>
+                <li><img ng-src="{{item.user.avatar | resource}}" err-src="/img/default_avatar.png" g-click="toUserHome(item.user.id)"></li>
                 <li ng-bind="::item.user.nickName"></li>
                 <li class="author-interact">
                     <a ng-click="subscribeAuthor_question()" ng-bind="item.user.hasSub==true?'取消关注':'关注TA'"></a><a ng-click="commonAsk()">同问</a></li>
@@ -240,7 +240,7 @@ right: 0;" width="100px">
                         <div class="content-title"><span>技能达人</span></div>
 
                         <ul class="content-user">
-                        <li><img ng-src="{{item_answer.user.avatar | resource}}" err-src="/img/default_avatar.png" ng-click="toUserHome()"></li>
+                        <li><img ng-src="{{item_answer.user.avatar | resource}}" err-src="/img/default_avatar.png" ng-click="toUserHome(item_answer.user.id)"></li>
                         <li ng-bind="item_answer.user.nickName"></li>
                         </ul>
                         <div class="content-user-btn">
@@ -286,7 +286,7 @@ right: 0;" width="100px">
         <div class="end" style="position: fixed;bottom:0em"></div>
 <footer >
             <ul class="footer-center">
-                <li ng-click="collecteAticle()"><a><i class="iconfont" ng-style="collectionStyle_question()">&#xe61e;</i></a></li>
+                <li ng-click="collecteAticle()"><a><i class="iconfont" ng-style="collectionStyle()">&#xe61e;</i></a></li>
                 <li ng-if="!$env.readOnlyInHere"><a ng-click="toAnswer()" style="    /* display: block; */
                     /* font-size: 1em; */
                     font-size: 1em;
