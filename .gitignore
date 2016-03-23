@@ -1,0 +1,5 @@
+*.class
+project/target/node-modules/webjars/npm/node_modules/chownr/README.md
+project/target/node-modules/webjars/npm/node_modules/editor/index.js
+project/target/node-modules/webjars/npm/node_modules/block-stream/test/basic.js
+project/target/node-modules/webjars/npm/node_modules/block-stream/test/thorough.js
