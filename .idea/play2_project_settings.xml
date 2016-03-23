@@ -6,7 +6,7 @@
         <entry key="playConf">
           <value>
             <ProjectSettingsEntry>
-              <option name="sourceDir" value="E:\yidu_git\yidumi_4.0_wap\conf" />
+              <option name="confDir" value="E:\yidu_git\yidumi_4.0_wap\conf" />
             </ProjectSettingsEntry>
           </value>
         </entry>
@@ -31,7 +31,7 @@
         <entry key="sourceDirectory">
           <value>
             <ProjectSettingsEntry>
-              <option name="confDir" value="E:\yidu_git\yidumi_4.0_wap\app" />
+              <option name="sourceDir" value="E:\yidu_git\yidumi_4.0_wap\app" />
             </ProjectSettingsEntry>
           </value>
         </entry>
