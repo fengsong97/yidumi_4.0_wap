@@ -15694,7 +15694,7 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.ow2.asm#asm-util;4.1!asm-util.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#jline;2.10.4!jline.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 3989ms :: artifacts dl 93ms[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 5550ms :: artifacts dl 106ms[0m
 [0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT compile produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-compile.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT runtime produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-runtime.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT test produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-test.xml[0m
@@ -15708,5 +15708,5 @@
 [0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT docs produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-docs.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT pom produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-pom.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#yidumi_4-0_wap-build;0.1-SNAPSHOT scala-tool produced in E:\yidu_git\yidumi_4.0_wap\project\target\resolution-cache\reports\default-yidumi_4-0_wap-build-scala-tool.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (3989ms resolve - 93ms download)[0m
+[0m[[0mdebug[0m] [0m	resolve done (5550ms resolve - 106ms download)[0m
 [0m[[0minfo[0m] [0mDone updating.[0m
