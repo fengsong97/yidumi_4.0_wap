@@ -1,0 +1,24 @@
+{
+  "name": "yidumi_4.0_wap",
+  "version": "1.0.0",
+  "description": "yidumi4.0wap自定义",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fengsong97/yidumi_4.0_wap.git"
+  },
+  "author": "fengsong97",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fengsong97/yidumi_4.0_wap/issues"
+  },
+  "homepage": "https://github.com/fengsong97/yidumi_4.0_wap#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^1.5.3",
+    "gulp-concat": "^2.6.0"
+  }
+}
