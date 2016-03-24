@@ -184,8 +184,9 @@
     font-size: 1em;
 }
 .answer-list p a,.answer-list-a p a {
-    color: #0099e5;
+    /*color: #0099e5;*/
     margin-left: 0.7em;
+    padding-top: 10px;
 }
 .answer-list p i,.answer-list-a p i {
     color: #666;

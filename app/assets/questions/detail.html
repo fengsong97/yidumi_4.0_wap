@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html ng-app="questions">
+<html ng-app="questions" ng-controller="questions.DetailCtrl">
 
 <head>
     <base href="/">
-    <title> 一度蜜技能分享</title>
+    <title ng-bind="item.title"></title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <link rel="stylesheet" href="../css/yidu.css">
     <link rel="stylesheet" href="../css/yidu_add_160322.css">
@@ -16,7 +16,7 @@
     <link href='/questions/carousel/angular-carousel.css' rel='stylesheet' type='text/css'>
 </head>
 
-<body ng-controller="questions.DetailCtrl" ng-style="(rootShow.num==2)?{'height': '100%','overflow-x': 'hidden','width': '100%','position': 'fixed'}:{}">
+<body  ng-style="(rootShow.num==2)?{'height': '100%','overflow-x': 'hidden','width': '100%','position': 'fixed'}:{}">
     <div style="background-color: #fefdff; position: fixed;width:100%;height:500%;z-index: 699;max-width: 600px;" ng-hide="item.title">
         <img src="/img/loadingStanding.gif" style="display: block;margin: auto;
 position: absolute;
@@ -39,10 +39,10 @@ right: 0;" width="100px">
             <h1 ng-bind="::item.title"></h1>
             <div>
             <ul class="news-author">
-                <li><img ng-src="{{item.user.avatar | resource}}" err-src="/img/default_avatar.png" g-click="toUserHome(item.user.id)"></li>
+                <li><img ng-src="{{item.user.avatar | resource}}" err-src="/img/default_avatar.png" ng-click="toUserHome(item.user.id)"></li>
                 <li ng-bind="::item.user.nickName"></li>
                 <li class="author-interact">
-                    <a ng-click="subscribeAuthor_question()" ng-bind="item.user.hasSub==true?'取消关注':'关注TA'"></a><a ng-click="commonAsk()">同问</a></li>
+                    <a ng-click="subscribeAuthor_question()" ng-bind="item.user.hasSub==true?'取消关注':'关注TA'"></a><a ng-click="commonAsk()" ng-style="commonAskStyle()">同问</a></li>
             </ul>
             </div>
         </div>
@@ -78,26 +78,27 @@ right: 0;" width="100px">
                 <p style="font-size: 0.6em;">亲，暂时还无人回答~</p>
             </div>
         </div>
-        <div ng-if="$first" class="answer-list-a" ng-repeat="one in answersList.data" ng-click="question_carousel(one._id.$oid)">
-            <img ng-src="{{one.user.avatar|resource}}" err-src="../img/default_avatar.png">
+        <div ng-if="$first" class="answer-list-a" ng-repeat="one in answersList.data" >
+            <img ng-src="{{one.user.avatar|resource}}" err-src="../img/default_avatar.png"  ng-click="toUserHome(one.user.id)">
             <span>优选</span>
             <h1 ng-bind="one.user.nickName.length>8?(one.user.nickName|limitTo:8)+'...':one.user.nickName"></h1>
             <p>
-                <a ><i class="iconfont">&#xe649;</i>{{one.viewpoint.isSupport.yes||0}}</a>
-                <a ><i class="iconfont">&#xe64a;</i>{{one.viewpoint.isSupport.no||0}}</a>
+            <!-- ng-click="zanOrCai(item_answer,'yes')"><i class="iconfont" ng-style="zanOrCaiedStyle(item_answer.viewpoint.canExpress,'yes')"> -->
+                <a ng-click="zanOrCai(one,'yes')" ng-style="zanOrCaiedStyle(one.viewpoint.canExpress,'yes')"><i class="iconfont" ng-style="zanOrCaiedStyle(one.viewpoint.canExpress,'yes')">&#xe649;</i>{{one.viewpoint.isSupport.yes||0}}</a>
+                <a ng-click="zanOrCai(one,'no')" ng-style="zanOrCaiedStyle(one.viewpoint.canExpress,'no')"><i class="iconfont" ng-style="zanOrCaiedStyle(one.viewpoint.canExpress,'no')">&#xe64a;</i>{{one.viewpoint.isSupport.no||0}}</a>
             </p>
-            <div>
+            <div ng-click="question_carousel(one._id.$oid)">
                 <a ng-bind="one.web.content.sections | findPFilter :17 "></a>
             </div>
         </div>
-        <div ng-if="!$first" class="answer-list" ng-repeat="one in answersList.data" ng-click="question_carousel(one._id.$oid)">
-            <img ng-src="{{one.user.avatar|resource}}" err-src="../img/default_avatar.png">
+        <div ng-if="!$first" class="answer-list" ng-repeat="one in answersList.data" >
+            <img ng-src="{{one.user.avatar|resource}}" err-src="../img/default_avatar.png" ng-click="toUserHome(one.user.id)">
             <h1 ng-bind="one.user.nickName.length>8?(one.user.nickName|limitTo:8)+'...':one.user.nickName"></h1>
             <p>
-                <a><i class="iconfont">&#xe649;</i>{{one.viewpoint.isSupport.yes||0}}</a>
-                <a><i class="iconfont">&#xe64a;</i>{{one.viewpoint.isSupport.no||0}}</a>
+                <a ng-click="zanOrCai(one,'yes')" ng-style="zanOrCaiedStyle(one.viewpoint.canExpress,'yes')"><i class="iconfont" ng-style="zanOrCaiedStyle(one.viewpoint.canExpress,'yes')">&#xe649;</i>{{one.viewpoint.isSupport.yes||0}}</a>
+                <a ng-click="zanOrCai(one,'no')" ng-style="zanOrCaiedStyle(one.viewpoint.canExpress,'no')"><i class="iconfont" ng-style="zanOrCaiedStyle(one.viewpoint.canExpress,'no')">&#xe64a;</i>{{one.viewpoint.isSupport.no||0}}</a>
             </p>
-            <div>
+            <div ng-click="question_carousel(one._id.$oid)">
                 <a ng-bind="one.web.content.sections | findPFilter :20 "></a>
             </div>
         </div>
@@ -144,13 +145,9 @@ right: 0;" width="100px">
         <footer ng-class="{'footerTranslateHide':scrollUpOrDown }">
             <ul class="footer-center">
                 <li ng-click="collecteAticle_question()"><a><i class="iconfont" ng-style="collectionStyle_question()">&#xe61e;</i></a></li>
-                <li ng-if="!$env.readOnlyInHere"><a ng-click="toAnswer()" style="    /* display: block; */
-                    /* font-size: 1em; */
+                <li ng-if="!$env.readOnlyInHere"><a ng-click="toAnswer()" style="   
                     font-size: 1em;
-                    display: inline-block;
-                    /* float: left; */
-                    /*margin-top: 0.5em;*/
-                    /*margin-left: 0.7em;*/
+                    display: inline-block;                  
                     border: 1px solid #b2e5ff;
                     line-height: 1em;
                     padding-top: 0.3em;
@@ -198,7 +195,7 @@ right: 0;" width="100px">
                 <article ng-show="$last" style="height: 40%;margin-bottom: 10px;" ng-bind="item_answer.user.nickName"></article>
                 <p ng-show="$last"><img ng-src="{{item_answer.user.avatar | resource}}" err-src="/img/default_avatar.png"></p>
             </section>
-            <ul ng-show="!showList" rn-carousel rn-carousel-index="carouselIndex" rn-carousel-transition="hexagon" rn-carousel-buffered>
+            <ul ng-show="!showList" rn-carousel  rn-carousel-index="carouselIndex" rn-carousel-transition="hexagon" rn-carousel-buffered>
                 <li ng-repeat="slide in all_slides ">
                     <div class="answer-step" ng-hide="$last" ng-init="(slide.p==undefined||slide.p=='')?(showWord=false):(showWord=true)">
                         <div ng-if="slide.img!==''&&slide.img!==undefined">
@@ -229,11 +226,11 @@ right: 0;" width="100px">
                         <ul class="answer-good">
                         <li>
                         <p ng-bind="item_answer.viewpoint.isSupport.yes||0"></p>
-                        <div><a ng-click="zanOrCai(item_answer,'yes')"><i class="iconfont">&#xe649;</i></a></div>
+                        <div><a ng-click="zanOrCai(item_answer,'yes')"><i class="iconfont" ng-style="zanOrCaiedStyle(item_answer.viewpoint.canExpress,'yes')">&#xe649;</i></a></div>
                         </li>
                         <li>
                         <p ng-bind="item_answer.viewpoint.isSupport.no||0"></p>
-                        <div><a ng-click="zanOrCai(item_answer,'no')"><i class="iconfont">&#xe64a;</i></a></div>
+                        <div><a ng-click="zanOrCai(item_answer,'no')"><i class="iconfont" ng-style="zanOrCaiedStyle(item_answer.viewpoint.canExpress,'no')">&#xe64a;</i></a></div>
                         </li>
                         </ul>
 
@@ -287,7 +284,7 @@ right: 0;" width="100px">
 <footer >
             <ul class="footer-center">
                 <li ng-click="collecteAticle()"><a><i class="iconfont" ng-style="collectionStyle()">&#xe61e;</i></a></li>
-                <li ng-if="!$env.readOnlyInHere"><a ng-click="toAnswer()" style="    /* display: block; */
+                <!-- <li ng-if="!$env.readOnlyInHere"><a ng-click="toAnswer()" style="    /* display: block; */
                     /* font-size: 1em; */
                     font-size: 1em;
                     display: inline-block;
@@ -302,8 +299,9 @@ right: 0;" width="100px">
                     padding-left: 0.7em;
                     -moz-border-radius: 2em;
                     -webkit-border-radius: 2em;
-                    border-radius: 2em;"><span>回答</span></a></li>
-                  <li ><a ng-click="toComment()" style="    /* display: block; */
+                    border-radius: 2em;"><span>回答</span></a></li> -->
+
+                 <!--  <li ><a ng-click="toComment()" style="    /* display: block; */
                     /* font-size: 1em; */
                     font-size: 1em;
                     display: inline-block;
@@ -318,10 +316,12 @@ right: 0;" width="100px">
                     padding-left: 0.7em;
                     -moz-border-radius: 2em;
                     -webkit-border-radius: 2em;
-                    border-radius: 2em;"><span>点评</span></a></li>
+                    border-radius: 2em;"><span>点评</span></a></li> -->
+             
+                    <li ><p ng-bind="item_answer.comments.count<10?('0'+item_answer.comments.count):(item_answer.comments.count>99?('99+'):(item_answer.comments.count))"></p><a  ng-click="toComment()"><i class="iconfont">&#xe602;</i></a></li>
                <!--  <li ng-if="__.smartDevices.length>0"><a ng-click="scrollTo('appOrSmart')"><i class="iconfont">&#xe61d;</i></a></li>
                 <li ng-if="showApps.length>0"><a ng-click="scrollTo('appOrSmart')"><i class="iconfont">&#xe64b;</i></a></li> -->
-                <!-- <li ng-if="$env.inClient"><a ng-click="openShare(item.title)"><i class="iconfont">&#xe61c;</i></a></li> -->
+                <li ng-if="$env.inClient"><a ng-click="openShare(item.title)"><i class="iconfont">&#xe61c;</i></a></li>
             </ul>
         </footer>
 
@@ -338,16 +338,19 @@ right: 0;" width="100px">
     </div>
     <div ng-show="rootShow.num==3">
         <!--标题-->
-        <header>
+        <header style="background-color: #FBFAF8 ">
             <ul class="hearder-left">
-                <li><a ng-click="goback(2)"><i class="iconfont">&#xe628;</i></a></li>
+                <li><a ng-click="goback(2)"><i class="iconfont" style="color:#666">&#xe628;</i></a></li>
             </ul>
-            <h1>回答点评</h1>
+            <h1 style="color:#666">点评</h1>
         </header>
         <div class="topic">
-            <div ng-show="!commentfs.length">
+        <div ng-if="!commentfs.length" style="margin: 1em 0em; font-size: 10px">
+                    亲，暂时还无人评论，您来说几句吧~
+                </div>
+            <!-- <div ng-show="!commentfs.length">
                 亲，暂时还无人评论，您来说几句吧~
-            </div>
+            </div> -->
             <section ng-repeat="one in commentfs ">
                 <article>
                     <img ng-src="{{one.user.avatar | resource}}" err-src="/img/default_avatar.png">
@@ -365,7 +368,7 @@ right: 0;" width="100px">
             <div class="content-user-btn" ng-if="commentfs.length&&commentfs.showMore ||!commentfs.length">
                 <a type="button" ng-if="commentfs.length&&commentfs.showMore"> <span ng-click="showMoreComment()"> 加载更多</span>
                 </a>
-                <a type="button" ng-if="!commentfs.length" ng-click="showCommentDialog()"> <span>我要评论</span> </a>
+                <!-- <a type="button" ng-if="!commentfs.length" ng-click="showCommentDialog()"> <span>我要评论</span> </a> -->
             </div>
         </div>
         <div class="end"></div>

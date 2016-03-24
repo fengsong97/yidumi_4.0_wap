@@ -128,16 +128,16 @@ angular.module('questions').controller('questions.DetailCtrl', ['$scope', '$root
             }
             
             if ($scope.item.isCollected == undefined || $scope.item.isCollected == false) {
+                 $scope.item.isCollected = true;
+                 $env.call('toToastCallBack', {"toast": "收藏成功"});    
                 YiServer.collecteType("questions", $rootScope.param).then(function (data) {
-                    $scope.item.isCollected = true;
-                    //alert($env.inClient)
-                    $env.call('toToastCallBack', {"toast": "收藏成功"});
+                   
                 })
             } else {
+                 $scope.item.isCollected = false;
+                 $env.call('toToastCallBack', {"toast": "取消收藏"});        
                 YiServer.unCollecteType("questions", $rootScope.param).then(function (data) {
-                    $scope.item.isCollected = false;
-
-                    $env.call('toToastCallBack', {"toast": "取消收藏"});
+                   
                 })
             }
         };
@@ -153,18 +153,7 @@ angular.module('questions').controller('questions.DetailCtrl', ['$scope', '$root
             }
 
         }
-        //是否赞过或者踩过，颜色变成蓝色
-        $scope.zanOrCaiedStyle = function () {
-            if ($scope.item == undefined) {
-                $scope.item = {
-                    isCollected: false
-                }
-            }
-            if ($scope.item.isCollected) {
-                return {'color': '#0099E5'}
-            }
-
-        }
+        
         //同问
         $scope.commonAsk = function () {
             if ($rootScope.isVisitor == true && $env.inClient !== true) {
@@ -234,7 +223,7 @@ angular.module('questions').controller('questions.DetailCtrl', ['$scope', '$root
 
         //分享Dialog
         $scope.openShare = function (title) {
-            YiServer.shareStatistics($rootScope.param,"articles",3)
+            YiServer.shareStatistics($rootScope.param,"questions",3)
             if ($env.isAndroid && $env.inClient) {
                 $env.call("toShare")
                 return
@@ -387,19 +376,26 @@ $scope.goback= function (goNum) {
             })
         }
         //点赞和猜的方法,参数是 回答详情，和yes / no
-$scope.zanOrCai=function (answer,type) {
-            if(!answer.viewpoint.canExpress){
+        $scope.zanOrCai=function (answer,type) {
+                    if(answer.viewpoint.canExpress!=='empty'){
 
-                $env.call('toToastCallBack', {"toast": "您已操作"});
-                return;
-            }
-        answer.viewpoint.canExpress=!answer.viewpoint.canExpress;
-        answer.viewpoint.isSupport[type]++;
- 
-        YiServer.answerZanOrCai(answer.id,type).then(function (data) {
-            
-        })
-}
+                        $env.call('toToastCallBack', {"toast": "您已经"+(answer.viewpoint.canExpress=='yes'?'赞':'踩')+"过了"});
+                        return;
+                    }
+                answer.viewpoint.canExpress=type;
+                answer.viewpoint.isSupport[type]++;
+         
+                YiServer.answerZanOrCai((answer.id?answer.id:answer._id.$oid),type).then(function (data) {
+                    
+                })
+        }
+
+//是否赞过或者踩过，颜色变成蓝色
+        $scope.zanOrCaiedStyle = function (canExpress,type) {
+                if(canExpress==type){
+                    return {'color': '#0099E5'}
+                }
+        }
         //关注作者
         $scope.subscribeAuthor = function () {
             if ($rootScope.isVisitor == true && $env.inClient !== true) {
@@ -432,14 +428,18 @@ $scope.zanOrCai=function (answer,type) {
             }
 
             if ($scope.item_answer.isCollected == undefined || $scope.item_answer.isCollected == false) {
+                $scope.item_answer.isCollected = true;
+                $env.call('toToastCallBack', {"toast": "收藏成功"});
                 YiServer.collecteType("answers", $rootScope.param).then(function (data) {
-                    $scope.item_answer.isCollected = true;
-                    $env.call('toToastCallBack', {"toast": "收藏成功"});
+                    
+                    
                 })
             } else {
+                 $scope.item_answer.isCollected = false;
+                 $env.call('toToastCallBack', {"toast": "取消收藏"});
                 YiServer.unCollecteType("answers", $rootScope.param).then(function (data) {
-                    $scope.item_answer.isCollected = false;
-                    $env.call('toToastCallBack', {"toast": "取消收藏"});
+                   
+                   
                 })
             }
         };

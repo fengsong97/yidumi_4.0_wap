@@ -35,6 +35,17 @@
     <!--s.parentNode.insertBefore(hm, s);-->
     <!--})();-->
     <!--</script>-->
+
+        <script type="text/javascript">
+            　　try{
+            　　if (top.location.hostname != window.location.hostname) {
+            　　　　top.location.href =window.location.href;
+            　　}
+            }
+            catch(e){
+            　　top.location.href = window.location.href;
+            }
+</script>
 </head>
 <body  >
     <!--<div style="" ng-hide="item.title" >-->
@@ -157,7 +168,7 @@
                 </div>
                 <section ng-repeat="one in commentfs ">
                     <article>
-                        <img ng-src="{{one.user.avatar | resource}}" err-src="/img/default_avatar.png">
+                        <img ng-src="{{one.user.avatar | resource}}" err-src="/img/default_avatar.png" ng-click="toUserHome(one.user.id)">
                         <ul>
                             <li><h1 ng-bind="one.content.user"></h1></li>
                             <li ng-bind="one.createdOn"></li>
@@ -246,6 +257,6 @@
             s.parentNode.insertBefore(hm, s);
         })();
     </script>
-    <!--
-    <script type="text/javascript" src="/js/notie.js"></script>
+    <script type="text/javascript" src="/js/notie.js"></script> 
+
     </html>
