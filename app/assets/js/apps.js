@@ -23,7 +23,7 @@ angular.module('apps').filter('mb', ['$filter', function ($filter) {
 }]);
 //即单例对象，用于将操作、数据等集中管理，避免分散
 angular.module('apps').factory('appDownload', ['$window', '$env', 'SysConfig', function ($window, $env, SysConfig) {
-  return function (app, t) {
+   return function (app, t) {
     var args = {id: app.id};
     if ($env.isAndroid&&$env.inClient) {
       args.packageName = app.packageName;

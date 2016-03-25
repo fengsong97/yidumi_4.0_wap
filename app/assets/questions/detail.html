@@ -27,12 +27,11 @@ right: 0;" width="100px">
     </div>
     <div ng-show="rootShow.num==1">
         <div ng-class="{'content-header content-header-translate':scrollUpOrDown ,'content-header ':!scrollUpOrDown}">
-            <div class="content-back" ng-click="toBackInClient()" ng-if="$env.inClient">
-                <a><i class="iconfont">&#xe601;</i></a>
-            </div>
-            <div class="content-header-txt">
-                <span ng-click="toTop(0)">轻触回顶部</span>
-            </div>
+            <div ng-if="!$env.inClient"  ng-include="'/html/client_banner.html'"></div>
+      
+              <div ng-if="$env.inClient"> <div  class="content-back"  ng-click="toBackInClient()"><a > <i class="iconfont">&#xe601;</i> </a> </div>
+                  <div class="content-header-txt"><span ng-click="toTop(0)">轻触回顶部</span></div>
+              </div>
         </div>
         <div class="content-cover"><img ng-src="{{(__.content.header.img )| resource}}"></div>
         <div class="news-title">
@@ -67,7 +66,7 @@ right: 0;" width="100px">
             <div class="forBottom" style="padding: 0.5em 0.9em;line-height: 170%;" ng-bind-html="::section.p" ng-if="section.p">
             </div>
         </section>
-        <div class="open" ng-show="__.content.sections.length>1">
+        <div class="open" ng-show="__.content.sections.length>1000">
             <a ng-click="item.accordionOpen=true"><i class="iconfont">&#xe63e;</i>展开</a>
             <a ng-show="item.accordionOpen" ng-click="item.accordionOpen=false"><i class="iconfont">
             &#xe63f;</i>收起</a>
@@ -199,8 +198,8 @@ right: 0;" width="100px">
                 <li ng-repeat="slide in all_slides ">
                     <div class="answer-step" ng-hide="$last" ng-init="(slide.p==undefined||slide.p=='')?(showWord=false):(showWord=true)">
                         <div ng-if="slide.img!==''&&slide.img!==undefined">
-                            <div class="answer-img-txt" style="overflow:overlay;top: 60%;bottom: 2.5em;position: fixed;" ng-show="showWord">
-                                <table style="height:100%;width:100%;position: relative; top: -1.8em;">
+                            <div class="answer-img-txt"  ng-show="showWord" ng-if="slide.p">
+                                <table style="height:100%;width:100%;position: relative; top: 0em;">
                                     <tr>
                                         <td style="vertical-align:middle;">
                                             <p ng-bind-html="::slide.p" style="text-align: left;    margin: 0 0.5em;"></p>
@@ -212,7 +211,7 @@ right: 0;" width="100px">
                                 <img ng-src="{{slide.img| resource}}" ng-click="showWord=!showWord">
                             </div>
                         </div>
-                        <table ng-if="slide.img==''||slide.img==undefined" style="height:100%;width:100%;position: relative;top: -1.8em;">
+                        <table ng-if="slide.img==''||slide.img==undefined" style="height:100%;width:100%;position: relative;">
                             <tr>
                                 <td style="vertical-align:middle;">
                                     <p ng-bind-html="::slide.p" style="text-align: left;    margin: 0 0.5em;"></p>
@@ -246,32 +245,7 @@ right: 0;" width="100px">
 
                         </a>
                         <a ng-if="!$env.readOnlyInHere" ng-click="$env.call('toQuestion')">向TA提问</a></div>
-                        <!-- <div class="content-title"><span>点赞&吐槽</span></div>
-                        <section class="content-vote" ng-if="item_answer.attitudes.items.length">
-                            <article ng-repeat="att in item_answer.attitudes.items | orderBy: '-weight'" ng-style="attTyle($index,item_answer.attitudes.items.length)">
-                                <div>
-                                    <p ng-style="attitudesBarStyle(att)"></p>
-                                </div>
-                                <ul>
-                                    <a ng-click="attitude(att,item_answer.id)" ng-style="attitudesColorStyle(att)">
-                                        <li>
-                                            <h1 ng-bind="att.users.count > 999 ? '999+' : att.users.count"></h1></li>
-                                        <li ng-bind="::att.name"></li>
-                                    </a>
-                                </ul>
-                            </article>
-                        </section>
-                        <div class="content-title"><span>技能达人</span></div>
-                        <ul class="content-user">
-                            <li><img ng-src="{{item_answer.user.avatar | resource}}" err-src="/img/default_avatar.png" ng-click="toUserHome()"></li>
-                            <li ng-bind="item_answer.user.nickName"></li>
-                        </ul>
-                        <div class="content-user-btn">
-                            <a ng-click="subscribeAuthor()"><span ng-bind="item_answer.user.hasSub==true?'取消关注':'关注TA'"></span>(<span
-                                ng-bind="item_answer.user.fans.count||0"></span>)</a>
-                            <a ng-click="toComment()" ng-bind="'点评数量('+(item_answer.comments.count||0)+')'"></a>
-                            <a ng-if="!$env.readOnlyInHere" ng-click="$env.call('toQuestion')">向TA提问</a>
-                        </div> -->
+                      
                     </div>
                 </li>
             </ul>
@@ -284,40 +258,7 @@ right: 0;" width="100px">
 <footer >
             <ul class="footer-center">
                 <li ng-click="collecteAticle()"><a><i class="iconfont" ng-style="collectionStyle()">&#xe61e;</i></a></li>
-                <!-- <li ng-if="!$env.readOnlyInHere"><a ng-click="toAnswer()" style="    /* display: block; */
-                    /* font-size: 1em; */
-                    font-size: 1em;
-                    display: inline-block;
-                    /* float: left; */
-                    /*margin-top: 0.5em;*/
-                    /*margin-left: 0.7em;*/
-                    border: 1px solid #b2e5ff;
-                    line-height: 1em;
-                    padding-top: 0.3em;
-                    padding-right: 0.7em;
-                    padding-bottom: 0.3em;
-                    padding-left: 0.7em;
-                    -moz-border-radius: 2em;
-                    -webkit-border-radius: 2em;
-                    border-radius: 2em;"><span>回答</span></a></li> -->
-
-                 <!--  <li ><a ng-click="toComment()" style="    /* display: block; */
-                    /* font-size: 1em; */
-                    font-size: 1em;
-                    display: inline-block;
-                    /* float: left; */
-                    /*margin-top: 0.5em;*/
-                    /*margin-left: 0.7em;*/
-                    border: 1px solid #b2e5ff;
-                    line-height: 1em;
-                    padding-top: 0.3em;
-                    padding-right: 0.7em;
-                    padding-bottom: 0.3em;
-                    padding-left: 0.7em;
-                    -moz-border-radius: 2em;
-                    -webkit-border-radius: 2em;
-                    border-radius: 2em;"><span>点评</span></a></li> -->
-             
+                            
                     <li ><p ng-bind="item_answer.comments.count<10?('0'+item_answer.comments.count):(item_answer.comments.count>99?('99+'):(item_answer.comments.count))"></p><a  ng-click="toComment()"><i class="iconfont">&#xe602;</i></a></li>
                <!--  <li ng-if="__.smartDevices.length>0"><a ng-click="scrollTo('appOrSmart')"><i class="iconfont">&#xe61d;</i></a></li>
                 <li ng-if="showApps.length>0"><a ng-click="scrollTo('appOrSmart')"><i class="iconfont">&#xe64b;</i></a></li> -->

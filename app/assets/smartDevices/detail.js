@@ -8,14 +8,14 @@ angular.module('smartDevices', ['ngSanitize','SysConfig', 'env', 'apps', 'ngDial
 
 
 
-angular.module('smartDevices').controller('smartDevices.DetailCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', '$timeout', '$env',
+angular.module('smartDevices').controller('smartDevices.DetailCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', '$timeout', 'clientDownload','$env',
     'appDownload', 'SysConfig', 'findDetails', 'ngDialog', '$interval', 'YiServer',
-    function ($scope, $rootScope, $window, $location, $http, $timeout, $env, appDownload,
+    function ($scope, $rootScope, $window, $location, $http, $timeout,clientDownload, $env, appDownload,
               SysConfig, findDetails, ngDialog, $interval, YiServer) {
 
         $window.onscroll =YiServer.scrollUpOrDown;
         $scope.toTop =YiServer.toTop;
-
+        $scope.clientDownload=clientDownload;   
         $scope.$env = $env;
 
         $scope.platform = $env.platform();
@@ -44,37 +44,37 @@ angular.module('smartDevices').controller('smartDevices.DetailCtrl', ['$scope', 
                     
                     $scope.item.tagNames.push(value.name)
                 })
-                if ($scope.item.campaigns.count > 0) {
-                    if ($scope.item.campaigns.items[0].status.status == 2) {
+                // if ($scope.item.campaigns.count > 0) {
+                //     if ($scope.item.campaigns.items[0].status.status == 2) {
 
-                        $scope.interval = $interval(function () {
+                //         $scope.interval = $interval(function () {
 
-                            var date3 = $scope.item.campaigns.items[0].status.stopTime - new Date().getTime();
-                            //if(date3<=0){
-                            //    $interval.cancel($scope.interval)
-                            //    $scope.item.campaigns.items[0].status.status=3
-                            //}
-                            //计算出相差天数
-                            var days = Math.floor(date3 / (24 * 3600 * 1000))
-                            //计算出小时数
-                            var leave1 = date3 % (24 * 3600 * 1000)    //计算天数后剩余的毫秒数
-                            var hours = Math.floor(leave1 / (3600 * 1000))
-                            //计算相差分钟数
-                            var leave2 = leave1 % (3600 * 1000)        //计算小时数后剩余的毫秒数
-                            var minutes = Math.floor(leave2 / (60 * 1000))
-                            //计算相差秒数
-                            var leave3 = leave2 % (60 * 1000)      //计算分钟数后剩余的毫秒数
-                            var seconds = Math.round(leave3 / 1000)
+                //             var date3 = $scope.item.campaigns.items[0].status.stopTime - new Date().getTime();
+                //             //if(date3<=0){
+                //             //    $interval.cancel($scope.interval)
+                //             //    $scope.item.campaigns.items[0].status.status=3
+                //             //}
+                //             //计算出相差天数
+                //             var days = Math.floor(date3 / (24 * 3600 * 1000))
+                //             //计算出小时数
+                //             var leave1 = date3 % (24 * 3600 * 1000)    //计算天数后剩余的毫秒数
+                //             var hours = Math.floor(leave1 / (3600 * 1000))
+                //             //计算相差分钟数
+                //             var leave2 = leave1 % (3600 * 1000)        //计算小时数后剩余的毫秒数
+                //             var minutes = Math.floor(leave2 / (60 * 1000))
+                //             //计算相差秒数
+                //             var leave3 = leave2 % (60 * 1000)      //计算分钟数后剩余的毫秒数
+                //             var seconds = Math.round(leave3 / 1000)
 
-                            $scope.countdown = {
-                                days: days,
-                                hours: hours,
-                                minutes: minutes,
-                                seconds: seconds
-                            }
-                        }, 1000)
-                    }
-                }
+                //             $scope.countdown = {
+                //                 days: days,
+                //                 hours: hours,
+                //                 minutes: minutes,
+                //                 seconds: seconds
+                //             }
+                //         }, 1000)
+                //     }
+                // }
 
                 if ($scope.item.collections !== undefined) {
                     $scope.item.isCollected = YiServer.isInclude($scope.item.collections.users, $rootScope.param.user_id)

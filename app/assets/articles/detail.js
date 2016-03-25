@@ -8,9 +8,9 @@ angular.module('articles', ['ngSanitize', 'env', 'apps', 'ngDialog', 'YiModule']
 
 
 angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootScope', '$window', '$http', '$timeout', '$env',
-  'appDownload', 'SysConfig', 'findDetails', 'CompareTime', 'ngDialog', 'YiServer',
+  'appDownload', 'SysConfig', 'findDetails','clientDownload', 'CompareTime', 'ngDialog', 'YiServer',
   function ($scope, $rootScope, $window, $http, $timeout, $env, appDownload,
-            SysConfig, findDetails, CompareTime, ngDialog, YiServer) {
+            SysConfig, findDetails,clientDownload, CompareTime, ngDialog, YiServer) {
 
     $window.onscroll =YiServer.scrollUpOrDown;
     $scope.toTop =YiServer.toTop;
@@ -24,6 +24,7 @@ angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootSc
     $scope.compareTime = CompareTime;
     $scope.$env = $env;
     $scope.platform = $env.platform();
+    $scope.clientDownload=clientDownload;
 
     if ($rootScope.param.inClient == "true") {
       $scope.$env.inClient = true;

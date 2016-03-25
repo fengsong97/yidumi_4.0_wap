@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 
     <link rel="stylesheet" href="/css/yidu.css">
+    <link rel="stylesheet" href="/css/yidu_add_160322.css">
+
     <link rel="stylesheet" href="/css/_clientBanner.less">
 
 
@@ -39,10 +41,12 @@
          width="100px" >
 </div>
 
-<div ng-class="{'content-header content-header-translate':scrollUpOrDown ,'content-header ':!scrollUpOrDown}" ng-if="$env.inClient">
-    <div class="content-back" ng-click="toBack()"><a ><i class="iconfont">&#xe601;</i></a></div>
-
-    <div class="content-header-txt"><span ng-click="toTop(0)">轻触回顶部</span></div>
+<div ng-class="{'content-header content-header-translate':scrollUpOrDown ,'content-header ':!scrollUpOrDown}" >
+    <div ng-if="!$env.inClient"  ng-include="'/html/client_banner.html'"></div>
+      
+      <div ng-if="$env.inClient"> <div  class="content-back"  ng-click="toBack()"><a > <i class="iconfont">&#xe601;</i> </a> </div>
+          <div class="content-header-txt"><span ng-click="toTop(0)">轻触回顶部</span></div>
+      </div>
 </div>
 
 <div class="content-cover"><img ng-src="{{item.coverfigure| resource }}"></div>
@@ -69,7 +73,7 @@
     </section>
 </div>
 
-<div class="product-buy"><a ng-click="saleDialog(item.sales)">￥<span ng-bind='item.sales.price' ></span>元购买</a></div>
+<div class="product-buy"><a ng-click="saleDialog(item.sales)">￥<span ng-bind='item.sales.price' style="padding-right: 0"></span>元购买</a></div>
 
 <script language="javascript">
     function secBoard(n) {
@@ -112,13 +116,13 @@
         <!--我的提示-->
         <div class="no-content" ng-show="item.instructions==undefined||item.instructions.length==0">
             <div>opps，这里空空如也~</div>
-            <!--<p>您可以选择以下操作</p>-->
-            <!--<ul>-->
-                <!--<a ng-click="$env.call('toQuestion')">-->
-                    <!--<li><i class="iconfont">&#xe63b;</i></li>-->
-                    <!--<li>提个问题</li>-->
-                <!--</a>-->
-            <!--</ul>-->
+            <p>您可以选择以下操作</p>
+            <ul>
+                <a ng-click="$env.call('toQuestion')">
+                    <li><i class="iconfont">&#xe63b;</i></li>
+                    <li>提个问题</li>
+                </a>
+            </ul>
         </div>
         <!--新闻列表-->
         <div class="news" ng-repeat="one in item.instructions" ng-click="toQuestionDetail(one.id)">
@@ -146,7 +150,7 @@
 
 <footer  ng-class="{'footerTranslateHide':scrollUpOrDown }">
     <ul class="footer-left">
-        <li><a ng-click="saleDialog(item.sales)"><span ng-bind="'￥'+item.sales.price+'元'"></span>购买</a></li>
+        <li><a ng-click="saleDialog(item.sales)">￥<span ng-bind="item.sales.price"></span>元购买</a></li>
     </ul>
     <ul class="footer-right">
         <li><a ng-click="recommend()"><i class="iconfont" ng-style="recommendStyle()">&#xe62c;</i></a></li>
@@ -162,7 +166,7 @@
 <script type="text/javascript" src="/js/lib/angular-sanitize/angular-sanitize.min.js"></script>
 <script type="text/javascript" src="/js/angular-locale_zh-cn.js"></script>
 
-<script type="text/javascript" src="/js/Sysconfig.js"></script>
+<script type="text/javascript" src="/js/SysConfig.js"></script>
 <script type="text/javascript" src="/js/env.js"></script>
 <script type="text/javascript" src="/js/apps.js"></script>
 <script type="text/javascript" src="/js/yiServer.js"></script>

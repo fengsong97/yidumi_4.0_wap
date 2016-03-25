@@ -36,7 +36,7 @@
     <!--})();-->
     <!--</script>-->
 
-        <script type="text/javascript">
+<!--         <script type="text/javascript">
             　　try{
             　　if (top.location.hostname != window.location.hostname) {
             　　　　top.location.href =window.location.href;
@@ -45,7 +45,7 @@
             catch(e){
             　　top.location.href = window.location.href;
             }
-</script>
+</script> -->
 </head>
 <body  >
     <!--<div style="" ng-hide="item.title" >-->
@@ -58,13 +58,15 @@
         right: 0;
         " width="100px">
     </div>
+    
 
-    <div  ng-if="$env.inClient"  ng-class="{'content-header content-header-translate':scrollUpOrDown ,'content-header ':!scrollUpOrDown}">
-        <div class="content-back"  ng-click="toBack()"><a > <i class="iconfont">&#xe601;</i> </a></div>
-        <!--<div class="content-header-txt"><span ng-bind="item.attitudes.score||0" ></span >热度 来自<span-->
-        <!--ng-bind="item.pv||0"></span><span ng-click="toTop()">用户</span>-->
-        <!--</div>-->
-        <div class="content-header-txt"><span ng-click="toTop(0)">轻触回顶部</span></div>
+    <div  ng-class="{'content-header content-header-translate':scrollUpOrDown ,'content-header ':!scrollUpOrDown}">
+      <div ng-if="!$env.inClient"  ng-include="'/html/client_banner.html'"></div>
+      
+      <div ng-if="$env.inClient"> <div  class="content-back"  ng-click="toBack()"><a > <i class="iconfont">&#xe601;</i> </a> </div>
+          <div class="content-header-txt"><span ng-click="toTop(0)">轻触回顶部</span></div>
+      </div>
+      
     </div>
 
     <div class="content-cover"><img ng-src="{{(__.content.header.img || item.coverfigure )| resource}}"></div>

@@ -13,12 +13,12 @@ angular.module('questions').service('questionService', function ($http, $window,
 
 });
 
-angular.module('questions').controller('questions.DetailCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', '$timeout', '$env',
+angular.module('questions').controller('questions.DetailCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', '$timeout','clientDownload', '$env',
     'appDownload', 'SysConfig', 'findDetails', 'CompareTime', 'ngDialog', 'questionService', 'YiServer',
-    function ($scope, $rootScope, $window, $location, $http, $timeout, $env, appDownload,
+    function ($scope, $rootScope, $window, $location, $http, $timeout,clientDownload, $env, appDownload,
               SysConfig, findDetails, CompareTime, ngDialog, questionService, YiServer) {
         $scope.compareTime = CompareTime;
-
+        $scope.clientDownload=clientDownload;
         $window.onscroll =YiServer.scrollUpOrDown;
         $scope.toTop =YiServer.toTop;
         $scope.$env = $env;

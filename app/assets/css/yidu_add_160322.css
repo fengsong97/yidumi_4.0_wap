@@ -211,6 +211,8 @@
     line-height: 170%;
     /* border-left: 1px solid #E5E5E5; */
     margin: 5px;
+    border-top: 5px solid #FDFDFD;   
+    border-bottom: 5px solid #FDFDFD;   
     /* border-right: 1px solid #0099e5; */
 }
 
@@ -263,4 +265,59 @@
     font-size: 1.7em;
     color: #686868;
     line-height: 2.2em;
+}
+
+.client_banner{
+    position: relative;
+  z-index: 100;
+  background: #dcdcdc;
+  padding: 0em 1.5em;
+}
+ .client_banner img, .logo{
+    display: inline-block;
+ }
+.client_banner img {
+    width: 61px;
+    height: 39px;
+    margin-bottom: -6px;
+}
+
+.client_banner .logo .name{
+     font-size: 16px;
+      color: #373737;
+      margin-bottom: 4px;
+}
+.client_banner .logo .desc{
+     font-size: 11px;
+      color: #6a6a6a;
+}
+
+.client_banner .btn{
+    border: 0em;
+    padding: 2px 10px 1px;
+    border-radius: 3px;
+    background: #5387ee;
+    color: #fff;
+    font-size: 13px;
+    margin-top: 11px;
+}.client_banner .pull-right{
+    display: inline-block;
+    float: right;
+    
+}
+.content-header {
+    height: auto
+}
+.content-top{
+    padding-top:  0em
+}
+
+
+.answer-img-txt{
+    overflow: overlay;
+    top: 60%;
+    bottom: 1.5em;
+    position: fixed;
+    margin: 0 5px 0 0;
+    background-color: rgba(255, 255, 255, 1);
 }
