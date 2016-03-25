@@ -170,7 +170,7 @@
                     <article>
                         <img ng-src="{{one.user.avatar | resource}}" err-src="/img/default_avatar.png" ng-click="toUserHome(one.user.id)">
                         <ul>
-                            <li><h1 ng-bind="one.content.user"></h1></li>
+                            <li><h1 ng-bind="0+one.content.user"></h1></li>
                             <li ng-bind="one.createdOn"></li>
                         </ul>
                         <p><a ng-click="attitudeToZan(one);"><i class="iconfont">&#xe62c;</i>{{one.attitudes.count.like || 0}}</a>
