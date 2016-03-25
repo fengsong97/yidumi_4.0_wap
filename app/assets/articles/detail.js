@@ -373,11 +373,11 @@ angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootSc
 
 
 
-    $scope.toUserHome = function () {
+    $scope.toUserHome = function (userId) {
       if($env.readOnlyInHere){
         return
       }
-      $env.call('toUserHome', {"id": $scope.item.user.id})
+      $env.call('toUserHome', {"id": userId})
       //$window.location.href='http://localhost:63342/yidu/www/index.html#/userList/'+$scope.item.user.id
     }
 
