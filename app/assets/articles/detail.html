@@ -196,7 +196,7 @@
                     <li ><p ng-bind="item.comments.count<10?('0'+item.comments.count):(item.comments.count>99?('99+'):(item.comments.count))"></p><a  ng-click="scrollTo('commentScroll')"><i class="iconfont">&#xe602;</i></a></li>
                     <li ng-if="__.smartDevices.length>0"><a ng-click="scrollTo('appOrSmart')"><i class="iconfont">&#xe61d;</i></a></li>
                     <li ng-if="showApps.length>0"><a ng-click="scrollTo('appOrSmart')"><i class="iconfont">&#xe64b;</i></a></li>
-                    <li><a ng-if="$env.inClient" ng-click="openShare(item.title)"><i class="iconfont">&#xe61c; </i></a></li>
+                    <li ng-if="$env.inClient"><a  ng-click="openShare(item.title)"><i class="iconfont">&#xe61c; </i></a></li>
                 </ul>
 
                 <!--<div class="footer-topic" >-->
