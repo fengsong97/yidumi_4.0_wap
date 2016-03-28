@@ -44,10 +44,23 @@ angular.module('apps').factory('appDownload', ['$window', '$env', 'SysConfig', f
       $env.call("iosAppDownload",url)
       return ;
     }
+    if(t == 'client_open' || t == 'client_download' ){
+        $window.location.href='yidumi:';
+
+       
+        setTimeout(function(){
+            $window.location.href='/html/client_download.html'
+        },500)
+        return;
+    }
     var path = (t == 'client_open' || t == 'client_download') ? app.url : "http://itunes.apple.com/cn/app/id" + app.appId;
+
     var url = "";
     url = app.appId ? "http://itunes.apple.com/cn/app/id" + app.appId : (app.apkUrl.indexOf('http') == 0 ? app.apkUrl : SysConfig.resourceBase + "/" + app.apkUrl) + (app.packageName ? '?filename=' + app.packageName + '.apk' : '');
-    $window.location.href = $env.canDownload ? url : '/html/sys_browser.html?t=' + $env.platform() + '_' + (t || 'app_download') + '&url=' + url;
+   
+   $window.location.href = $env.canDownload ? url : '/html/sys_browser.html?t=' + $env.platform() + '_' + (t || 'app_download') + '&url=' + url;
+    // $window.location.href = $env.canDownload ? url : '/html/sys_browser.html?t=' + $env.platform() + '_' + (t || 'app_download') + '&url=' + url;
+  
   };
 }]);
 

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <link rel="stylesheet" href="../css/yidu.css">
     <link rel="stylesheet" href="../css/yidu_add_160322.css">
-    <link rel="stylesheet" href="../css/_clientBanner.less">
+    <!-- <link rel="stylesheet" href="../css/_clientBanner.less"> -->
     <link rel="stylesheet" href="../iconfont/iconfont.css">
     <link rel="stylesheet" href="../css/ngDialog.css">
     <link rel="stylesheet" href="../css/ngDialog-theme-default.css">
@@ -196,9 +196,9 @@ right: 0;" width="100px">
             </section>
             <ul ng-show="!showList" rn-carousel  rn-carousel-index="carouselIndex" rn-carousel-transition="hexagon" rn-carousel-buffered>
                 <li ng-repeat="slide in all_slides ">
-                    <div class="answer-step" ng-hide="$last" ng-init="(slide.p==undefined||slide.p=='')?(showWord=false):(showWord=true)">
+                    <div class="answer-step" ng-hide="$last" ng-init="(slide.p==undefined||slide.p=='')?(showWord=false):(showWord=true)" >
                         <div ng-if="slide.img!==''&&slide.img!==undefined">
-                            <div class="answer-img-txt"  ng-show="showWord" ng-if="slide.p">
+                            <div class="answer-img-txt"  ng-show="showWord" ng-if="slide.p" >
                                 <table style="height:100%;width:100%;position: relative; top: 0em;">
                                     <tr>
                                         <td style="vertical-align:middle;">

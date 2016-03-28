@@ -1098,6 +1098,7 @@ nav ul li a:hover {
     z-index: 700;
 
     -webkit-transition: top 0.5s;
+    -moz-transition: top 0.5s;
 }
 .content-header-translate{
 
@@ -1674,6 +1675,7 @@ footer {
     z-index: 698;
     /*-webkit-transform: translateZ(0);*/
     -webkit-transition:bottom 0.5s ;
+    -moz-transition:bottom 0.5s ;
 }
 .footerTranslateHide {
 

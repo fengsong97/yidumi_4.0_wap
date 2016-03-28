@@ -28,6 +28,14 @@ angular.module('questions').controller('questions.DetailCtrl', ['$scope', '$root
             $env.setInClient(true)
 
         }
+
+        $scope.scrollTo= function (id) {
+          if(document.getElementById(id)){
+            $scope.toTop(document.getElementById(id).offsetTop)
+            $rootScope.scrollUpOrDown=true
+          }
+
+        }
         $scope.platform = $env.platform();
         //获取技能详情
         $rootScope.getArticleDetail = function () {
@@ -614,7 +622,7 @@ $scope.goback= function (goNum) {
                 }).error(function (data) {
                 });
         }
-        $timeout($rootScope.getComment(), 500)
+        // $timeout($rootScope.getComment(), 500)
 //加载更多评论
         $scope.showMoreComment = function () {
             comment_limit = 5 + comment_limit;
