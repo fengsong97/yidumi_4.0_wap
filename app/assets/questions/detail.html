@@ -80,7 +80,8 @@ right: 0;" width="100px">
         <div ng-if="$first" class="answer-list-a" ng-repeat="one in answersList.data" >
             <img ng-src="{{one.user.avatar|resource}}" err-src="../img/default_avatar.png"  ng-click="toUserHome(one.user.id)">
             <span>优选</span>
-            <h1 ng-bind="one.user.nickName.length>8?(one.user.nickName|limitTo:8)+'...':one.user.nickName"></h1>
+            <!-- <h1 ng-bind="one.user.nickName.length>8?(one.user.nickName|limitTo:8)+'...':one.user.nickName+()"></h1> -->
+            <h1 ng-bind="one.user.nickName.length>8?(one.user.nickName|limitTo:8)+'...':(one.user.nickName.length==0?'昵称':one.user.nickName)"></h1>
             <p>
             <!-- ng-click="zanOrCai(item_answer,'yes')"><i class="iconfont" ng-style="zanOrCaiedStyle(item_answer.viewpoint.canExpress,'yes')"> -->
                 <a ng-click="zanOrCai(one,'yes')" ng-style="zanOrCaiedStyle(one.viewpoint.canExpress,'yes')"><i class="iconfont" ng-style="zanOrCaiedStyle(one.viewpoint.canExpress,'yes')">&#xe649;</i>{{one.viewpoint.isSupport.yes||0}}</a>

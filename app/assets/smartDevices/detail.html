@@ -53,7 +53,7 @@
 
 <ul class="recommend-user">
     <li ng-repeat="one in item.recommends.avatars | limitTo : 6">
-        <img ng-src="{{one.avatar|resource}}" err-src="/img/default_avatar.png">
+        <img ng-src="{{one.avatar|resource}}" err-src="/img/default_avatar.png" ng-click="toUserHome(item.user.id)">
     </li>
     <li ng-bind="(item.recommends.count ||0)+'位用户推荐'"></li>
 

@@ -14,7 +14,7 @@ angular.module('env').service("$env",  ['$window', '$document', '$timeout','$loc
     var inWeixin = /MicroMessenger/i.test(ua);
     //inWeibo = /weibo/i.test(ua),
     var inClient = /yidumi/i.test(ua);
-    var readOnlyInHere=($location.search()._token==undefined)&&($location.search().user_id==undefined);
+    var readOnlyInHere=!($location.search().inClient=='true');
 
     function platform() {
         return isIOS ? 'ios' : (isAndroid ? 'android' : 'web');

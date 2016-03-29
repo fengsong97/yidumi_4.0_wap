@@ -74,7 +74,7 @@
     <div class="news-title">
         <h1 ng-bind="::item.title"></h1>
         <ul class="news-author">
-            <li><img ng-src="{{item.user.avatar | resource}}" err-src="/img/default_avatar.png" ng-click="toUserHome()"></li>
+            <li><img ng-src="{{item.user.avatar | resource}}" err-src="/img/default_avatar.png" ng-click="toUserHome(item.user.id)"></li>
             <li ng-bind="::item.user.nickName"></li>
             <li class="author-interact"><a  ng-click="subscribeAuthor()" ng-bind="item.user.hasSub==true?'取消关注':'关注TA'"></a><a ng-if="!$env.readOnlyInHere" ng-click="$env.call('toQuestion')">向TA提问</a></li>
         </ul>
