@@ -18,7 +18,10 @@
   "homepage": "https://github.com/fengsong97/yidumi_4.0_wap#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-obfuscate": "^0.2.9",
+    "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.5.3",
-    "gulp-concat": "^2.6.0"
+    "gulp-watch": "^4.3.5"
   }
 }

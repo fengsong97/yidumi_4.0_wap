@@ -328,22 +328,15 @@ right: 0;" width="100px">
 <script type="text/javascript" src="../js/angular-locale_zh-cn.js"></script>
 <script src="/js/angular-touch.min.js"></script>
 <script src="/js/angular-carousel.min.js"></script>
-<script type="text/javascript" src="../js/SysConfig.js"></script>
+<!-- <script type="text/javascript" src="../js/SysConfig.js"></script>
 <script type="text/javascript" src="../js/env.js"></script>
 <script type="text/javascript" src="../js/apps.js"></script>
 <script type="text/javascript" src="../js/yiServer.js"></script>
-<!--<script type="text/javascript" src="../js/jquery.min.js"></script>-->
-<!--<script type="text/javascript" src="../js/jquery.qrcode.min.js"></script>-->
-<script type="text/javascript" src="../questions/detail.js"></script>
-<!--<script>-->
-<!--var _hmt = _hmt || [];-->
-<!--(function() {-->
-<!--var hm = document.createElement("script");-->
-<!--hm.src = "//hm.baidu.com/hm.js?c8beddd552fa1406344022f03f7224e4";-->
-<!--var s = document.getElementsByTagName("script")[0];-->
-<!--s.parentNode.insertBefore(hm, s);-->
-<!--})();-->
-<!--</script>-->
+<script type="text/javascript" src="../questions/detail.js"></script> -->
+
+<script type="text/javascript" src="../questions/detail.all.min.js"></script>
+
+
 <script id="recursion" type="text/ng-template">
     <div ng-repeat="one2 in talksOnOneComment2" class="topic-floor" ng-style="louStyle(one2)">
         <div ng-if="one2.child[0]" ng-init="talksOnOneComment2=one2.child" ng-include="'recursion'"></div>

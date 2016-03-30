@@ -7,11 +7,11 @@ angular.module('questions', ['ngSanitize', 'SysConfig', 'env', 'apps', 'ngDialog
 }]);
 
 
-angular.module('questions').service('questionService', function ($http, $window,$rootScope) {
+angular.module('questions').service('questionService', ['$http', '$window','$rootScope',function ($http, $window,$rootScope) {
     $rootScope.rootShow={};
     $rootScope.rootShow.num=1;
 
-});
+}]);
 
 angular.module('questions').controller('questions.DetailCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', '$timeout','clientDownload', '$env',
     'appDownload', 'SysConfig', 'findDetails', 'CompareTime', 'ngDialog', 'questionService', 'YiServer',
