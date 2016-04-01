@@ -109,9 +109,6 @@
     </section>
     <div class="ash-bg"></div>
     <div class="content-title" ng-if="showApps.length>0||__.smartDevices.length>0" id="appOrSmart">App&产品：</div>
-    <!--<div class="content-title" ng-if="showApps.length>0||__.smartDevices.length>0"><span>应用&产品</span>-->
-    <!--</div>-->
-
     <article class="content-link" ng-if="showApps.length>0||__.smartDevices.length>0">
         <div class="content-app" ng-repeat="app in showApps">
             <a ng-click="openYingYong(app)">
@@ -129,7 +126,7 @@
                 <img ng-src="{{device.icon | resource}}" err-src="/img/default_device.png">
 
                 <h1 ng-bind="::device.name | stringFilter:5"></h1>
-                <p ng-bind="'￥' +device.sales.price"></p>
+                <p ng-bind="device.sales.price | currency: '￥'"></p>
             </a>
         </div>
 

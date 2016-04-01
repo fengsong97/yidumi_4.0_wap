@@ -44,6 +44,26 @@ angular.module('smartDevices').controller('smartDevices.DetailCtrl', ['$scope', 
 
                         $scope.item.tagNames.push(value.name)
                     })
+
+                if(!$scope.item.apps){
+                        $scope.item.apps={
+                            'android':[],
+                            'ios':[]    
+                        }
+                }
+
+                 if ($env.isAndroid ) {
+                        $scope.showApps=$scope.item.apps["android"]?$scope.item.apps["android"]:[];
+                }else if( $env.isIOS) {
+                        $scope.showApps=$scope.item.apps["ios"]?$scope.item.apps["ios"]:[];
+                }else{
+                       $scope.showApps= ($scope.item.apps["android"]?$scope.item.apps["android"]:[]).concat($scope.item.apps["ios"]?$scope.item.apps["ios"]:[]);
+                }
+         
+
+
+
+
                     // if ($scope.item.campaigns.count > 0) {
                     //     if ($scope.item.campaigns.items[0].status.status == 2) {
 
