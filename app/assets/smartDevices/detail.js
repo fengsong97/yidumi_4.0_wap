@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('smartDevices', ['ngSanitize','SysConfig', 'env', 'apps', 'ngDialog', 'YiModule'], ['$locationProvider', '$sceDelegateProvider', function ($locationProvider, $sceDelegateProvider) {
+angular.module('smartDevices', ['ngSanitize', 'SysConfig', 'env', 'apps', 'ngDialog', 'YiModule'], ['$locationProvider', '$sceDelegateProvider', function($locationProvider, $sceDelegateProvider) {
     $locationProvider.html5Mode(true);
     $sceDelegateProvider.resourceUrlWhitelist(['self', '**']);
 }]);
@@ -8,14 +8,14 @@ angular.module('smartDevices', ['ngSanitize','SysConfig', 'env', 'apps', 'ngDial
 
 
 
-angular.module('smartDevices').controller('smartDevices.DetailCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', '$timeout', 'clientDownload','$env',
+angular.module('smartDevices').controller('smartDevices.DetailCtrl', ['$scope', '$rootScope', '$window', '$location', '$http', '$timeout', 'clientDownload', '$env',
     'appDownload', 'SysConfig', 'findDetails', 'ngDialog', '$interval', 'YiServer',
-    function ($scope, $rootScope, $window, $location, $http, $timeout,clientDownload, $env, appDownload,
-              SysConfig, findDetails, ngDialog, $interval, YiServer) {
+    function($scope, $rootScope, $window, $location, $http, $timeout, clientDownload, $env, appDownload,
+        SysConfig, findDetails, ngDialog, $interval, YiServer) {
 
-        $window.onscroll =YiServer.scrollUpOrDown;
-        $scope.toTop =YiServer.toTop;
-        $scope.clientDownload=clientDownload;   
+        $window.onscroll = YiServer.scrollUpOrDown;
+        $scope.toTop = YiServer.toTop;
+        $scope.clientDownload = clientDownload;
         $scope.$env = $env;
 
         $scope.platform = $env.platform();
@@ -26,13 +26,13 @@ angular.module('smartDevices').controller('smartDevices.DetailCtrl', ['$scope', 
         }
 
         $scope.countdown = {}
-        //获取详情
-        $rootScope.getArticleDetail = function () {
-            YiServer.getDetail("devices", $rootScope.param).then(function (data) {
+            //获取详情
+        $rootScope.getArticleDetail = function() {
+            YiServer.getDetail("devices", $rootScope.param).then(function(data) {
                 $scope.item = data;
 
-                YiServer.getInstructions($rootScope.param,5).then(function (instructions) {
-                    $scope.item.instructions=instructions.data.results;
+                YiServer.getInstructions($rootScope.param, 5).then(function(instructions) {
+                    $scope.item.instructions = instructions.data.results;
                 })
 
 
@@ -40,12 +40,12 @@ angular.module('smartDevices').controller('smartDevices.DetailCtrl', ['$scope', 
 
 
                 $scope.item.tagNames = []
-                angular.forEach($scope.item.tags, function (value, key) {
-                    
-                    $scope.item.tagNames.push(value.name)
-                })
-                // if ($scope.item.campaigns.count > 0) {
-                //     if ($scope.item.campaigns.items[0].status.status == 2) {
+                angular.forEach($scope.item.tags, function(value, key) {
+
+                        $scope.item.tagNames.push(value.name)
+                    })
+                    // if ($scope.item.campaigns.count > 0) {
+                    //     if ($scope.item.campaigns.items[0].status.status == 2) {
 
                 //         $scope.interval = $interval(function () {
 
@@ -85,13 +85,13 @@ angular.module('smartDevices').controller('smartDevices.DetailCtrl', ['$scope', 
 
 
                 $scope.item.recommends.avatars = [];
-                angular.forEach($scope.item.recommends == undefined ? [] : $scope.item.recommends.users, function (value, key) {
+                angular.forEach($scope.item.recommends == undefined ? [] : $scope.item.recommends.users, function(value, key) {
                     $scope.item.recommends.avatars.push(value)
                 })
             })
 
         }
-        $scope.toQuestionDetail= function (id) {
+        $scope.toQuestionDetail = function(id) {
             if ($rootScope.isVisitor == true && $env.inClient !== true) {
                 $rootScope.login();
                 return;
@@ -102,20 +102,20 @@ angular.module('smartDevices').controller('smartDevices.DetailCtrl', ['$scope', 
         }
 
         //应用Dialog
-        $scope.openYingYong= function (data) {
+        $scope.openYingYong = function(data) {
             YiServer.appDownloadDialog(data)
         }
 
         //酷屏Dialog
-        $scope.openKuPin = function (data) {
+        $scope.openKuPin = function(data) {
             YiServer.smartDialog(data)
         }
 
 
 
         //分享Dialog
-        $scope.openShare = function (title) {
-            YiServer.shareStatistics($rootScope.param,"articles",3)
+        $scope.openShare = function(title) {
+            YiServer.shareStatistics($rootScope.param, "articles", 3)
             if ($env.isAndroid && $env.inClient) {
                 $env.call("toShare")
                 return
@@ -126,87 +126,87 @@ angular.module('smartDevices').controller('smartDevices.DetailCtrl', ['$scope', 
         }
 
 
-//收藏这篇文章
-        $scope.collecteAticle = function () {
+        //收藏这篇文章
+        $scope.collecteAticle = function() {
             if ($rootScope.isVisitor == true && $env.inClient !== true) {
                 $rootScope.login();
                 return;
             }
-            
+
             if ($scope.item.isCollected == undefined || $scope.item.isCollected == false) {
-                YiServer.collecteType("devices", $rootScope.param).then(function (data) {
+                YiServer.collecteType("devices", $rootScope.param).then(function(data) {
                     $scope.item.isCollected = true;
-                    $env.call('toToastCallBack', {"toast": "收藏成功"});
+                    $env.call('toToastCallBack', { "toast": "收藏成功" });
                 })
             } else {
-                YiServer.unCollecteType("devices", $rootScope.param).then(function (data) {
+                YiServer.unCollecteType("devices", $rootScope.param).then(function(data) {
                     $scope.item.isCollected = false;
-                    $env.call('toToastCallBack', {"toast": "取消收藏"});
+                    $env.call('toToastCallBack', { "toast": "取消收藏" });
                 })
             }
         };
 
-        $scope.collectionStyle = function () {
-            if ($scope.item == undefined) {
-                $scope.item = {
-                    isCollected: false
+        $scope.collectionStyle = function() {
+                if ($scope.item == undefined) {
+                    $scope.item = {
+                        isCollected: false
+                    }
                 }
-            }
-            if ($scope.item.isCollected) {
-                return {'color': '#0099E5'}
-            }
+                if ($scope.item.isCollected) {
+                    return { 'color': '#0099E5' }
+                }
 
-        }
-//推荐
-        $scope.recommend = function () {
+            }
+            //推荐
+        $scope.recommend = function() {
             if ($rootScope.isVisitor == true && $env.inClient !== true) {
                 $rootScope.login();
                 return;
             }
             if ($scope.item.isRecommended == undefined || $scope.item.isRecommended == false) {
                 $http.post($rootScope.param.base + '/v3/users/me/devices/recommends?', {}, {
-                        params: {
-                            id: $rootScope.param.id,
-                            _client: 8,
-                            _cver: '28828',
-                            _token: $rootScope.param._token
-                        },
-                        headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-                    }
-                ).success(function (data) {
-                        $scope.item.isRecommended = true;
-                    });
+                    params: {
+                        id: $rootScope.param.id,
+                        _client: 8,
+                        _cver: '28828',
+                        _token: $rootScope.param._token
+                    },
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+                }).success(function(data) {
+                    $scope.item.isRecommended = true;
+                });
             } else {
-                $env.call('toToastCallBack', {"toast": "您已经推荐过了"});
+                $env.call('toToastCallBack', { "toast": "您已经推荐过了" });
             }
         };
-        $scope.recommendStyle = function () {
+        $scope.recommendStyle = function() {
             if ($scope.item == undefined) {
                 $scope.item = {
                     isRecommended: false
                 }
             }
             if ($scope.item.isRecommended) {
-                return {'color': '#0099E5'}
+                return { 'color': '#0099E5' }
             }
 
         }
-        $scope.isVisitorFn = function () {
+        $scope.isVisitorFn = function() {
             if ($rootScope.isVisitor == true && $env.inClient !== true) {
 
             }
 
         }
 
-//返回到客户端的方法
-        $scope.toBack = function () {
+        //返回到客户端的方法
+        $scope.toBack = function() {
             if ($rootScope.param.isCanBack == "true") {
-                javascript:history.go(-1)
-            } else {
+                javascript: history.go(-1)
+            }
+            else {
                 if ($scope.$env.inClient) {
-                    $env.call('toBackCallback',{nums:2});
+                    $env.call('toBackCallback', { nums: 2 });
                 } else {
-                    javascript:history.go(-1)
+                    javascript: history.go(-1)
                 }
             }
 
@@ -230,33 +230,32 @@ angular.module('smartDevices').controller('smartDevices.DetailCtrl', ['$scope', 
         $timeout(initStyle, 100);
 
         //购买Dialog
-        $scope.saleDialog = function (data) {
+        $scope.saleDialog = function(data) {
 
             ngDialog.open({
                 id: 'saleDialog',
                 template: 'saleDialog',
                 className: 'ngdialog-theme-plain',
-                controller: ['$scope', function ($scope) {
-                    $scope.toAddress = function (url) {
-                        YiServer.smartDeviceStatistics($rootScope.param, $rootScope.param.id, 3, 2).then(function (data) {
-                        })
+                controller: ['$scope', function($scope) {
+                    $scope.toAddress = function(url) {
+                        YiServer.smartDeviceStatistics($rootScope.param, $rootScope.param.id, 3, 2).then(function(data) {})
                         if (url == undefined) {
-                            $env.call("appDownload",{url:"http://www.taobao.com"})
-                            //$window.open("http://www.taobao.com")
+                            $env.call("appDownload", { url: "http://www.taobao.com" })
+                                //$window.open("http://www.taobao.com")
                             return
                         }
-                        $env.call("appDownload",{url:(url.indexOf('http') == 0 ? url : "http://" + url)})
-                        //$window.open()
+                        $env.call("appDownload", { url: (url.indexOf('http') == 0 ? url : "http://" + url) })
+                            //$window.open()
                     }
                 }],
-                data: {'saleData': data},
+                data: { 'saleData': data },
                 showClose: false
 
             });
         }
 
         if ($rootScope.param._token == undefined) {
-            
+
             //如果 token为空 则  注册游客登录
             //判断 localStrage 里是否有 token 如果有
             if ($window.localStorage.getItem("login_user_token") != undefined) {
@@ -267,8 +266,8 @@ angular.module('smartDevices').controller('smartDevices.DetailCtrl', ['$scope', 
 
                 //获取登录用户的信息
                 YiServer.getUserDetail($rootScope.param, $rootScope.param.user_id)
-                    .then(function (data) {
-                        if (data.data.type == 1 && $env.inClient != true ) {
+                    .then(function(data) {
+                        if (data.data.type == 1 && $env.inClient != true) {
                             $rootScope.isVisitor = true;
 
                         }
@@ -277,7 +276,7 @@ angular.module('smartDevices').controller('smartDevices.DetailCtrl', ['$scope', 
 
             } else {
                 // 如果没有,则注册用户
-                YiServer.toSignFree($rootScope.param).then(function (data) {
+                YiServer.toSignFree($rootScope.param).then(function(data) {
                     $rootScope.getArticleDetail();
                     $rootScope.isVisitor = true;
                 })
@@ -287,14 +286,15 @@ angular.module('smartDevices').controller('smartDevices.DetailCtrl', ['$scope', 
         }
 
         //登录
-        $rootScope.login = function () {
-            ngDialog.close();
+        $rootScope.login = function() {
+                ngDialog.close();
 
-            YiServer.loginDialog()
-        }
-        //注册
-        $rootScope.sign = function () {
+                YiServer.loginDialog()
+            }
+            //注册
+        $rootScope.sign = function() {
             ngDialog.close();
             YiServer.signDialog()
         }
-    }]);
+    }
+]);

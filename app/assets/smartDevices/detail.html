@@ -1,81 +1,69 @@
 <!DOCTYPE html>
 <html ng-app="smartDevices" ng-controller="smartDevices.DetailCtrl">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title ng-bind="::item.name"></title>
     <base href="/">
-    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <link rel="stylesheet" href="/css/yidu.css">
     <link rel="stylesheet" href="/css/yidu_add_160322.css">
-
     <!-- <link rel="stylesheet" href="/css/_clientBanner.less"> -->
-
-
     <link rel="stylesheet" href="/iconfont/iconfont.css">
     <link rel="stylesheet" href="/css/ngDialog.css">
     <link rel="stylesheet" href="/css/ngDialog-theme-default.css">
     <link rel="stylesheet" href="/css/ngDialog-theme-plain.css">
-
-
-
     <script>
-        var _hmt = _hmt || [];
-        (function() {
-            var hm = document.createElement("script");
-            hm.src = "//hm.baidu.com/hm.js?c8beddd552fa1406344022f03f7224e4";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?c8beddd552fa1406344022f03f7224e4";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
     </script>
 </head>
-<body >
-<div style="background-color: #fefdff; position: absolute;height: 150%;width: 100%;z-index: 699;max-width: 600px;" ng-hide="item.name" >
-    <img src="/img/loadingStanding.gif" style="display: block;margin: auto;
+
+<body>
+    <div style="background-color: #fefdff; position: absolute;height: 150%;width: 100%;z-index: 699;max-width: 600px;" ng-hide="item.name">
+        <img src="/img/loadingStanding.gif" style="display: block;margin: auto;
                                                                 position: fixed;
                                                                 top: 200px;
                                                                 left: 0;
                                                                 /*bottom: 0;*/
-                                                                right: 0;"
-                                                                 width="100px" >
-</div>
-
-<div ng-class="{'content-header content-header-translate':scrollUpOrDown ,'content-header ':!scrollUpOrDown}" >
-    <div ng-if="!$env.inClient"  ng-include="'/html/client_banner.html'"></div>
-      
-      <div ng-if="$env.inClient"> <div  class="content-back"  ng-click="toBack()"><a > <i class="iconfont">&#xe601;</i> </a> </div>
-          <div class="content-header-txt"><span ng-click="toTop(0)">轻触回顶部</span></div>
-      </div>
-</div>
-
-<div class="content-cover"><img ng-src="{{item.coverfigure| resource }}"></div>
-
-<ul class="recommend-user">
-    <li ng-repeat="one in item.recommends.avatars | limitTo : 6">
-        <img ng-src="{{one.avatar|resource}}" err-src="/img/default_avatar.png" ng-click="toUserHome(item.user.id)">
-    </li>
-    <li ng-bind="(item.recommends.count ||0)+'位用户推荐'"></li>
-
-</ul>
-
-<div class="content-top">
-    <h1 ng-bind="item.name"></h1>
-    <section>
-        <ul class="content-top-left">
-
-            <li ng-repeat="one in item.tagNames" style="margin: 0 10px 0 0;" > {{one}}</li>
-        </ul>
-        <ul class="content-top-right">
-            <li ng-bind="'购买'+(item.sales.count||0)"></li>
-            <li ng-bind="'收藏'+(item.collections.count ||0)"></li>
-        </ul>
-    </section>
-</div>
-
-<div class="product-buy"><a ng-click="saleDialog(item.sales)">￥<span ng-bind='item.sales.price' style="padding-right: 0"></span>元购买</a></div>
-
-<script language="javascript">
+                                                                right: 0;" width="100px">
+    </div>
+    <div ng-class="{'content-header content-header-translate':scrollUpOrDown ,'content-header ':!scrollUpOrDown}">
+        <div ng-if="!$env.inClient" ng-include="'/html/client_banner.html'"></div>
+        <div ng-if="$env.inClient">
+            <div class="content-back" ng-click="toBack()">
+                <a> <i class="iconfont">&#xe601;</i> </a>
+            </div>
+            <div class="content-header-txt"><span ng-click="toTop(0)">轻触回顶部</span></div>
+        </div>
+    </div>
+    <div class="content-cover"><img ng-src="{{item.coverfigure| resource }}"></div>
+    <ul class="recommend-user">
+        <li ng-repeat="one in item.recommends.avatars | limitTo : 6">
+            <img ng-src="{{one.avatar|resource}}" err-src="/img/default_avatar.png" ng-click="toUserHome(item.user.id)">
+        </li>
+        <li ng-bind="(item.recommends.count ||0)+'位用户推荐'"></li>
+    </ul>
+    <div class="content-top">
+        <h1 ng-bind="item.name"></h1>
+        <section>
+            <ul class="content-top-left">
+                <li ng-repeat="one in item.tagNames" style="margin: 0 10px 0 0;"> {{one}}</li>
+            </ul>
+            <ul class="content-top-right">
+                <li ng-bind="'购买'+(item.sales.count||0)"></li>
+                <li ng-bind="'收藏'+(item.collections.count ||0)"></li>
+            </ul>
+        </section>
+    </div>
+    <div class="product-buy"><a ng-click="saleDialog(item.sales)">￥<span ng-bind='item.sales.price' style="padding-right: 0"></span>元购买</a></div>
+    <script language="javascript">
     function secBoard(n) {
         for (var i = 1; i < 3; i++) {
             eval("document.getElementById('cl0" + i + "').className='s02'");
@@ -84,95 +72,79 @@
         eval("document.getElementById('cl0" + n + "').className='s01'");
         eval("tbx0" + n + ".style.display='block'");
     }
-</script>
-<ul class="product-tab">
-    <li id="cl01" class="s01" onClick="secBoard(1);" style="cursor:hand">详情</li>
-    <li id="cl02" class="s02" onClick="secBoard(2);" style="cursor:hand" >使用说明书</li>
-    <!--<li id="cl03" class="s02" onClick="secBoard(3);" style="cursor:hand" ng-if="false">话题</li>-->
-    <!--<li id="cl04" class="s02" onClick="secBoard(4);" style="cursor:hand" ng-if="false">试用报告</li>-->
-</ul>
-
-<div class="product-content">
-
-    <div id="tbx01" class="content-txt">
-        <p ng-if="!item.introduceIsArray" ng-bind-html="::item.introduce"></p>
-
-        <div ng-if="item.introduceIsArray" ng-repeat="section in item.introduce">
-
-            <p><img ng-src="{{section.img | resource}}" ng-if="section.img"></p>
-            <!--<video ng-if="section.video" ng-attr-poster="{{section.video.poster}}" controls width="100%">-->
+    </script>
+    <ul class="product-tab">
+        <li id="cl01" class="s01" onClick="secBoard(1);" style="cursor:hand">详情</li>
+        <li id="cl02" class="s02" onClick="secBoard(2);" style="cursor:hand">使用说明书</li>
+        <!--<li id="cl03" class="s02" onClick="secBoard(3);" style="cursor:hand" ng-if="false">话题</li>-->
+        <!--<li id="cl04" class="s02" onClick="secBoard(4);" style="cursor:hand" ng-if="false">试用报告</li>-->
+    </ul>
+    <div class="product-content">
+        <div id="tbx01" class="content-txt">
+            <p ng-if="!item.introduceIsArray" ng-bind-html="::item.introduce"></p>
+            <div ng-if="item.introduceIsArray" ng-repeat="section in item.introduce">
+                <p><img ng-src="{{section.img | resource}}" ng-if="section.img"></p>
+                <!--<video ng-if="section.video" ng-attr-poster="{{section.video.poster}}" controls width="100%">-->
                 <!--<source ng-repeat="source in section.video.sources" ng-src="{{source.src | resource}}"-->
-                        <!--ng-attr-type="{{source.type}}"/>-->
-            <!--</video>-->
-            <div class="embed" ng-if="section.embed" bind-html-unsafe="section.embed"></div>
-            <p ng-bind-html="::section.p" ng-if="section.p"></p>
-
+                <!--ng-attr-type="{{source.type}}"/>-->
+                <!--</video>-->
+                <div class="embed" ng-if="section.embed" bind-html-unsafe="section.embed"></div>
+                <p ng-bind-html="::section.p" ng-if="section.p"></p>
+            </div>
         </div>
-
-    </div>
-
-    <div style="display:none" id="tbx02">
-
-        <!--我的提示-->
-        <div class="no-content" ng-show="item.instructions==undefined||item.instructions.length==0">
-            <div>opps，这里空空如也~</div>
-            <p>您可以选择以下操作</p>
-            <ul>
-                <a ng-click="$env.call('toQuestion')">
-                    <li><i class="iconfont">&#xe63b;</i></li>
-                    <li>提个问题</li>
-                </a>
-            </ul>
-        </div>
-        <!--新闻列表-->
-        <div class="news" ng-repeat="one in item.instructions" ng-click="toQuestionDetail(one.id)">
-            <section>
-                <h1><a >{{one.title}}</a></h1>
-
-                <div class="news-more">
-                    <ul ng-if="one.answers">
-                        <li>有新回答</li>
-                        <li><img src="{{one.answers.newestAnswer.avatar |resource}}" err-src="../img/default_avatar.png"></li>
-                    </ul>
-                    <div><span ng-repeat="oneTag in one.tag">{{oneTag}}</span> </div>
-                    <p>回答{{one.answers.count||0}} 同问{{one.answers.anrs||0}}</p>
+        <div style="display:none" id="tbx02">
+            <!--我的提示-->
+            <div class="no-content" ng-show="item.instructions==undefined||item.instructions.length==0">
+                <div>opps，这里空空如也~</div>
+                <p>您可以选择以下操作</p>
+                <ul>
+                    <a ng-click="$env.call('toQuestion')">
+                        <li><i class="iconfont">&#xe63b;</i></li>
+                        <li>提个问题</li>
+                    </a>
+                </ul>
+            </div>
+            <!--新闻列表-->
+            <div class="news" ng-repeat="one in item.instructions" ng-click="toQuestionDetail(one.id)">
+                <section>
+                    <h1><a >{{one.title}}</a></h1>
+                    <div class="news-more">
+                        <ul ng-if="one.answers">
+                            <li>有新回答</li>
+                            <li><img src="{{one.answers.newestAnswer.avatar |resource}}" err-src="../img/default_avatar.png"></li>
+                        </ul>
+                        <div><span ng-repeat="oneTag in one.tag">{{oneTag}}</span> </div>
+                        <p>回答{{one.answers.count||0}} 同问{{one.answers.anrs||0}}</p>
+                    </div>
+                </section>
+                <div>
+                    <a><img height="219px" ng-src="{{one.coverfigure |resource}}"></a>
                 </div>
-            </section>
-            <div><a ><img height="219px" ng-src="{{one.coverfigure |resource}}"></a></div>
+            </div>
         </div>
-
     </div>
-
-</div>
-
-
-<div class="end" ></div>
-
-<footer  ng-class="{'footerTranslateHide':scrollUpOrDown }">
-    <ul class="footer-left">
-        <li><a ng-click="saleDialog(item.sales)">￥<span ng-bind="item.sales.price"></span>元购买</a></li>
-    </ul>
-    <ul class="footer-right">
-        <li><a ng-click="recommend()"><i class="iconfont" ng-style="recommendStyle()">&#xe62c;</i></a></li>
-        <li><a ng-click="collecteAticle()"><i class="iconfont" ng-style="collectionStyle()">&#xe61e;</i></a></li>
-        <li ng-if="$env.inClient"><a ng-click="openShare(item.name)"><i class="iconfont">&#xe61c;</i></a></li>
-    </ul>
-</footer>
-
+    <div class="end"></div>
+    <footer ng-class="{'footerTranslateHide':scrollUpOrDown }">
+        <ul class="footer-left">
+            <li><a ng-click="saleDialog(item.sales)">￥<span ng-bind="item.sales.price"></span>元购买</a></li>
+        </ul>
+        <ul class="footer-right">
+            <li><a ng-click="recommend()"><i class="iconfont" ng-style="recommendStyle()">&#xe62c;</i></a></li>
+            <li><a ng-click="collecteAticle()"><i class="iconfont" ng-style="collectionStyle()">&#xe61e;</i></a></li>
+            <li ng-if="$env.inClient"><a ng-click="openShare(item.name)"><i class="iconfont">&#xe61c;</i></a></li>
+        </ul>
+    </footer>
 </body>
 <script type="text/javascript" src="/js/lib/angular/angular.min.js"></script>
 <script type="text/javascript" src="/js/lib/ngDialog.min.js"></script>
 <script type="text/javascript" src="/js/lib/angular-sanitize/angular-sanitize.min.js"></script>
 <script type="text/javascript" src="/js/angular-locale_zh-cn.js"></script>
-
-<!-- <script type="text/javascript" src="/js/SysConfig.js"></script>
+<script type="text/javascript" src="/js/SysConfig.js"></script>
 <script type="text/javascript" src="/js/env.js"></script>
 <script type="text/javascript" src="/js/apps.js"></script>
 <script type="text/javascript" src="/js/yiServer.js"></script>
-<script type="text/javascript" src="/smartDevices/detail.js"></script> -->
-
-<script type="text/javascript" src="/smartDevices/detail.all.min.js"></script>
-
+<script type="text/javascript" src="/smartDevices/detail.js"></script>
+<!-- <script type="text/javascript" src="/smartDevices/detail.all.min.js"></script> -->
 <script id="saleDialog" type="text/ng-template">
     <div class="tanchu-content">
         <div class="tanchu-top">
@@ -193,4 +165,5 @@
     </div>
 </script>
 <script type="text/javascript" src="/js/notie.js"></script>
+
 </html>

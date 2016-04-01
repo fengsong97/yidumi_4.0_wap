@@ -1,16 +1,17 @@
-<div class="tanchu-content">
-    <div class="tanchu-top">
-        <div class="tanchu-title">¹ºÂòÁ´½Ó</div>
-        <div class="tanchu-btn"><a ng-click='closeThisDialog()'><i class="iconfont">&#xe604;</i></a></div>
+    <div class="tanchu-content">
+        <div class="tanchu-top">
+            <div class="tanchu-title">è´­ä¹°é“¾æ¥</div>
+            <div class="tanchu-btn"><a ng-click='closeThisDialog()'><i class="iconfont">&#xe604;</i></a></div>
+        </div>
+        <ul class="buy-link">
+            <li ng-repeat=" one in ngDialogData.saleData.address">
+                <i class="iconfont" ng-if="$first">&#xe62c;</i>
+                <!--<a ng-href="http://{{one.url}}">{{one.name || "è´­ä¹°åœ°å€"+$index}} ï¿¥2100å…ƒ</a>-->
+                <a ng-click="toAddress(one.url)">{{one.name || "è´­ä¹°åœ°å€"+$index}} </a>
+            </li>
+            <li ng-if="ngDialogData.saleData.address.length==0">
+                <i class="iconfont" ng-if="$first">&#xe62c;</i>
+                <a ng-click="toAddress(one.url)">æš‚æ— åœ°å€ </a>
+            </li>
+        </ul>
     </div>
-    <ul class="buy-link">
-        <li ng-repeat=" one in ngDialogData.saleData.address">
-            <i class="iconfont" ng-if="$first">&#xe62c;</i>
-            <a ng-href="http://{{one.url}}">{{one.name || "¹ºÂòµØÖ·"+$index}} £¤2100Ôª</a>
-        </li>
-        <li ng-if="ngDialogData.saleData.address.length==0">
-            <i class="iconfont" ng-if="$first">&#xe62c;</i>
-            <a ng-href="http://www.taobao.com">ÌÔ±¦ £¤2100Ôª</a>
-        </li>
-    </ul>
-</div>
