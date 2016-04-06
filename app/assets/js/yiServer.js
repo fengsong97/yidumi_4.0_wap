@@ -1,8 +1,8 @@
 /**
  * Created by HOME on 2016/1/13.
  */
-angular.module('YiModule', ['env','SysConfig']);
-angular.module('YiModule').directive('errSrc', function () {
+var YiModule=angular.module('YiModule', ['env','SysConfig']);
+YiModule.directive('errSrc', function () {
     return {
         link: function (scope, element, attrs) {
             if (attrs.ngSrc == "" || attrs.ngSrc == undefined) {
@@ -16,14 +16,14 @@ angular.module('YiModule').directive('errSrc', function () {
         }
     };
 })
-angular.module('YiModule').directive('focus', function () {
+YiModule.directive('focus', function () {
     return function (scope, element, attrs) {
         attrs.$observe('focus', function (newValue) {
             newValue === 'true' && element[0].focus();
         });
     }
 });
-angular.module('YiModule').directive('sectionScroll', ['$window', function ($window) {
+YiModule.directive('sectionScroll', ['$window', function ($window) {
     return function (scope, body) {
 
         var headerImg = $window.document.querySelector('.header-img-container'),
@@ -35,7 +35,7 @@ angular.module('YiModule').directive('sectionScroll', ['$window', function ($win
         });
     };
 }]);
-angular.module('YiModule').directive('bindHtmlUnsafe', function () {
+YiModule.directive('bindHtmlUnsafe', function () {
     return function (scope, element, attr) {
         element.addClass('ng-binding').data('$binding', attr.bindHtmlUnsafe);
         scope.$watch(attr.bindHtmlUnsafe, function bindHtmlUnsafeWatchAction(value) {
@@ -43,7 +43,7 @@ angular.module('YiModule').directive('bindHtmlUnsafe', function () {
         });
     };
 });
-angular.module('YiModule').filter('shijian', function () {
+YiModule.filter('shijian', function () {
     return function (data) {
         if (!data) return;
         var d = new Date(data);
@@ -56,7 +56,7 @@ angular.module('YiModule').filter('shijian', function () {
         return date;
     };
 });
-angular.module('YiModule').filter('scoreFilter',function () {
+YiModule.filter('scoreFilter',function () {
     return function (input) {
         if(input<0){
             input=0-input;
@@ -66,7 +66,7 @@ angular.module('YiModule').filter('scoreFilter',function () {
     };
 });
 
-angular.module('YiModule').filter('findPFilter',function () {
+YiModule.filter('findPFilter',function () {
     //得到字符串长度，英文算0.5个长度
     function get_length(s){
         var char_length = 0;
@@ -106,7 +106,7 @@ angular.module('YiModule').filter('findPFilter',function () {
        }
     };
 });
-angular.module('YiModule').filter('stringFilter',function () {
+YiModule.filter('stringFilter',function () {
     //得到字符串长度，英文算0.7个长度
     function get_length(s){
         var char_length = 0;
@@ -137,7 +137,7 @@ angular.module('YiModule').filter('stringFilter',function () {
         }
     };
 });
-angular.module('YiModule').service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ngDialog','$location','SysConfig',function ($http, $window, $q, $rootScope, $env,ngDialog,$location,SysConfig) {
+YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ngDialog','$location','SysConfig',function ($http, $window, $q, $rootScope, $env,ngDialog,$location,SysConfig) {
 
     $rootScope.param = $location.search();
     if(!$rootScope.param.base){
@@ -268,6 +268,31 @@ angular.module('YiModule').service('YiServer', ['$http', '$window', '$q', '$root
     }
 //评论
     this.toComment = function (type, param, value, replyToId) {
+        var deferred = $q.defer();
+        $http.post(param.base + '/v3/' + type + '/' + param.id + '/commentsForJsonp',
+            {
+                'type': 1,
+                'content': value,
+                //img: null,
+                'replyTo': replyToId
+            }, {
+                params: {
+                    _client: $rootScope.clientType,
+                    _cver: '28828',
+                    _token: param._token
+                },
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                }
+            }
+        ).success(function (data) {
+                deferred.resolve(data);
+            })
+        return deferred.promise;
+    }
+
+    //评论
+    this.toCommentPHP = function (type, param, value, replyToId) {
         var deferred = $q.defer();
         $http.post(param.base + '/v3/' + type + '/' + param.id + '/commentsForJsonp',
             {
@@ -862,7 +887,7 @@ angular.module('YiModule').service('YiServer', ['$http', '$window', '$q', '$root
     }
 }]);
 
-angular.module('YiModule').service('CompareTime', function () {
+YiModule.service('CompareTime', function () {
     this.getTime = function (date) {
         var year = date.substring(0, 4);
         var month = date.substring(4, 6);
@@ -873,6 +898,14 @@ angular.module('YiModule').service('CompareTime', function () {
         return year + "." + month + "." + day + " " + hour + ":" + minute;
     }
 });
+
+// YiModule.controller('toCommentScala', ['', function(){
+    
+// }]);
+
+// YiModule.controller('toCommentPHP', ['', function(){
+    
+// }])
 
 
 

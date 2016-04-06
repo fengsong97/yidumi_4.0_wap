@@ -2,7 +2,7 @@
 <html ng-app='articles' ng-controller="articles.DetailCtrl">
 
 <head>
-<base href="/">
+    <base href="/">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>一度蜜</title>
@@ -10,11 +10,16 @@
     <link href="/css/yidu_add_160322.css" rel="stylesheet">
     <link rel="stylesheet" href="/iconfont/iconfont.css">
 
+     <link rel="stylesheet" href="/css/ngDialog.css">
+    <link rel="stylesheet" href="/css/ngDialog-theme-default.css">
+    <link rel="stylesheet" href="/css/ngDialog-theme-plain.css">
+
    <script type="text/javascript" src="/js/lib/angular/angular.min.js"></script>
     <!--<script type="text/javascript" src="/js/me-lazyload.js"></script>-->
     <script type="text/javascript" src="/js/lib/ngDialog.min.js"></script>
     <script type="text/javascript" src="/js/lib/angular-sanitize/angular-sanitize.min.js"></script>
     <script type="text/javascript" src="/js/angular-locale_zh-cn.js"></script>
+
 
 
      <script type="text/javascript" src="/js/SysConfig.js"></script>
@@ -28,11 +33,11 @@
 
 <body>
     
-    <div class="content-header">
+    <!-- <div class="content-header">
         <div class="content-back"><a href=""><i class="iconfont">&#xe601;</i></a></div>
         <div class="content-header-txt"><a href=""><i class="iconfont">&#xe621;</i></a></div>
-    </div>
-    <div class="end"></div>
+    </div> -->
+    <!-- <div class="end"></div> -->
     <div class="news-title">
         <h1 ng-bind='item.results[0].title'></h1>
         <ul class="news-author">
@@ -54,7 +59,7 @@
     <div class="content-title">讨论：</div>
     <div class="topic-add">
         <P><i class="iconfont">&#xe61a;</i></P>
-        <input type="text" value="点评几句">
+        <input type="text" readonly value="点评几句">
     </div>
     <div class="topic">
                 <section ng-repeat="one in itemComments.results ">
@@ -64,10 +69,10 @@
                             <li><h1 ng-bind="one.content.user.nickName"></h1></li>
                             <li ng-bind="one.createdOn"></li>
                         </ul>
-                       <p><a ><i class="iconfont">&#xe649;</i>{{one.statistics.endorse}}</a><a ><i class="iconfont">&#xe64a;</i>{{one.statistics.oppose}}</a></p>
+                       <p><a ng-click="attitudeToZan(one)"><i class="iconfont">&#xe649;</i>{{one.statistics.endorse}}</a><a ><i class="iconfont">&#xe64a;</i>{{one.statistics.oppose}}</a></p>
                     </article>
                     <ng-include src="'recursion'" ng-init="talksOnOneComment2=one.content.quote"></ng-include>
-                    <div  style="word-break: break-all;" ng-bind="one.content.p" >
+                    <div ng-click="showCommentDialog(one)"  style="word-break: break-all;" ng-bind="one.content.p" >
                     </div>
                 </section>
 
@@ -78,7 +83,7 @@
                     <!--<a type="button" ng-if="!commentfs.length" ng-click="showCommentDialog()"> <span>我要评论</span> </a>-->
                 <!-- </div> -->
     </div>
-    <div class="end"></div>
+    <!-- <div class="end"></div>
     <footer>
         <ul class="footer-center">
             <li><a href="#"><i class="iconfont">&#xe61e;</i></a></li>
@@ -86,7 +91,7 @@
                 <p>22</p><a href="#"><i class="iconfont">&#xe602;</i></a></li>
             <li><a href="#"><i class="iconfont">&#xe61c;</i></a></li>
         </ul>
-    </footer>
+    </footer> -->
 </body>
 <script id="recursion" type="text/ng-template">
 
@@ -97,4 +102,8 @@
             <p ng-click="showCommentDialog(one)" ng-bind="one2.p" style="word-break: break-all;"></p>
         </div>
     </script>
+
+
+    
+      <script type="text/javascript" src="/js/notie.js"></script> 
 </html>

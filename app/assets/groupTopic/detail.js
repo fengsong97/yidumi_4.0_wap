@@ -1,98 +1,157 @@
 'use strict';
 
-angular.module('articles', [], ['$locationProvider', '$sceDelegateProvider', function ($locationProvider, $sceDelegateProvider) {
+  var  base="http://192.168.0.200"
+  var params={
+    _client:7,
+    _cver:4,
+    _token:'54bce4adc960c80593eb8f56',
+    userId:'54ba39563b8fbe157c4aaae4'
+  }
+
+//     $rootScope.getArticleDetail = function () {
+//     	//话题详情
+//     	$http.jsonp(base+'/v4/group/topics_get_detail.php?topicId=57047fed53d3c31a4f8b4578&type=1&callback=JSON_CALLBACK',{},{params: params})
+//     		.success(function (data) {
+//     			debugger;
+//     			$scope.item=data.data;
+//     		})
+//       //话题评论详情
+//     	$http.jsonp(base+'/v4/group/topics_get_detail.php?topicId=57047fed53d3c31a4f8b4578&type=2&callback=JSON_CALLBACK',{},{params: params})
+//     		.success(function (data) {
+//     			debugger;
+//     			$scope.itemComments=data.data;
+//     		})
+
+//       $http.post(base+'/v4/group/topics_reply.php?userId=54ba39563b8fbe157c4aaae4',
+//             {     "content":"这是js，端的post",
+//                   "imgs":[""],
+//                   "replyTo":"5704845253d3c3294f8b457f",
+//                   "replyType":"2"
+
+//                 }, {
+//                 params: params,
+//                 headers: {
+//                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+//                 }
+//             })
+//             .success(function (data) {
+//               debugger;
+//               $scope.itemComments=data.data;
+//             })
+
+
+
+
+angular.module('articles', ['ngSanitize', 'env', 'apps', 'ngDialog', 'YiModule'], ['$locationProvider', '$sceDelegateProvider', function ($locationProvider, $sceDelegateProvider) {
   $locationProvider.html5Mode(true);
   $sceDelegateProvider.resourceUrlWhitelist(['self', '**']);
 }]);
 
+angular.module('articles').config(function($httpProvider){  
+  debugger;
+   // $httpProvider.defaults.transformRequest = function(obj){  
+   //   var str = [];  
+   //   for(var p in obj){  
+   //     str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));  
+   //   }  
+   //   return str.join("&");  
+   // }  
+  
+   $httpProvider.defaults.headers.post = {  
+        'Content-Type': 'application/x-www-form-urlencoded'  
+   }  
+    $httpProvider.defaults.params.jsonp = {  
+      // params:{jj:99}
+      // "jj":909
+        // 'Content-Type': 'application/x-www-form-urlencoded'  
+      } 
+  
+});  
 
 
-angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootScope', '$window', '$http', '$timeout','$location',
-  function ($scope, $rootScope, $window, $http, $timeout,$location) {
-
-    $rootScope.param=$location.search();
-
-
+angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootScope', '$window', '$http', '$timeout', '$env',
+  'appDownload', 'SysConfig', 'findDetails','clientDownload', 'CompareTime', 'ngDialog', 'YiServer',
+  function ($scope, $rootScope, $window, $http, $timeout, $env, appDownload,
+            SysConfig, findDetails,clientDownload, CompareTime, ngDialog, YiServer) {
 
 
-	// 获取话题详情与回帖列表
-	// 主题与回贴的区别为type值，1为主贴，2为回贴
-	// URL
-	// GET /v4/group/topics_get_detail.php?topicId=&_client=&_cver=&_token=&type=
-	// 请求参数
-	// 参数说明
-	// 名称	必选	类型	说明
-	// topicId	yes	string	话题ID
-	// type	no	int	话题ID 1: 主贴 2：回帖
 
+
+
+            
+
+
+
+
+    $window.onscroll =YiServer.scrollUpOrDown;
+    $scope.toTop =YiServer.toTop;
+    $scope.scrollTo= function (id) {
+      if(document.getElementById(id)){
+        $scope.toTop(document.getElementById(id).offsetTop)
+        $rootScope.scrollUpOrDown=true
+      }
+
+    }
+    $scope.compareTime = CompareTime;
+    $scope.$env = $env;
+    $scope.platform = $env.platform();
+    $scope.clientDownload=clientDownload;
+
+    if ($rootScope.param.inClient == "true") {
+      $scope.$env.inClient = true;
+      $env.inClient = true;
+      $env.setInClient(true)
+
+    }
+    //获取文章详情 和 该作者 的被关注信息
     $rootScope.getArticleDetail = function () {
-    	
-    	$http.jsonp('http://192.168.0.200/v4/group/topics_get_detail.php?topicId=56e937b7da1da5cd030041ae&_client=7&_cver=4.1&_token=54bce4adc960c80593eb8f56&type=1&callback=JSON_CALLBACK')
-    		.success(function (data) {
-    			debugger;
-    			$scope.item=data.data;
-    		})
-    	$http.jsonp('http://192.168.0.200/v4/group/topics_get_detail.php?topicId=56e937b7da1da5cd030041ae&_client=7&_cver=4.1&_token=54bce4adc960c80593eb8f56&type=2&callback=JSON_CALLBACK')
-    		.success(function (data) {
-    			debugger;
-    			$scope.itemComments=data.data;
-    		})
+      if (!($rootScope.param.base && $rootScope.param.id)) {
+      } else {
+        //文章详情
+        
+        $http.jsonp(base+'/v4/group/topics_get_detail.php?topicId=57047fed53d3c31a4f8b4578&type=1&callback=JSON_CALLBACK',{},{params: params})
+        .success(function (data) {
+          $rootScope.getComment()
+          $scope.item = data.data;
 
-  // $http.post('http://192.168.0.200/v4/group/topics_reply.php?_client=7&_cver=4&_token=54bce4adc960c80593eb8f56&userId=54ba39563b8fbe157c4aaae4',
-  //       {     "content":"234234",
-  //             "imgs":[""],
-  //             "replyTo":"56dafacd0decedb7ea70674e",
-  //             "replayType":"1"
+          //某用户被关注的信息
+          YiServer.getUserDetail($rootScope.param, $scope.item.results[0].user.id)
+              .then(function (data) {
+                if ($scope.item.results[0].user.fans == undefined) {
+                  $scope.item.results[0].user.fans = {count: 0,item:[]}
+                }
+                $scope.item.results[0].user.fans = data.data.fans;
+              })
 
-  //           })
-  //       .success(function (data) {
-  //         debugger;
-  //         $scope.itemComments=data.data;
-  //       })
+          // $scope.__ = $scope.item[$scope.platform];
+          // if ($scope.__.apps == undefined) {
+          //   return null;
+          // }
 
+          // if ($env.isAndroid || $env.isIOS) {
+          //   $scope.showApps = $scope.__.apps[$scope.platform]
+          // } else {
+            
+          //   $scope.showApps = $scope.__.apps["android"] ? ($scope.__.apps["android"]).concat($scope.__.apps["ios"]?$scope.__.apps["ios"]:[]) : $scope.__.apps["ios"]?$scope.__.apps["ios"]:[];
+          // }
+          // if ($scope.item.collections !== undefined) {
+          //   $scope.item.isCollected = YiServer.isInclude($scope.item.collections.users, $rootScope.param.user_id)
+          // }
+        })
+      }
+    }
 
-   }
     //评论列表
     var comment_offset = 0
     var comment_limit = 5
     $rootScope.getComment = function () {
-      YiServer.getComments("articles", $rootScope.param, comment_offset, comment_limit)
-          .then(function (data) {
-            $scope.commentfs = {}
-            if (data.data.results.length == 0) {
-              return;
-            }
-            for (var i = 0; i < data.data.results.length; i++) {
-              data.data.results[i].quote = [];
-              var a = data.data.results[i].content;
-              $scope.show = function (a) {
-                if (a.quote == undefined) {
-                  return true;
-                } else {
-                  data.data.results[i].quote.push(a.quote);
-                  $scope.show(a.quote);
-                }
-              };
-              $scope.show(a);
-              $scope.commentfs = data.data.results;
+     //话题评论列表详情
+     $http.jsonp(base+'/v4/group/topics_get_detail.php?topicId=57047fed53d3c31a4f8b4578&type=2&callback=JSON_CALLBACK',{},{params: params})
+       .success(function (data) {
+         // debugger;
+         $scope.itemComments=data.data;
+       })
 
-              $scope.commentfs.showMore = false;
-              if (data.data.count < data.data.total) {
-                $scope.commentfs.showMore = true;
-              }
-            }
-            for (var i = 0; i < $scope.commentfs.length; i++) {
-              $scope.commentfs[i].createdOn = $scope.compareTime.getTime($scope.commentfs[i].createdOn);
-              for (var j = 0; j < $scope.commentfs[i].quote.length; j++) {
-                $scope.commentfs[i].quote[j].orderId = $scope.commentfs[i].quote.length - j;
-                $scope.commentfs[i].quote[j].child = [];
-              }
-              if ($scope.commentfs[i].quote.length > 0) {
-                var kongArray = [];
-                $scope.commentfs[i].quote = $scope.toNeedArray(kongArray, $scope.commentfs[i].quote);
-              }
-            }
-          })
     }
     //$timeout($rootScope.getComment(), 500)
 //加载更多评论
@@ -230,27 +289,54 @@ angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootSc
         return {color: "#0099e5"};
     };
     //给评论点赞的方法
-    $scope.attitudeToZan = function (one) {
+    $scope.attitudeToZan = function (one,type) {
       if ($rootScope.isVisitor == true && $env.inClient !== true) {
         $rootScope.login();
         return;
       }
-      YiServer.clickCommentZan("articles", $rootScope.param, one.id).then(function (data) {
-        if (data.code == 200) {
-          if (one.attitudes == undefined) {
-            one.attitudes = {}
-            one.attitudes.count = {}
-            one.attitudes.count.like = 0;
-          }
 
-          one.attitudes.count.like = one.attitudes.count.like + 1;
-        }
-      }, function (data) {
-        if (data.code == 429) {
-          $env.call('toToastCallBack', {"toast": "您已经点过赞了"});
+     $http({
+      method:'jsonp',
+      url:base+"/v4/group/topics_operate.php?action=endorse&topicId="+one.id+"&callback=JSON_CALLBACK",
+params:params
+    
+      }).success(function(data){  
 
-        }
-      })
+         if (data.code == 200) {
+                if (one.attitudes == undefined) {
+                  one.attitudes = {}
+                  one.attitudes.count = {}
+                  one.attitudes.count.like = 0;
+                }
+
+                one.attitudes.count.like = one.attitudes.count.like + 1;
+                $env.call('toToastCallBack', {"toast": "操作成功"});
+              }
+           else if(data.code == 429){
+             $env.call('toToastCallBack', {"toast": "您已经点过赞了"});
+           }
+ 
+
+           
+      })  
+
+
+      // YiServer.clickCommentZan("articles", $rootScope.param, one.id).then(function (data) {
+      //   if (data.code == 200) {
+      //     if (one.attitudes == undefined) {
+      //       one.attitudes = {}
+      //       one.attitudes.count = {}
+      //       one.attitudes.count.like = 0;
+      //     }
+
+      //     one.attitudes.count.like = one.attitudes.count.like + 1;
+      //   }
+      // }, function (data) {
+      //   if (data.code == 429) {
+      //     $env.call('toToastCallBack', {"toast": "您已经点过赞了"});
+
+      //   }
+      // })
     };
 
 
