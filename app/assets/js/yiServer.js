@@ -16,6 +16,7 @@ YiModule.directive('errSrc', function () {
         }
     };
 })
+
 YiModule.directive('focus', function () {
     return function (scope, element, attrs) {
         attrs.$observe('focus', function (newValue) {
@@ -23,6 +24,7 @@ YiModule.directive('focus', function () {
         });
     }
 });
+
 YiModule.directive('sectionScroll', ['$window', function ($window) {
     return function (scope, body) {
 
@@ -35,6 +37,7 @@ YiModule.directive('sectionScroll', ['$window', function ($window) {
         });
     };
 }]);
+
 YiModule.directive('bindHtmlUnsafe', function () {
     return function (scope, element, attr) {
         element.addClass('ng-binding').data('$binding', attr.bindHtmlUnsafe);
@@ -43,6 +46,7 @@ YiModule.directive('bindHtmlUnsafe', function () {
         });
     };
 });
+
 YiModule.filter('shijian', function () {
     return function (data) {
         if (!data) return;
@@ -56,6 +60,7 @@ YiModule.filter('shijian', function () {
         return date;
     };
 });
+
 YiModule.filter('scoreFilter',function () {
     return function (input) {
         if(input<0){
@@ -106,6 +111,7 @@ YiModule.filter('findPFilter',function () {
        }
     };
 });
+
 YiModule.filter('stringFilter',function () {
     //得到字符串长度，英文算0.7个长度
     function get_length(s){
@@ -137,11 +143,13 @@ YiModule.filter('stringFilter',function () {
         }
     };
 });
+
 YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ngDialog','$location','SysConfig',function ($http, $window, $q, $rootScope, $env,ngDialog,$location,SysConfig) {
 
     $rootScope.param = $location.search();
     if(!$rootScope.param.base){
-        $rootScope.param.base=SysConfig.online_openApi;
+        // $rootScope.param.base=SysConfig.online_openApi;
+        $rootScope.param.base=SysConfig.ceshi_openApi;
     }
     if(!$rootScope.param.res){
         $rootScope.param.res=SysConfig.online_resourceBase;
@@ -155,32 +163,35 @@ YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ng
 
     $rootScope.scrollUpOrDown=false;
     var scrolldata=0;
+
     this.scrollUpOrDown=function () {
             var top = document.documentElement.scrollTop || document.body.scrollTop;
 
-        var viewH =document.documentElement.clientHeight  ;//可见高度
-        var  contentH =document.documentElement.scrollHeight || document.body.scrollHeight  ;//内容高度
-//console.log(top+"top---"+viewH+"viewH---"+contentH+"contentH")
-            if(top>scrolldata){
-                //console.log( top)
-                $rootScope.scrollUpOrDown=true
-                $rootScope.$apply()
-            }else if(top<scrolldata){
-                //console.log("up")
+            var viewH =document.documentElement.clientHeight  ;//可见高度
+            var  contentH =document.documentElement.scrollHeight || document.body.scrollHeight  ;//内容高度
+            //console.log(top+"top---"+viewH+"viewH---"+contentH+"contentH")
+                if(top>scrolldata){
+                    //console.log( top)
+                    $rootScope.scrollUpOrDown=true
+                    $rootScope.$apply()
+                }else if(top<scrolldata){
+                    //console.log("up")
+                    $rootScope.scrollUpOrDown=false
+                    $rootScope.$apply()
+                }
+            if(top/(contentH -viewH)>=0.95){ //到达底部95%时
                 $rootScope.scrollUpOrDown=false
                 $rootScope.$apply()
             }
-        if(top/(contentH -viewH)>=0.95){ //到达底部95%时
-            $rootScope.scrollUpOrDown=false
-            $rootScope.$apply()
-        }
-
-
             scrolldata=top;
 
     }
 
     var currentPosition,timer;
+    /**
+     * @param  {[type]}
+     * @return {[type]}
+     */
     this.toTop= function (num) {
         clearInterval(timer);
         //document.documentElement.scrollTop=num;
@@ -257,7 +268,7 @@ YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ng
         })
         return abc;
     }
-//获得评论列表
+    //获得评论列表
     this.getComments = function (type, param, offset, limit) {
         var deferred = $q.defer();
         $http.get(param.base + "/v3/" + type + "/" + param.id + "/comments?type=1&_token=" + param._token + "&_client=" + $rootScope.clientType + "&offset=" + offset + "&limit=" + limit)
@@ -266,7 +277,7 @@ YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ng
             })
         return deferred.promise;
     }
-//评论
+    //评论
     this.toComment = function (type, param, value, replyToId) {
         var deferred = $q.defer();
         $http.post(param.base + '/v3/' + type + '/' + param.id + '/commentsForJsonp',
@@ -291,7 +302,7 @@ YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ng
         return deferred.promise;
     }
 
-    //评论
+    //评论PHP
     this.toCommentPHP = function (type, param, value, replyToId) {
         var deferred = $q.defer();
         $http.post(param.base + '/v3/' + type + '/' + param.id + '/commentsForJsonp',
@@ -339,34 +350,34 @@ YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ng
             });
         return deferred.promise;
     }
-//    origin=1: 文章 2: 晒图 3：酷品 4：话题5：提问6：回答
-//    cat=1为打开，2为下载
+    //    origin=1: 文章 2: 晒图 3：酷品 4：话题5：提问6：回答
+    //    cat=1为打开，2为下载
 
-    //下载APP 统计
-    this.appStatistics = function (param, typeId, origin, cat) {
-        var deferred = $q.defer();
+        //下载APP 统计
+        this.appStatistics = function (param, typeId, origin, cat) {
+            var deferred = $q.defer();
 
-        $http.post(param.base + '/v3/apps/androidForJsonp/' + typeId,
-            {
-                origin: origin,
-                cat: cat,
-                objId: param.id
-            }, {
-                params: {
-                    _client: $rootScope.clientType,
-                    _cver: '28828',
-                    _token: param._token
-                },
-                headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-            }
-        ).success(function (data) {
-                deferred.resolve(data);
-            }).error(function (data) {
-                deferred.reject(data);
-            });
-        return deferred.promise;
-    }
-//统计酷品的 打开 和购买
+            $http.post(param.base + '/v3/apps/androidForJsonp/' + typeId,
+                {
+                    origin: origin,
+                    cat: cat,
+                    objId: param.id
+                }, {
+                    params: {
+                        _client: $rootScope.clientType,
+                        _cver: '28828',
+                        _token: param._token
+                    },
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+                }
+            ).success(function (data) {
+                    deferred.resolve(data);
+                }).error(function (data) {
+                    deferred.reject(data);
+                });
+            return deferred.promise;
+        }
+    //统计酷品的 打开 和购买
     this.smartDeviceStatistics = function (param, typeId, origin, cat) {
         var deferred = $q.defer();
 
@@ -442,7 +453,7 @@ YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ng
             });
         return deferred.promise;
     }
-//点态度
+    //点态度
     this.clickAttitude = function (type, param, typeId, attId) {
         var deferred = $q.defer();
         $http.jsonp(param.base + "/v3/" + type + "/" + typeId + "/attitude?att=" + attId + "&_client=" + $rootScope.clientType + "&_token=" + param._token + "&callback=JSON_CALLBACK")
@@ -451,7 +462,7 @@ YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ng
             });
         return deferred.promise;
     }
-//给评论点赞
+    //给评论点赞
     this.clickCommentZan = function (type, param, commentId) {
         var deferred = $q.defer();
         $http.post(param.base + '/v3/' + type + '/comments/' + commentId + '/attitude', {}, {
@@ -472,7 +483,7 @@ YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ng
     }
 
 
-//自动注册 并返回 注册用户信息
+    //自动注册 并返回 注册用户信息
     this.toSignFree = function (param) {
         var deferred = $q.defer();
         var token = ''
@@ -497,7 +508,7 @@ YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ng
             })
         return deferred.promise;
     }
-//去注册
+    //去注册
     this.toSign = function (param, name, passWord, nickName) {
         var deferred = $q.defer();
         var token = ''
@@ -804,6 +815,59 @@ YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ng
             showClose: false
         });
     }
+    this.commentDialogForPhp= function (one,type) {
+        ngDialog.open({
+            id: 'commentDialogForPhp',
+            template: 'html/commentDialog.html',
+            className: 'ngdialog-theme-plain',
+            controller: ['$scope', '$http', '$location', 'YiServer', function ($scope, $http, $location, YiServer) {
+                $scope.commentShow = "说点什么";
+                $scope.commentId = null;
+                if (one != undefined) {
+
+                    if (one.user.nickName != undefined) {
+                        $scope.commentShow = "回复：" + one.user.nickName;
+                        $scope.commentId = one.id;
+                    }
+                }
+                $scope.commentValue = "";
+                $scope.commentSend = function () {
+                    if ($scope.commentValue != "") {
+
+
+                $http({
+                      method:'post',
+                      url:base+'/v4/group/topics_reply.php?',
+                      data:{
+                              "content":$scope.commentValue,
+                              "imgs":[""],
+                              "replyTo":one.id,
+                              "replyType":type
+                          },
+                      // params:params,
+                      headers:{'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+                  }).success(function (data) {
+
+                          $env.call('toToastCallBack', {"toast": "评论成功"});
+                                $rootScope.getComment()
+                                ngDialog.close();
+                          
+                        })
+
+
+
+                       
+
+
+                    } else {
+                        $env.call('toToastCallBack', {"toast": "评论不能为空"});
+                    }
+
+                }
+            }],
+            showClose: false
+        });
+    }
 
     this.loginDialog= function () {
         ngDialog.open({
@@ -899,13 +963,6 @@ YiModule.service('CompareTime', function () {
     }
 });
 
-// YiModule.controller('toCommentScala', ['', function(){
-    
-// }]);
-
-// YiModule.controller('toCommentPHP', ['', function(){
-    
-// }])
 
 
 

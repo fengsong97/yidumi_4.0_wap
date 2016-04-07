@@ -1,45 +1,6 @@
 'use strict';
 
   var  base="http://192.168.0.200"
-  var params={
-    _client:7,
-    _cver:4,
-    _token:'54bce4adc960c80593eb8f56',
-    userId:'54ba39563b8fbe157c4aaae4'
-  }
-
-//     $rootScope.getArticleDetail = function () {
-//     	//话题详情
-//     	$http.jsonp(base+'/v4/group/topics_get_detail.php?topicId=57047fed53d3c31a4f8b4578&type=1&callback=JSON_CALLBACK',{},{params: params})
-//     		.success(function (data) {
-//     			debugger;
-//     			$scope.item=data.data;
-//     		})
-//       //话题评论详情
-//     	$http.jsonp(base+'/v4/group/topics_get_detail.php?topicId=57047fed53d3c31a4f8b4578&type=2&callback=JSON_CALLBACK',{},{params: params})
-//     		.success(function (data) {
-//     			debugger;
-//     			$scope.itemComments=data.data;
-//     		})
-
-//       $http.post(base+'/v4/group/topics_reply.php?userId=54ba39563b8fbe157c4aaae4',
-//             {     "content":"这是js，端的post",
-//                   "imgs":[""],
-//                   "replyTo":"5704845253d3c3294f8b457f",
-//                   "replyType":"2"
-
-//                 }, {
-//                 params: params,
-//                 headers: {
-//                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-//                 }
-//             })
-//             .success(function (data) {
-//               debugger;
-//               $scope.itemComments=data.data;
-//             })
-
-
 
 
 angular.module('articles', ['ngSanitize', 'env', 'apps', 'ngDialog', 'YiModule'], ['$locationProvider', '$sceDelegateProvider', function ($locationProvider, $sceDelegateProvider) {
@@ -48,40 +9,61 @@ angular.module('articles', ['ngSanitize', 'env', 'apps', 'ngDialog', 'YiModule']
 }]);
 
 angular.module('articles').config(function($httpProvider){  
-  debugger;
-   // $httpProvider.defaults.transformRequest = function(obj){  
-   //   var str = [];  
-   //   for(var p in obj){  
-   //     str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));  
-   //   }  
-   //   return str.join("&");  
-   // }  
-  
-   $httpProvider.defaults.headers.post = {  
-        'Content-Type': 'application/x-www-form-urlencoded'  
-   }  
-    $httpProvider.defaults.params.jsonp = {  
-      // params:{jj:99}
-      // "jj":909
-        // 'Content-Type': 'application/x-www-form-urlencoded'  
-      } 
+ 
+   $httpProvider.interceptors.push('myInterceptor');
+
   
 });  
+angular.module('articles').factory('myInterceptor', ['$rootScope','$location','$q', function($rootScope,$location,$q) {
+  $rootScope.params=$location.search();
+  var  base="http://192.168.0.200"
+  var params={
+    _client:7,
+    _cver:4
+ 
+  }
+    var requestInterceptor = {
+        request: function(config) {
+if( /php/i.test(config.url)){
 
+          if(config.method=="JSONP"){
+            config.url=config.url+
+            "&_client="+params._client+
+            "&_cver="+params._cver+
+            "&_token="+$rootScope.params._token+
+            "&userId="+$rootScope.params.user_id+
+            "&callback=JSON_CALLBACK";
 
-angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootScope', '$window', '$http', '$timeout', '$env',
-  'appDownload', 'SysConfig', 'findDetails','clientDownload', 'CompareTime', 'ngDialog', 'YiServer',
-  function ($scope, $rootScope, $window, $http, $timeout, $env, appDownload,
-            SysConfig, findDetails,clientDownload, CompareTime, ngDialog, YiServer) {
-
-
-
-
-
+          } else if(config.method=="GET"){
             
+             config.url=config.url+""
+          }else if(config.method=="POST"){
+              
+              config.url=config.url+
+              "&_client="+params._client+
+              "&_cver="+params._cver+
+              "&_token="+$rootScope.params._token+
+              "&userId="+$rootScope.params.user_id
+            
+          }else{
+
+          }
+}
 
 
+          return config;
+    
+        }
+    };
 
+    return requestInterceptor;
+}]);
+
+
+angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootScope', '$window', '$http','$location', '$timeout', '$env',
+  'appDownload', 'SysConfig', 'findDetails','clientDownload', 'CompareTime', 'ngDialog', 'YiServer',
+  function ($scope, $rootScope, $window, $http, $location,$timeout, $env, appDownload,
+            SysConfig, findDetails,clientDownload, CompareTime, ngDialog, YiServer) {
 
     $window.onscroll =YiServer.scrollUpOrDown;
     $scope.toTop =YiServer.toTop;
@@ -108,9 +90,11 @@ angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootSc
       if (!($rootScope.param.base && $rootScope.param.id)) {
       } else {
         //文章详情
-        
-        $http.jsonp(base+'/v4/group/topics_get_detail.php?topicId=57047fed53d3c31a4f8b4578&type=1&callback=JSON_CALLBACK',{},{params: params})
-        .success(function (data) {
+        $http({
+          method:'jsonp',
+          url:base+'/v4/group/topics_get_detail.php?',
+          params:{topicId:$rootScope.params.id,type:1}
+        }).success(function (data) {
           $rootScope.getComment()
           $scope.item = data.data;
 
@@ -146,11 +130,16 @@ angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootSc
     var comment_limit = 5
     $rootScope.getComment = function () {
      //话题评论列表详情
-     $http.jsonp(base+'/v4/group/topics_get_detail.php?topicId=57047fed53d3c31a4f8b4578&type=2&callback=JSON_CALLBACK',{},{params: params})
-       .success(function (data) {
-         // debugger;
-         $scope.itemComments=data.data;
-       })
+ 
+    $http({
+          method:'jsonp',
+          url:base+'/v4/group/topics_get_detail.php?',
+          params:{topicId:$rootScope.params.id,type:2}
+        }).success(function (data) {
+           $scope.itemComments=data.data;
+        })
+
+ 
 
     }
     //$timeout($rootScope.getComment(), 500)
@@ -186,7 +175,7 @@ angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootSc
 
     }
 //点击评论的方法
-    $scope.showCommentDialog = function (one) {
+    $scope.showCommentDialog = function (one,type) {
       
       if ($rootScope.isVisitor == true && $env.inClient !== true) {
         $rootScope.login();
@@ -196,7 +185,7 @@ angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootSc
       if ($scope.$env.isAndroid && $scope.$env.inClient && false) {
         $env.call('toPingLunCallback', one == undefined ? "null" : {"id": one.id});
       } else {
-        YiServer.commentDialog(one)
+        YiServer.commentDialogForPhp(one,type)
       }
     }
 
@@ -210,20 +199,20 @@ angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootSc
         $rootScope.login();
         return;
       }
-      if (!$scope.item.user.hasSub) {
-        YiServer.focusAuthor($rootScope.param, $scope.item.user.id).then(function (data) {
-          $scope.item.user.hasSub = !$scope.item.user.hasSub;
-          if ($scope.item.user.fans == undefined) {
-            $scope.item.user.fans = {
+      if (!$scope.item.results[0].user.hasSub) {
+        YiServer.focusAuthor($rootScope.param, $scope.item.results[0].user.id).then(function (data) {
+          $scope.item.results[0].user.hasSub = !$scope.item.results[0].user.hasSub;
+          if ($scope.item.results[0].user.fans == undefined) {
+            $scope.item.results[0].user.fans = {
               count: 0
             }
           }
-          $scope.item.user.fans.count = $scope.item.user.fans.count + 1
+          $scope.item.results[0].user.fans.count = $scope.item.results[0].user.fans.count + 1
         })
       } else {
-        YiServer.unFocusAuthor($rootScope.param, $scope.item.user.id).then(function (data) {
-          $scope.item.user.hasSub = !$scope.item.user.hasSub;
-          $scope.item.user.fans.count = $scope.item.user.fans.count - 1
+        YiServer.unFocusAuthor($rootScope.param, $scope.item.results[0].user.id).then(function (data) {
+          $scope.item.results[0].user.hasSub = !$scope.item.results[0].user.hasSub;
+          $scope.item.results[0].user.fans.count = $scope.item.results[0].user.fans.count - 1
         })
       }
     };
@@ -234,18 +223,30 @@ angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootSc
         $rootScope.login();
         return;
       }
+          $http({
+            method:'jsonp',
+            url:base+"/v4/group/topics_operate.php?",
+            params:{action:'favorite',topicId:$rootScope.params.id}
+        
+          }).success(function (data) {
+            if(data.code==200){
+              $scope.item.isCollected = true;
+              $env.call('toToastCallBack', {"toast": "收藏成功"});
+            }else if(data.code==429){
+                  $http({
+                      method:'jsonp',
+                      url:base+"/v4/group/topics_operate.php?",
+                      params:{action:'favoriteCancel',topicId:$rootScope.params.id}
+              
+                   }).success(function (data) {
+                     $scope.item.isCollected = false;
+                      $env.call('toToastCallBack', {"toast": "取消收藏"});
+                   })
 
-      if ($scope.item.isCollected == undefined || $scope.item.isCollected == false) {
-        YiServer.collecteType("articles", $rootScope.param).then(function (data) {
-          $scope.item.isCollected = true;
-          $env.call('toToastCallBack', {"toast": "收藏成功"});
-        })
-      } else {
-        YiServer.unCollecteType("articles", $rootScope.param).then(function (data) {
-          $scope.item.isCollected = false;
-          $env.call('toToastCallBack', {"toast": "取消收藏"});
-        })
-      }
+            }
+              
+          })
+
     };
 
     $scope.collectionStyle = function () {
@@ -259,35 +260,7 @@ angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootSc
       }
 
     }
-//点态度的方法
-    $scope.attitude = function (att, articleId) {
-      if ($rootScope.isVisitor == true && $env.inClient !== true) {
-        $rootScope.login();
-        return;
-      }
-      var client = $env.isIOS ? "ios" : "android";
-      var scored = $scope.item.attitudes.scored;
-      //$env.call('attitudesCallback', {'attId': att.id, 'scored': scored});
-      if (!scored) {
-        YiServer.clickAttitude("articles", $rootScope.param, articleId, att.id).then(function (data) {
-          if (!$scope.item.attitudes.scored) {
-            $scope.item.attitudes.scored = true;
-            att.users.count += 1;
-            att.hasClick = true;
-          }
-        })
-      } else {
-        $env.call('toToastCallBack', {"toast": "您已经点过态度了"});
-      }
 
-    };
-    //点击 态度评论的方法  颜色变化的方法
-    $scope.attitudesColorStyle = function (att) {
-      if (att.hasClick)
-        return {color: "#e5e5e5"};
-      else
-        return {color: "#0099e5"};
-    };
     //给评论点赞的方法
     $scope.attitudeToZan = function (one,type) {
       if ($rootScope.isVisitor == true && $env.inClient !== true) {
@@ -297,67 +270,23 @@ angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootSc
 
      $http({
       method:'jsonp',
-      url:base+"/v4/group/topics_operate.php?action=endorse&topicId="+one.id+"&callback=JSON_CALLBACK",
-params:params
+      url:base+"/v4/group/topics_operate.php?",
+      params:{action:type,topicId:one.id}
     
       }).success(function(data){  
-
-         if (data.code == 200) {
-                if (one.attitudes == undefined) {
-                  one.attitudes = {}
-                  one.attitudes.count = {}
-                  one.attitudes.count.like = 0;
-                }
-
-                one.attitudes.count.like = one.attitudes.count.like + 1;
+         if (data.code == 200) {               
+                one.statistics[type]=one.statistics[type]+ 1;       
                 $env.call('toToastCallBack', {"toast": "操作成功"});
               }
            else if(data.code == 429){
-             $env.call('toToastCallBack', {"toast": "您已经点过赞了"});
-           }
- 
-
-           
+             $env.call('toToastCallBack', {"toast": "您已经操作过了"});
+           } 
       })  
-
-
-      // YiServer.clickCommentZan("articles", $rootScope.param, one.id).then(function (data) {
-      //   if (data.code == 200) {
-      //     if (one.attitudes == undefined) {
-      //       one.attitudes = {}
-      //       one.attitudes.count = {}
-      //       one.attitudes.count.like = 0;
-      //     }
-
-      //     one.attitudes.count.like = one.attitudes.count.like + 1;
-      //   }
-      // }, function (data) {
-      //   if (data.code == 429) {
-      //     $env.call('toToastCallBack', {"toast": "您已经点过赞了"});
-
-      //   }
-      // })
     };
 
 
 
-//关注标签
-    $scope.subscribeArticle = function (tag) {
-      if ($rootScope.isVisitor == true && $env.inClient !== true) {
-        $rootScope.login();
-        return;
-      }
-      if (!tag.hasSub) {
-        YiServer.focusTag($rootScope.param, tag.id).then(function () {
-          tag.hasSub = !tag.hasSub;
-        })
 
-      } else {
-        YiServer.UnFocusTag($rootScope.param, tag.id).then(function () {
-          tag.hasSub = !tag.hasSub;
-        })
-      }
-    };
 //返回到客户端的方法
     $scope.toBack = function () {
       if ($scope.$env.inClient) {
@@ -383,13 +312,7 @@ params:params
     }
 
     $timeout(initStyle, 100);
-//态度条的 长度的方法
-    $scope.attitudesBarStyle = function (att) {
-      var height = 100 * (att.users.count / $scope.attitudesCount);
-      return {height: height + '%'};
-    };
 
-//.....
     $scope.louStyle = function (one) {
       if (one.orderId > 5) {
         return {
@@ -427,20 +350,6 @@ params:params
       }
       $scope.attitudesCount = count;
     });
-
-    $rootScope.messageDialog = function (message) {
-      var dialog = ngDialog.open({
-        template: '<div align="center" >' + message + '</div>',
-        plain: true,
-        closeByDocument: true,
-        closeByEscape: true,
-        showClose: false
-      });
-      setTimeout(function () {
-        dialog.close();
-      }, 1200);
-    };
-
 
 
     $scope.toUserHome = function (userId) {

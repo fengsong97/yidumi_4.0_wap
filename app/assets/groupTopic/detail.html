@@ -33,22 +33,27 @@
 
 <body>
     
-    <!-- <div class="content-header">
-        <div class="content-back"><a href=""><i class="iconfont">&#xe601;</i></a></div>
-        <div class="content-header-txt"><a href=""><i class="iconfont">&#xe621;</i></a></div>
-    </div> -->
-    <!-- <div class="end"></div> -->
+    <div class="content-header">
+        <div class="content-back"><a ng-click="back()"><i class="iconfont">&#xe601;</i></a></div>
+        <!-- <div class="content-header-txt"><a href=""><i class="iconfont">&#xe621;</i></a></div> -->
+    </div>
+    <div class="end"></div>
     <div class="news-title">
         <h1 ng-bind='item.results[0].title'></h1>
         <ul class="news-author">
-            <li><img src="/photo/user.jpg"></li>
+            <li><img ng-src="{{item.results[0].user.avatar | resource}}" err-src="/img/default_avatar.png" ></li>
             <li ng-bind="item.results[0].user.nickName"></li>
-            <li class="author-interact"><a href="#">关注</a><a href="#">向TA提问</a></li>
+            <li class="author-interact">
+            <a ng-click="subscribeAuthor()" ng-bind="item.results[0].user.hasSub==true?'取消关注':'关注TA'"></a>
+            <a >向TA提问</a>
+            </li>
         </ul>
     </div>
     <div class="content-txt">
         <p ng-bind="item.results[0].content.p"></p>
-        <p ng-repeat="(key, value) in item.results[0].content.imgs"><img ng-src="{{value}}"></p>
+        <p ng-repeat="(key, value) in item.results[0].content.imgs">
+        <img ng-src="{{value | resource}}">
+        </p>
        
        <!--  <p><img src="/photo/content2.jpg">
             <div>魅蓝metal，这是全新的命名方式，metal在英文中是金属的意思，能够让魅族采用全新的命名方式，足以见得这款魅蓝metal的重要性。</div>
@@ -59,20 +64,23 @@
     <div class="content-title">讨论：</div>
     <div class="topic-add">
         <P><i class="iconfont">&#xe61a;</i></P>
-        <input type="text" readonly value="点评几句">
+        <input type="text" readonly value="点评几句" ng-click="showCommentDialog(item.results[0],1)">
     </div>
     <div class="topic">
-                <section ng-repeat="one in itemComments.results ">
+                <section ng-repeat="one in itemComments.results | orderBy:'-createdOn' "  >
                     <article>
-                        <img src="photo/user2.jpg">
+                        <img ng-src="{{one.user.avatar | resource}}" err-src="/img/default_avatar.png" >
                         <ul>
-                            <li><h1 ng-bind="one.content.user.nickName"></h1></li>
+                            <li><h1 ng-bind="one.user.nickName"></h1></li>
                             <li ng-bind="one.createdOn"></li>
                         </ul>
-                       <p><a ng-click="attitudeToZan(one)"><i class="iconfont">&#xe649;</i>{{one.statistics.endorse}}</a><a ><i class="iconfont">&#xe64a;</i>{{one.statistics.oppose}}</a></p>
+                       <p>
+                       <a ng-click="attitudeToZan(one,'endorse')"><i class="iconfont">&#xe649;</i> <span ng-bind="one.statistics.endorse"></span></a>
+                       <a ng-click="attitudeToZan(one,'oppose')"><i class="iconfont">&#xe64a;</i> <span ng-bind="one.statistics.oppose"></span></a>
+                       </p>
                     </article>
                     <ng-include src="'recursion'" ng-init="talksOnOneComment2=one.content.quote"></ng-include>
-                    <div ng-click="showCommentDialog(one)"  style="word-break: break-all;" ng-bind="one.content.p" >
+                    <div ng-click="showCommentDialog(one,2)"  style="word-break: break-all;" ng-bind="one.content.p" >
                     </div>
                 </section>
 
@@ -83,15 +91,15 @@
                     <!--<a type="button" ng-if="!commentfs.length" ng-click="showCommentDialog()"> <span>我要评论</span> </a>-->
                 <!-- </div> -->
     </div>
-    <!-- <div class="end"></div>
+    <div class="end"></div>
     <footer>
         <ul class="footer-center">
-            <li><a href="#"><i class="iconfont">&#xe61e;</i></a></li>
+            <li><a ng-click="collecteAticle()"><i class="iconfont" ng-style="collectionStyle()">&#xe61e;</i></a></li>
             <li>
-                <p>22</p><a href="#"><i class="iconfont">&#xe602;</i></a></li>
+                <p ng-bind="itemComments.results.length"></p><a ><i class="iconfont">&#xe602;</i></a></li>
             <li><a href="#"><i class="iconfont">&#xe61c;</i></a></li>
         </ul>
-    </footer> -->
+    </footer>
 </body>
 <script id="recursion" type="text/ng-template">
 
@@ -99,7 +107,7 @@
             <div  ng-init="talksOnOneComment2=one2.quote" ng-include="'recursion'"></div>
             <h1>{{one2.idx}}楼 {{one2.user.nickName}} {{one2.createdOn}} </h1>
 
-            <p ng-click="showCommentDialog(one)" ng-bind="one2.p" style="word-break: break-all;"></p>
+            <p ng-click="showCommentDialog(one,2)" ng-bind="one2.p" style="word-break: break-all;"></p>
         </div>
     </script>
 
