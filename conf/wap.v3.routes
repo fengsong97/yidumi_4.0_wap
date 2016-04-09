@@ -2,7 +2,7 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-GET         /             controllers.Default.redirect(to="/devices/detail.html")
+GET         /             controllers.Default.redirect(to="/yidumi/index.html")
 
 GET         /*file        controllers.Assets.at(path="/public", file)
 
