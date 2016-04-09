@@ -2,6 +2,10 @@
  * Created by HOME on 2016/1/13.
  */
 var YiModule=angular.module('YiModule', ['env','SysConfig']);
+/**
+ * @param  {}
+ * @return {返回一个默认图片}
+ */
 YiModule.directive('errSrc', function () {
     return {
         link: function (scope, element, attrs) {
@@ -162,20 +166,24 @@ YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ng
     $rootScope.clientType = $env.isIOS ? "ios" : "android";
 
     $rootScope.scrollUpOrDown=false;
-    var scrolldata=0;
 
+    var scrolldata=0;
+/**
+ * @return {‘理想返回--返回滚轮 向下滑 true 还是向上滑 false’}
+ * 实际返回 $rootScope.scrollUpOrDown=true/false
+ */
     this.scrollUpOrDown=function () {
             var top = document.documentElement.scrollTop || document.body.scrollTop;
-
+            // console.log( top)
             var viewH =document.documentElement.clientHeight  ;//可见高度
             var  contentH =document.documentElement.scrollHeight || document.body.scrollHeight  ;//内容高度
             //console.log(top+"top---"+viewH+"viewH---"+contentH+"contentH")
                 if(top>scrolldata){
-                    //console.log( top)
+                    // console.log( top)
                     $rootScope.scrollUpOrDown=true
                     $rootScope.$apply()
                 }else if(top<scrolldata){
-                    //console.log("up")
+                    // console.log("up")
                     $rootScope.scrollUpOrDown=false
                     $rootScope.$apply()
                 }
@@ -187,10 +195,13 @@ YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ng
 
     }
 
+
+
     var currentPosition,timer;
     /**
-     * @param  {[type]}
-     * @return {[type]}
+     *          
+     * @param  {number：滚动条的目标位置}
+     * @return {"效果是滚动到目标位置"}
      */
     this.toTop= function (num) {
         clearInterval(timer);
@@ -217,8 +228,12 @@ YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ng
 
     }
     //获得详情 文章、技能、回答、产品 articles ,questions,answers,smartDevices
-    this.getDetail = function (type, param) {
-        
+    /**
+     * @param  {模块类型}
+     * @param  {param：{base,_token,useId}}
+     * @return {[type]}
+     */
+    this.getDetail = function (type, param) {       
         var deferred = $q.defer();
         $http.jsonp(param.base + "/v3/" + type + "/" + param.id + "?_client=" + $rootScope.clientType + "&callback=JSON_CALLBACK",
             {params: param})
@@ -240,9 +255,9 @@ YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ng
         return deferred.promise;
     }
     //用户的信息
-    this.getUserDetail = function (param, user_id) {
+    this.getUserDetail = function (param, userId) {
         var deferred = $q.defer();
-        $http.get(param.base + '/v3/users/' + user_id + '?_client=' + $rootScope.clientType + '&_cver=28828&_token=' + param._token)
+        $http.get(param.base + '/v3/users/' + userId + '?_client=' + $rootScope.clientType + '&_cver=28828&_token=' + param._token)
             .success(function (data) {
                 deferred.resolve(data);
             })
@@ -845,7 +860,7 @@ YiModule.service('YiServer', ['$http', '$window', '$q', '$rootScope', '$env','ng
                               "replyType":type
                           },
                       // params:params,
-                      headers:{'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+                      // headers:{'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
                   }).success(function (data) {
 
                           $env.call('toToastCallBack', {"toast": "评论成功"});

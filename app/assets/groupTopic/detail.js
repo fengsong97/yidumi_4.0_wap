@@ -43,7 +43,11 @@ if( /php/i.test(config.url)){
               "&_client="+params._client+
               "&_cver="+params._cver+
               "&_token="+$rootScope.params._token+
-              "&userId="+$rootScope.params.user_id
+              "&userId="+$rootScope.params.user_id;
+
+              config.headers["Content-Type"]="application/x-www-form-urlencoded; charset=UTF-8"
+             
+         
             
           }else{
 
@@ -64,6 +68,18 @@ angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootSc
   'appDownload', 'SysConfig', 'findDetails','clientDownload', 'CompareTime', 'ngDialog', 'YiServer',
   function ($scope, $rootScope, $window, $http, $location,$timeout, $env, appDownload,
             SysConfig, findDetails,clientDownload, CompareTime, ngDialog, YiServer) {
+    
+  //   userInfoService.getUserInfo().then(function (data) {
+      
+  //     $window.localStorage.setItem('login_user_token',data.token)
+  //     $window.localStorage.setItem('login_user_id',data.id)
+
+  //     $rootScope.userInfo=data;
+
+  //     $rootScope.params._token=data.token;
+  //     $rootScope.params.user_id=data.id;
+  // })
+
 
     $window.onscroll =YiServer.scrollUpOrDown;
     $scope.toTop =YiServer.toTop;
@@ -289,8 +305,8 @@ angular.module('articles').controller('articles.DetailCtrl', ['$scope', '$rootSc
 
 //返回到客户端的方法
     $scope.toBack = function () {
-      if ($scope.$env.inClient) {
-        $env.call('toBackCallback',{nums:1});
+      if ($scope.$env.inClient||true) {
+        $env.call('toBackCallback',{nums:4});
       } else {
         javascript:history.go(-1)
       }
